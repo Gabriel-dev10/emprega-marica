@@ -1,13 +1,14 @@
-import React from 'react'
-import { Header } from '../components/layout/Header'
+import type React from 'react'
 import { Footer } from '../components/layout/Footer'
-import { Hero } from '../components/sections/Hero'
-import { Services } from '../components/sections/Services'
+import { Header } from '../components/layout/Header'
 import { Benefits } from '../components/sections/Benefits'
-import { Process } from '../components/sections/Process'
 import { Candidates } from '../components/sections/Candidates'
-import { SocialProof } from '../components/sections/SocialProof'
 import { Contact } from '../components/sections/Contact'
+import { FeaturedJobs } from '../components/sections/FeaturedJobs'
+import { Hero } from '../components/sections/Hero'
+import { Process } from '../components/sections/Process'
+import { Services } from '../components/sections/Services'
+import { SocialProof } from '../components/sections/SocialProof'
 
 const LandingPage: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ const LandingPage: React.FC = () => {
       <Header />
       <main>
         <Hero />
+        <FeaturedJobs />
         <Services />
         <Benefits />
         <Process />

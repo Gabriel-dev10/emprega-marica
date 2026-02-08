@@ -1,103 +1,59 @@
-import React, { useState } from 'react';
-import { Button } from '../../shared/ui/Button';
-import { Check, X, Star, Zap } from 'lucide-react';
+import { Check, Star, X, Zap } from 'lucide-react'
+import type React from 'react'
+import { useState } from 'react'
+import { PLANS } from '../../shared/api/mock/plans'
+import { Button } from '../../shared/ui/Button'
 
 export const Services: React.FC = () => {
-  const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly');
-
-  const plans = [
-    {
-      name: "Inicial",
-      description: "Para MEIs e quem está começando a contratar.",
-      price: { monthly: "Grátis", yearly: "Grátis" },
-      features: [
-        { text: "1 Vaga Ativa", included: true },
-        { text: "Visibilidade Básica", included: true },
-        { text: "Triagem de currículos", included: true },
-        { text: "Banco de Talentos", included: false },
-        { text: "Destaque na busca", included: false },
-        { text: "Pagamento via Mumbuca", included: false },
-      ],
-      cta: "Criar conta grátis",
-      variant: "outline",
-      popular: false
-    },
-    {
-      name: "Maricá Pro",
-      description: "A escolha inteligente para comércios e serviços.",
-      price: { monthly: "R$ 49", yearly: "R$ 39" },
-      period: "/mês",
-      features: [
-        { text: "Vagas Ilimitadas", included: true },
-        { text: "Pagamento via Mumbuca", included: true, highlight: true },
-        { text: "Acesso ao Banco de Talentos", included: true },
-        { text: "Filtros por Bairro", included: true },
-        { text: "Destaque nas buscas", included: true },
-        { text: "Suporte WhatsApp Prioritário", included: true },
-      ],
-      cta: "Assinar Maricá Pro",
-      variant: "primary",
-      popular: true
-    },
-    {
-      name: "Corporativo",
-      description: "Para grandes redes, indústrias e RHs estruturados.",
-      price: { monthly: "Sob Consulta", yearly: "Sob Consulta" },
-      features: [
-        { text: "Vagas Ilimitadas", included: true },
-        { text: "Múltiplos Recrutadores", included: true },
-        { text: "Integração via API", included: true },
-        { text: "Gestor de Conta Dedicado", included: true },
-        { text: "Employer Branding", included: true },
-        { text: "Relatórios de Performance", included: true },
-      ],
-      cta: "Falar com Consultor",
-      variant: "outline",
-      popular: false
-    }
-  ];
+  const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly')
 
   return (
     <section id="planos" className="py-24 bg-white dark:bg-neutral-900 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Header da Seção */}
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white mb-4">
             Investimento que retorna para sua empresa
           </h2>
           <p className="text-neutral-600 dark:text-neutral-300 text-lg mb-8">
-            Escolha o plano ideal para o seu momento. Sem taxas escondidas, sem fidelidade e com a facilidade da moeda local.
+            Escolha o plano ideal para o seu momento. Sem taxas escondidas, sem fidelidade e com a
+            facilidade da moeda local.
           </p>
-
-          {/* Toggle Mensal/Anual */}
           <div className="flex items-center justify-center space-x-4 mb-8">
-            <span className={`text-sm font-medium ${billingCycle === 'monthly' ? 'text-neutral-900 dark:text-white' : 'text-neutral-500 dark:text-neutral-400'}`}>
+            <span
+              className={`text-sm font-medium ${billingCycle === 'monthly' ? 'text-neutral-900 dark:text-white' : 'text-neutral-500 dark:text-neutral-400'}`}
+            >
               Mensal
             </span>
             <button
+              type="button"
               onClick={() => setBillingCycle(billingCycle === 'monthly' ? 'yearly' : 'monthly')}
               className="relative rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500"
             >
               <div className="w-14 h-7 bg-primary-600 rounded-full shadow-inner transition-colors duration-200 ease-in-out"></div>
-              <div className={`absolute top-1 left-1 w-5 h-5 bg-white rounded-full shadow transform transition-transform duration-200 ease-in-out ${billingCycle === 'yearly' ? 'translate-x-7' : 'translate-x-0'}`}></div>
+              <div
+                className={`absolute top-1 left-1 w-5 h-5 bg-white rounded-full shadow transform transition-transform duration-200 ease-in-out ${billingCycle === 'yearly' ? 'translate-x-7' : 'translate-x-0'}`}
+              ></div>
             </button>
-            <span className={`text-sm font-medium ${billingCycle === 'yearly' ? 'text-neutral-900 dark:text-white' : 'text-neutral-500 dark:text-neutral-400'}`}>
-              Anual <span className="text-primary-600 dark:text-primary-400 text-xs font-bold ml-1 bg-primary-50 dark:bg-primary-900/30 px-2 py-0.5 rounded-full">-20% OFF</span>
+            <span
+              className={`text-sm font-medium ${billingCycle === 'yearly' ? 'text-neutral-900 dark:text-white' : 'text-neutral-500 dark:text-neutral-400'}`}
+            >
+              Anual{' '}
+              <span className="text-primary-600 dark:text-primary-400 text-xs font-bold ml-1 bg-primary-50 dark:bg-primary-900/30 px-2 py-0.5 rounded-full">
+                -20% OFF
+              </span>
             </span>
           </div>
         </div>
-
-        {/* Grid de Planos */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto items-start">
-          {plans.map((plan, index) => (
-            <div 
-              key={index} 
+          {PLANS.map((plan) => (
+            <div
+              key={plan.name}
               className={`
                 relative bg-white dark:bg-neutral-800 rounded-2xl border transition-all duration-300 flex flex-col
-                ${plan.popular 
-                  ? 'border-primary-600 dark:border-primary-500 shadow-xl scale-100 md:scale-105 z-10' 
-                  : 'border-neutral-200 dark:border-neutral-700 shadow-sm hover:border-primary-200 dark:hover:border-primary-700 hover:shadow-md'
+                ${
+                  plan.popular
+                    ? 'border-primary-600 dark:border-primary-500 shadow-xl scale-100 md:scale-105 z-10'
+                    : 'border-neutral-200 dark:border-neutral-700 shadow-sm hover:border-primary-200 dark:hover:border-primary-700 hover:shadow-md'
                 }
               `}
             >
@@ -110,18 +66,24 @@ export const Services: React.FC = () => {
               )}
 
               <div className="p-8 border-b border-neutral-100 dark:border-neutral-700">
-                <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-2">{plan.name}</h3>
-                <p className="text-neutral-500 dark:text-neutral-400 text-sm h-10 leading-snug">{plan.description}</p>
-                
+                <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-2">
+                  {plan.name}
+                </h3>
+                <p className="text-neutral-500 dark:text-neutral-400 text-sm h-10 leading-snug">
+                  {plan.description}
+                </p>
+
                 <div className="mt-6 flex items-baseline">
                   <span className="text-4xl font-bold text-neutral-900 dark:text-white">
                     {billingCycle === 'monthly' ? plan.price.monthly : plan.price.yearly}
                   </span>
                   {plan.price.monthly !== 'Sob Consulta' && plan.price.monthly !== 'Grátis' && (
-                    <span className="text-neutral-500 dark:text-neutral-400 ml-1 font-medium">{plan.period}</span>
+                    <span className="text-neutral-500 dark:text-neutral-400 ml-1 font-medium">
+                      {plan.period}
+                    </span>
                   )}
                 </div>
-                
+
                 {plan.popular && (
                   <div className="mt-4 inline-flex items-center px-2.5 py-1 rounded bg-blue-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-400 text-xs font-semibold">
                     <Zap size={12} className="mr-1.5" />
@@ -132,16 +94,25 @@ export const Services: React.FC = () => {
 
               <div className="p-8 flex-grow">
                 <ul className="space-y-4">
-                  {plan.features.map((feature, i) => (
-                    <li key={i} className={`flex items-start text-sm ${feature.included ? 'text-neutral-700 dark:text-neutral-300' : 'text-neutral-400 dark:text-neutral-600'}`}>
+                  {plan.features.map((feature) => (
+                    <li
+                      key={feature.text}
+                      className={`flex items-start text-sm ${feature.included ? 'text-neutral-700 dark:text-neutral-300' : 'text-neutral-400 dark:text-neutral-600'}`}
+                    >
                       {feature.included ? (
-                        <div className={`mt-0.5 mr-3 shrink-0 rounded-full p-0.5 ${feature ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400' : 'bg-green-100 text-green-600'}`}>
-                           <Check size={14} strokeWidth={3} />
+                        <div
+                          className={`mt-0.5 mr-3 shrink-0 rounded-full p-0.5 ${feature ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400' : 'bg-green-100 text-green-600'}`}
+                        >
+                          <Check size={14} strokeWidth={3} />
                         </div>
                       ) : (
                         <X size={16} className="mt-0.5 mr-3 shrink-0 text-neutral-300" />
                       )}
-                      <span className={feature ? 'font-semibold text-primary-700 dark:text-primary-400' : ''}>
+                      <span
+                        className={
+                          feature ? 'font-semibold text-primary-700 dark:text-primary-400' : ''
+                        }
+                      >
                         {feature.text}
                       </span>
                     </li>
@@ -150,15 +121,15 @@ export const Services: React.FC = () => {
               </div>
 
               <div className="p-8 pt-0 mt-auto">
-                <Button 
-                  variant={plan.variant as any} 
+                <Button
+                  variant={plan.variant as 'primary' | 'secondary' | 'outline' | 'ghost'}
                   fullWidth
                   size="lg"
                   className={plan.popular ? 'shadow-lg shadow-primary-600/20' : ''}
                 >
                   {plan.cta}
                 </Button>
-                {plan.name === "Inicial" && (
+                {plan.name === 'Inicial' && (
                   <p className="text-center text-xs text-neutral-400 mt-3">
                     Não requer cartão de crédito
                   </p>
@@ -167,24 +138,33 @@ export const Services: React.FC = () => {
             </div>
           ))}
         </div>
-
-        {/* Footer da Seção */}
         <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-neutral-200 dark:divide-neutral-700 border-t border-neutral-200 dark:border-neutral-700 pt-8 max-w-5xl mx-auto">
           <div className="text-center px-4 py-4 sm:py-0">
-            <h4 className="font-semibold text-neutral-900 dark:text-white mb-1">Cancele quando quiser</h4>
-            <p className="text-sm text-neutral-500 dark:text-neutral-400">Sem contratos de fidelidade ou multas.</p>
+            <h4 className="font-semibold text-neutral-900 dark:text-white mb-1">
+              Cancele quando quiser
+            </h4>
+            <p className="text-sm text-neutral-500 dark:text-neutral-400">
+              Sem contratos de fidelidade ou multas.
+            </p>
           </div>
           <div className="text-center px-4 py-4 sm:py-0">
-            <h4 className="font-semibold text-neutral-900 dark:text-white mb-1">Nota Fiscal Carioca</h4>
-            <p className="text-sm text-neutral-500 dark:text-neutral-400">Emitimos NF para todas as transações.</p>
+            <h4 className="font-semibold text-neutral-900 dark:text-white mb-1">
+              Nota Fiscal Carioca
+            </h4>
+            <p className="text-sm text-neutral-500 dark:text-neutral-400">
+              Emitimos NF para todas as transações.
+            </p>
           </div>
           <div className="text-center px-4 py-4 sm:py-0">
-            <h4 className="font-semibold text-neutral-900 dark:text-white mb-1">Precisa de ajuda?</h4>
-            <p className="text-sm text-neutral-500 dark:text-neutral-400">Suporte especializado local.</p>
+            <h4 className="font-semibold text-neutral-900 dark:text-white mb-1">
+              Precisa de ajuda?
+            </h4>
+            <p className="text-sm text-neutral-500 dark:text-neutral-400">
+              Suporte especializado local.
+            </p>
           </div>
         </div>
-
       </div>
     </section>
-  );
-};
+  )
+}

@@ -4,51 +4,51 @@ import { MapPin, TrendingUp, Bell, ShieldCheck } from 'lucide-react';
 
 export const Candidates: React.FC = () => {
   return (
-    <section id="candidatos" className="py-24 bg-neutral-50 overflow-hidden relative">
+    <section id="candidatos" className="py-24 bg-neutral-50 dark:bg-neutral-800 overflow-hidden relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           
           {/* Coluna de Conteúdo */}
           <div className="order-2 lg:order-1">
-            <div className="inline-flex items-center px-3 py-1 rounded-full bg-green-100 text-green-700 text-xs font-semibold uppercase tracking-wide mb-6">
+            <div className="inline-flex items-center px-3 py-1 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-semibold uppercase tracking-wide mb-6">
               100% Gratuito para Candidatos
             </div>
-            <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900 mb-6 leading-tight">
+            <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white mb-6 leading-tight">
               Chega de perder horas no trânsito para o Rio ou Niterói.
             </h2>
-            <p className="text-lg text-neutral-600 mb-8 leading-relaxed">
+            <p className="text-lg text-neutral-600 dark:text-neutral-300 mb-8 leading-relaxed">
               A qualidade de vida que você sonha começa trabalhando perto de casa. 
               O EmpregaAí conecta você às melhores oportunidades de Maricá, valorizando quem vive na nossa cidade.
             </p>
 
             <div className="space-y-6 mb-10">
               <div className="flex items-start">
-                <div className="bg-white p-2 rounded-lg shadow-sm border border-neutral-100 mr-4 shrink-0">
-                  <MapPin className="text-primary-600" size={24} />
+                <div className="bg-white dark:bg-neutral-700 p-2 rounded-lg shadow-sm border border-neutral-100 dark:border-neutral-600 mr-4 shrink-0">
+                  <MapPin className="text-primary-600 dark:text-primary-400" size={24} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-neutral-900">Vagas no seu bairro</h3>
-                  <p className="text-sm text-neutral-500">Filtre oportunidades em Itaipuaçu, Centro, Inoã, Ponta Negra e mais.</p>
+                  <h3 className="font-bold text-neutral-900 dark:text-white">Vagas no seu bairro</h3>
+                  <p className="text-sm text-neutral-500 dark:text-neutral-400">Filtre oportunidades em Itaipuaçu, Centro, Inoã, Ponta Negra e mais.</p>
                 </div>
               </div>
 
               <div className="flex items-start">
-                <div className="bg-white p-2 rounded-lg shadow-sm border border-neutral-100 mr-4 shrink-0">
-                  <ShieldCheck className="text-primary-600" size={24} />
+                <div className="bg-white dark:bg-neutral-700 p-2 rounded-lg shadow-sm border border-neutral-100 dark:border-neutral-600 mr-4 shrink-0">
+                  <ShieldCheck className="text-primary-600 dark:text-primary-400" size={24} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-neutral-900">Empresas Verificadas</h3>
-                  <p className="text-sm text-neutral-500">Segurança total. Apenas empresas reais e vagas sérias.</p>
+                  <h3 className="font-bold text-neutral-900 dark:text-white">Empresas Verificadas</h3>
+                  <p className="text-sm text-neutral-500 dark:text-neutral-400">Segurança total. Apenas empresas reais e vagas sérias.</p>
                 </div>
               </div>
 
               <div className="flex items-start">
-                <div className="bg-white p-2 rounded-lg shadow-sm border border-neutral-100 mr-4 shrink-0">
-                  <Bell className="text-primary-600" size={24} />
+                <div className="bg-white dark:bg-neutral-700 p-2 rounded-lg shadow-sm border border-neutral-100 dark:border-neutral-600 mr-4 shrink-0">
+                  <Bell className="text-primary-600 dark:text-primary-400" size={24} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-neutral-900">Alerta de Vagas</h3>
-                  <p className="text-sm text-neutral-500">Receba notificações quando uma vaga no seu perfil for postada.</p>
+                  <h3 className="font-bold text-neutral-900 dark:text-white">Alerta de Vagas</h3>
+                  <p className="text-sm text-neutral-500 dark:text-neutral-400">Receba notificações quando uma vaga no seu perfil for postada.</p>
                 </div>
               </div>
             </div>
@@ -73,7 +73,7 @@ export const Candidates: React.FC = () => {
               />
               
               {/* Card Flutuante */}
-              <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-neutral-100">
+              <div className="absolute bottom-6 left-6 right-6 bg-white/95 dark:bg-neutral-800/95 backdrop-blur-sm p-6 rounded-xl shadow-lg border border-neutral-100 dark:border-neutral-700">
                 <div className="flex items-center justify-between mb-2">
                   <div className="flex items-center gap-2">
                     <TrendingUp size={18} className="text-green-600" />
@@ -82,17 +82,17 @@ export const Candidates: React.FC = () => {
                   <span className="text-xs text-neutral-400">Há 1h</span>
                 </div>
                 <div className="space-y-3">
-                  <div className="flex items-center justify-between border-b border-neutral-100 pb-2">
-                    <span className="font-medium text-neutral-800">Vendedor(a) Loja</span>
-                    <span className="text-sm text-neutral-500">Centro</span>
+                  <div className="flex items-center justify-between border-b border-neutral-100 dark:border-neutral-700 pb-2">
+                    <span className="font-medium text-neutral-800 dark:text-white">Vendedor(a) Loja</span>
+                    <span className="text-sm text-neutral-500 dark:text-neutral-400">Centro</span>
                   </div>
-                  <div className="flex items-center justify-between border-b border-neutral-100 pb-2">
-                    <span className="font-medium text-neutral-800">Assistente Adm.</span>
-                    <span className="text-sm text-neutral-500">Inoã</span>
+                  <div className="flex items-center justify-between border-b border-neutral-100 dark:border-neutral-700 pb-2">
+                    <span className="font-medium text-neutral-800 dark:text-white">Assistente Adm.</span>
+                    <span className="text-sm text-neutral-500 dark:text-neutral-400">Inoã</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="font-medium text-neutral-800">Técnico TI</span>
-                    <span className="text-sm text-neutral-500">Itaipuaçu</span>
+                    <span className="font-medium text-neutral-800 dark:text-white">Técnico TI</span>
+                    <span className="text-sm text-neutral-500 dark:text-neutral-400">Itaipuaçu</span>
                   </div>
                 </div>
               </div>

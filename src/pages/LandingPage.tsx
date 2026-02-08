@@ -11,7 +11,7 @@ import { Contact } from '../components/sections/Contact'
 
 const LandingPage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-neutral-900">
       <Header />
       <main>
         <Hero />

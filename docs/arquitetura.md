@@ -4,7 +4,14 @@
 
 - [React](https://react.dev/learn) + [TypeScript](https://www.typescriptlang.org/docs/)
 - [React Router](https://reactrouter.com/home)
-- [Vite](https://vite.dev/guide/)
+- [Bun](https://bun.sh/docs) como runtime, bundler e package manager
+
+## Build & Dev
+
+- `bun run dev` — Inicia o servidor de desenvolvimento (`dev.ts`)
+- `bun run build` — Build de produção (`build.ts`)
+- Tailwind CSS via [`bun-plugin-tailwind`](https://github.com/aspect-build/bun-plugin-tailwind)
+- Variáveis de ambiente com prefixo `BUN_PUBLIC_*` são expostas ao client
 
 ## Estado e dados
 
@@ -24,13 +31,10 @@
 
 ## UI
 
-- [Tailwind CSS](https://tailwindcss.com/docs/installation/using-vite) usado em
-  conjunto com design tokens, criando componentes menores e classes
-  reutilizáveis.
+- [Tailwind CSS v4](https://tailwindcss.com/) via `bun-plugin-tailwind`, ponto de
+  entrada em `src/index.css`.
 - [shadcn/ui](https://ui.shadcn.com/) usando como fonte de componentes (inputs,
   tables, etc.).
-- [Tailwind v4](https://tailwindcss.com/) via `@tailwindcss/vite`, ponto de
-  entrada em `src/index.css`.
 - [class-variance-authority](https://cva.style/) + `tailwind-merge`/`clsx` para
   variantes e composição de classes nos componentes de UI (`src/shared/ui`).
 - [lucide-react](https://lucide.dev/) como biblioteca de ícones.
@@ -49,5 +53,11 @@
 
 ## Tooling
 
-- [Bun](https://bun.sh/docs/install)
-- [Biome](https://biomejs.dev/)
+- [Bun](https://bun.sh/docs) — runtime, bundler, package manager
+- [Biome](https://biomejs.dev/) — linting e formatação
+
+## Convenções de código
+
+- **Não usar `React.FC`** — use `function` declarations com tipagem direta de props
+- **Barrel files** (`index.ts`) para re-exports limpos
+- **`@/*`** como path alias para `src/*`

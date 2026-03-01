@@ -1,10 +1,10 @@
 import { Check, Star, X, Zap } from 'lucide-react'
-import type React from 'react'
+
 import { useState } from 'react'
 import { PLANS } from '../../shared/api/mock/plans'
 import { Button } from '../../shared/ui/Button'
 
-export const Services: React.FC = () => {
+export function Services() {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly')
 
   return (

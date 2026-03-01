@@ -5,27 +5,29 @@
 @theme {
   --font-sans: 'Inter', sans-serif;
 
-  --color-primary-50: #f0f9ff;
-  --color-primary-100: #e0f2fe;
-  --color-primary-200: #bae6fd;
-  --color-primary-300: #7dd3fc;
-  --color-primary-400: #38bdf8;
-  --color-primary-500: #0ea5e9;
-  --color-primary-600: #1e3a8a;
-  --color-primary-700: #1e40af;
-  --color-primary-800: #1e3a8a;
-  --color-primary-900: #172554;
+  --color-primary-50: #ecfdf5;
+  --color-primary-100: #d1fae5;
+  --color-primary-200: #a7f3d0;
+  --color-primary-300: #6ee7b7;
+  --color-primary-400: #34d399;
+  --color-primary-500: #10b981;
+  --color-primary-600: #059669;
+  --color-primary-700: #047857;
+  --color-primary-800: #065f46;
+  --color-primary-900: #064e3b;
+  --color-primary-950: #022c22;
 
-  --color-neutral-50: #f8fafc;
-  --color-neutral-100: #f1f5f9;
-  --color-neutral-200: #e2e8f0;
-  --color-neutral-300: #cbd5e1;
-  --color-neutral-400: #94a3b8;
-  --color-neutral-500: #64748b;
-  --color-neutral-600: #475569;
-  --color-neutral-700: #334155;
-  --color-neutral-800: #1e293b;
-  --color-neutral-900: #0f172a;
+  --color-neutral-50: #f0fdf4;
+  --color-neutral-100: #dcfce7;
+  --color-neutral-200: #d1d5db;
+  --color-neutral-300: #a3a3a3;
+  --color-neutral-400: #78866b;
+  --color-neutral-500: #5a6650;
+  --color-neutral-600: #3d4a35;
+  --color-neutral-700: #2a3626;
+  --color-neutral-800: #1a2518;
+  --color-neutral-900: #111c0f;
+  --color-neutral-950: #0a1208;
 
   --animate-fade-in: fadeIn 0.3s ease-in-out;
 
@@ -39,4 +41,91 @@
       transform: translateY(0);
     }
   }
+}
+
+.bg-grid-pattern {
+  background-image:
+    radial-gradient(circle, rgba(16, 185, 129, 0.08) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.bg-flow-lines {
+  background-image: url("data:image/svg+xml,%3Csvg width='800' height='600' xmlns='http://www.w3.org/2000/svg'%3E%3Cdefs%3E%3ClinearGradient id='g1' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2310b981' stop-opacity='0.06'/%3E%3Cstop offset='50%25' stop-color='%2310b981' stop-opacity='0.12'/%3E%3Cstop offset='100%25' stop-color='%2310b981' stop-opacity='0.02'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpath d='M0 300 Q200 100 400 300 Q600 500 800 300' stroke='url(%23g1)' stroke-width='1' fill='none'/%3E%3Cpath d='M0 350 Q200 150 400 350 Q600 550 800 350' stroke='url(%23g1)' stroke-width='0.5' fill='none'/%3E%3Cpath d='M0 250 Q200 50 400 250 Q600 450 800 250' stroke='url(%23g1)' stroke-width='0.5' fill='none'/%3E%3Ccircle cx='400' cy='300' r='2' fill='%2310b981' opacity='0.15'/%3E%3Ccircle cx='200' cy='200' r='1.5' fill='%2310b981' opacity='0.1'/%3E%3Ccircle cx='600' cy='400' r='1.5' fill='%2310b981' opacity='0.1'/%3E%3C/svg%3E");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.bg-h-lines {
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 79px,
+      rgba(16, 185, 129, 0.04) 79px,
+      rgba(16, 185, 129, 0.04) 80px
+    );
+}
+
+.bg-v-lines {
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 79px,
+      rgba(16, 185, 129, 0.04) 79px,
+      rgba(16, 185, 129, 0.04) 80px
+    );
+}
+
+.bg-subtle-grid {
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 79px,
+      rgba(16, 185, 129, 0.035) 79px,
+      rgba(16, 185, 129, 0.035) 80px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 79px,
+      rgba(16, 185, 129, 0.035) 79px,
+      rgba(16, 185, 129, 0.035) 80px
+    );
+}
+
+.glow-node {
+  width: 6px;
+  height: 6px;
+  background: #10b981;
+  border-radius: 50%;
+  box-shadow:
+    0 0 8px rgba(16, 185, 129, 0.4),
+    0 0 24px rgba(16, 185, 129, 0.15);
+}
+
+.glow-line-h {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(16, 185, 129, 0.15) 20%,
+    rgba(16, 185, 129, 0.3) 50%,
+    rgba(16, 185, 129, 0.15) 80%,
+    transparent
+  );
+}
+
+.glow-line-v {
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent,
+    rgba(16, 185, 129, 0.15) 20%,
+    rgba(16, 185, 129, 0.3) 50%,
+    rgba(16, 185, 129, 0.15) 80%,
+    transparent
+  );
 }

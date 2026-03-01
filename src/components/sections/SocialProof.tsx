@@ -1,6 +1,4 @@
-import type React from 'react'
-
-export const SocialProof: React.FC = () => {
+export function SocialProof() {
   return (
     <section className="py-20 bg-primary-900 dark:bg-primary-950 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

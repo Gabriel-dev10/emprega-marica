@@ -1,8 +1,8 @@
 import { Bell, MapPin, ShieldCheck, TrendingUp } from 'lucide-react'
-import type React from 'react'
+
 import { Button } from '../../shared/ui/Button'
 
-export const Candidates: React.FC = () => {
+export function Candidates() {
   return (
     <section
       id="candidatos"

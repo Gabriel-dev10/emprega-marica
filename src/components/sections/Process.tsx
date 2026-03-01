@@ -1,61 +1,48 @@
-import { ArrowRight } from 'lucide-react'
-import type React from 'react'
-import { PROCESS_STEPS } from '../../shared/api/mock/process'
-import { Button } from '../../shared/ui/Button'
+import { ClipboardList, Search, UserCheck } from 'lucide-react'
 
-export const Process: React.FC = () => {
+const steps = [
+  {
+    icon: <ClipboardList size={28} />,
+    number: '01',
+    title: 'Cadastre-se',
+    description: 'Crie sua conta gratuitamente em menos de 2 minutos.',
+  },
+  {
+    icon: <Search size={28} />,
+    number: '02',
+    title: 'Encontre Vagas',
+    description: 'Busque oportunidades por localização, área ou tipo de contrato.',
+  },
+  {
+    icon: <UserCheck size={28} />,
+    number: '03',
+    title: 'Seja Contratado',
+    description: 'Candidate-se e acompanhe o processo de seleção em tempo real.',
+  },
+]
+
+export function Process() {
   return (
-    <section id="processo" className="py-24 bg-white dark:bg-neutral-900 relative overflow-hidden">
-      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-neutral-200 dark:via-neutral-700 to-transparent"></div>
-      <div className="absolute -left-20 top-40 w-72 h-72 bg-primary-50 dark:bg-primary-900/10 rounded-full mix-blend-multiply filter blur-3xl opacity-60"></div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-          <div className="max-w-2xl">
-            <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white mb-4 tracking-tight">
-              Menos RH operacional, <br />
-              <span className="text-primary-600 dark:text-primary-400">
-                Mais contratações assertivas.
-              </span>
-            </h2>
-            <p className="text-lg text-neutral-600 dark:text-neutral-300 leading-relaxed">
-              Eliminamos planilhas, emails perdidos e currículos de papel. Sua gestão de vagas agora
-              é 100% digital e centralizada.
-            </p>
-          </div>
-          <div className="hidden md:block pb-2">
-            <Button variant="secondary" className="group">
-              Ver demonstração
-              <ArrowRight
-                size={16}
-                className="ml-2 group-hover:translate-x-1 transition-transform"
-              />
-            </Button>
-          </div>
+    <section className="py-20 bg-neutral-950">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-16">
+          <h2 className="text-2xl sm:text-3xl font-bold text-white mb-3">Como Funciona</h2>
+          <p className="text-neutral-400 max-w-lg mx-auto">Simples, rápido e sem burocracia.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {PROCESS_STEPS.map((step, index) => (
-            <div
-              key={step.id}
-              className="group relative bg-neutral-50 dark:bg-neutral-800 rounded-2xl p-8 border border-neutral-100 dark:border-neutral-700 hover:border-primary-200 dark:hover:border-primary-600 hover:shadow-xl hover:-translate-y-1 transition-all duration-300"
-            >
-              {index !== PROCESS_STEPS.length - 1 && (
-                <div className="hidden md:block absolute top-1/2 -right-8 w-8 h-px bg-neutral-300 dark:bg-neutral-600 z-0"></div>
-              )}
-
-              <div className="flex justify-between items-start mb-6">
-                <div className="w-14 h-14 rounded-xl bg-white dark:bg-neutral-900 shadow-sm text-primary-600 dark:text-primary-400 flex items-center justify-center border border-neutral-100 dark:border-neutral-700 group-hover:bg-primary-600 group-hover:text-white transition-colors duration-300">
-                  {step.icon}
-                </div>
-                <span className="bg-white dark:bg-neutral-900 text-neutral-600 dark:text-neutral-300 text-xs font-bold px-3 py-1 rounded-full border border-neutral-100 dark:border-neutral-700 shadow-sm uppercase tracking-wider">
-                  {step.badge}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+          {steps.map((step) => (
+            <div key={step.number} className="relative text-center group">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-neutral-800/80 border border-neutral-700/50 text-primary-400 mb-6 group-hover:bg-primary-600/10 group-hover:border-primary-600/30 transition-all duration-300">
+                {step.icon}
+              </div>
+              <div className="absolute -top-2 -right-2 md:relative md:top-auto md:right-auto hidden">
+                <span className="text-xs font-bold text-primary-500 bg-primary-500/10 px-2 py-0.5 rounded-full">
+                  {step.number}
                 </span>
               </div>
-              <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-3 group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors">
-                {step.title}
-              </h3>
-              <p className="text-neutral-500 dark:text-neutral-400 leading-relaxed text-sm">
+              <h3 className="text-lg font-semibold text-white mb-2">{step.title}</h3>
+              <p className="text-sm text-neutral-500 leading-relaxed max-w-xs mx-auto">
                 {step.description}
               </p>
             </div>

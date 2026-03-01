@@ -9,7 +9,7 @@ import { ThemeProvider } from './providers/theme-provider'
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 1000 * 60 * 5, // 5 minutes
+      staleTime: 1000 * 60 * 5,
       refetchOnWindowFocus: false,
     },
   },
@@ -21,7 +21,7 @@ if (!rootElement) throw new Error('Failed to find the root element')
 createRoot(rootElement).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
+      <ThemeProvider defaultTheme="light" storageKey="app-ui-theme">
         <App />
       </ThemeProvider>
       <ReactQueryDevtools initialIsOpen={false} />

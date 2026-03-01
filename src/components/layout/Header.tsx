@@ -1,10 +1,9 @@
 import { Menu, X } from 'lucide-react'
-import type React from 'react'
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Button } from '../../shared/ui/Button'
-import { ModeToggle } from '../../shared/ui/mode-toggle'
 
-export const Header: React.FC = () => {
+export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
@@ -17,77 +16,82 @@ export const Header: React.FC = () => {
   }, [])
 
   const navLinks = [
-    { name: 'Para Candidatos', href: '#candidatos' },
+    { name: 'Vagas', href: '#vagas' },
     { name: 'Como Funciona', href: '#processo' },
-    { name: 'Planos Candidatos', href: '#planos' },
-    { name: '50+ Talentos', href: '#50mais' },
+    { name: 'Contato', href: '#contato' },
   ]
 
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled || isMobileMenuOpen
-          ? 'bg-white/90 dark:bg-neutral-900/90 backdrop-blur-md shadow-sm py-4'
-          : 'bg-transparent py-6'
+          ? 'bg-neutral-950/80 backdrop-blur-xl border-b border-neutral-800/50 py-4'
+          : 'bg-transparent py-5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
-          <div className="flex items-center">
-            <span
-              className={`text-2xl font-bold tracking-tight ${isScrolled || isMobileMenuOpen ? 'text-primary-600 dark:text-primary-400' : 'text-primary-800 dark:text-white'}`}
-            >
-              EmpregaAí<span className="text-neutral-600 dark:text-neutral-400">Maricá</span>
+          <a href="/" className="flex items-center">
+            <span className="text-xl font-bold text-white tracking-tight">
+              EmpregaAí<span className="text-neutral-500">Maricá</span>
             </span>
-          </div>
-          <nav className="hidden md:flex items-center space-x-8">
+          </a>
+
+          <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
-                className="text-neutral-600 hover:text-primary-600 font-medium transition-colors text-sm dark:text-neutral-300 dark:hover:text-primary-400"
+                className="text-neutral-400 hover:text-white font-medium transition-colors text-sm"
               >
                 {link.name}
               </a>
             ))}
-            <div className="flex items-center gap-4">
-              <ModeToggle />
-              <Button size="sm" variant="primary">
+            <Link to="/login" className="text-neutral-400 hover:text-white font-medium transition-colors text-sm">
+              Entrar
+            </Link>
+            <Link to="/login">
+              <Button size="sm" className="px-5">
                 Área da Empresa
               </Button>
-            </div>
+            </Link>
           </nav>
-          <div className="md:hidden">
-            <button
-              type="button"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="text-neutral-600 focus:outline-none"
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-          </div>
+
+          <button
+            type="button"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="md:hidden text-neutral-400 hover:text-white focus:outline-none transition-colors"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
         </div>
       </div>
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-white dark:bg-neutral-900 border-b border-neutral-100 dark:border-neutral-800 shadow-lg animate-fade-in">
-          <div className="px-4 py-6 space-y-4 flex flex-col">
+        <div className="md:hidden absolute top-full left-0 w-full bg-neutral-950/95 backdrop-blur-xl border-b border-neutral-800/50">
+          <div className="px-4 py-6 space-y-1 flex flex-col">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-neutral-600 hover:text-primary-600 font-medium py-2 text-lg dark:text-neutral-300 dark:hover:text-primary-400"
+                className="text-neutral-400 hover:text-white font-medium py-3 text-base transition-colors"
               >
                 {link.name}
               </a>
             ))}
-            <div className="pt-4 border-t border-neutral-100 dark:border-neutral-800 flex flex-col gap-4">
-              <div className="flex justify-center">
-                <ModeToggle />
-              </div>
-              <Button fullWidth onClick={() => setIsMobileMenuOpen(false)}>
-                Área da Empresa
-              </Button>
+            <Link
+              to="/login"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-neutral-400 hover:text-white font-medium py-3 text-base transition-colors"
+            >
+              Entrar
+            </Link>
+            <div className="pt-4 border-t border-neutral-800/50">
+              <Link to="/login" onClick={() => setIsMobileMenuOpen(false)}>
+                <Button fullWidth>
+                  Área da Empresa
+                </Button>
+              </Link>
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import { Building2, Clock, DollarSign, MapPin } from 'lucide-react'
-import type React from 'react'
+
 import { Button } from '../../shared/ui/Button'
 import { Card } from '../../shared/ui/Card'
 
@@ -15,7 +15,7 @@ interface JobCardProps {
   isNew?: boolean
 }
 
-export const JobCard: React.FC<JobCardProps> = ({
+export function JobCard({
   title,
   company,
   location,
@@ -24,43 +24,43 @@ export const JobCard: React.FC<JobCardProps> = ({
   tags = [],
   logo,
   isNew = false,
-}) => {
+}: JobCardProps) {
   return (
     <Card hoverEffect className="h-full flex flex-col p-6 transition-all duration-300">
       <div className="flex justify-between items-start mb-4">
         <div className="flex gap-3">
-          <div className="w-12 h-12 rounded-lg bg-neutral-100 dark:bg-neutral-800 flex items-center justify-center overflow-hidden border border-neutral-200 dark:border-neutral-700">
+          <div className="w-12 h-12 rounded-lg bg-white/10 backdrop-blur-sm flex items-center justify-center overflow-hidden border border-white/10">
             {logo ? (
               <img src={logo} alt={company} className="w-full h-full object-cover" />
             ) : (
-              <Building2 className="text-neutral-400" size={24} />
+              <Building2 className="text-primary-400" size={24} />
             )}
           </div>
           <div>
-            <h3 className="font-bold text-lg text-neutral-900 dark:text-white line-clamp-1 group-hover:text-primary-600 transition-colors">
+            <h3 className="font-bold text-lg text-white line-clamp-1 group-hover:text-primary-400 transition-colors">
               {title}
             </h3>
-            <p className="text-sm text-neutral-500 dark:text-neutral-400 font-medium">{company}</p>
+            <p className="text-sm text-neutral-400 font-medium">{company}</p>
           </div>
         </div>
         {isNew && (
-          <span className="px-2 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-bold uppercase rounded-full">
+          <span className="px-2.5 py-1 bg-primary-500/20 text-primary-400 text-xs font-bold uppercase rounded-full border border-primary-500/20">
             Novo
           </span>
         )}
       </div>
 
       <div className="space-y-3 mb-6 flex-grow">
-        <div className="flex items-center text-sm text-neutral-600 dark:text-neutral-300">
-          <MapPin size={16} className="mr-2 text-neutral-400" />
+        <div className="flex items-center text-sm text-neutral-300">
+          <MapPin size={16} className="mr-2 text-primary-500/60" />
           {location}
         </div>
-        <div className="flex items-center text-sm text-neutral-600 dark:text-neutral-300">
-          <Clock size={16} className="mr-2 text-neutral-400" />
+        <div className="flex items-center text-sm text-neutral-300">
+          <Clock size={16} className="mr-2 text-primary-500/60" />
           {type}
         </div>
-        <div className="flex items-center text-sm text-neutral-600 dark:text-neutral-300">
-          <DollarSign size={16} className="mr-2 text-neutral-400" />
+        <div className="flex items-center text-sm text-neutral-300">
+          <DollarSign size={16} className="mr-2 text-primary-500/60" />
           {salary}
         </div>
       </div>
@@ -69,7 +69,7 @@ export const JobCard: React.FC<JobCardProps> = ({
         {tags.map((tag) => (
           <span
             key={tag}
-            className="px-2 py-1 bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-300 text-xs rounded-md"
+            className="px-2.5 py-1 bg-white/5 text-neutral-300 text-xs rounded-lg border border-white/10"
           >
             {tag}
           </span>

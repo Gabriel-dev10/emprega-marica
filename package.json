@@ -1,17 +1,19 @@
 {
-  "name": "bun-react-template",
-  "version": "0.1.0",
+  "name": "saas-emprego",
+  "version": "0.0.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "start": "NODE_ENV=production bun src/index.ts",
+    "dev": "bun run dev.ts",
+    "build": "bun run build.ts",
+    "test": "bun test",
+    "test:watch": "bun test --watch",
     "lint": "biome lint ./src",
     "lint:fix": "biome lint --write ./src",
-    "format": "biome format --write ./src",
+    "format": "biome format ./src",
+    "format:fix": "biome format --write ./src",
     "check": "biome check ./src",
-    "check:fix": "biome check --write ./src"
+    "check:fix": "biome check --write --unsafe ./src"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -29,12 +31,10 @@
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.10",
-    "@tailwindcss/vite": "^4.1.18",
     "@types/bun": "latest",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@vitejs/plugin-react": "^5.1.2",
-    "tailwindcss": "^4.1.18",
-    "vite": "^7.3.0"
+    "bun-plugin-tailwind": "latest",
+    "tailwindcss": "^4.1.18"
   }
 }

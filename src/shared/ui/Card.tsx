@@ -1,12 +1,11 @@
-import type React from 'react'
 import type { CardProps } from '../../types'
 
-export const Card: React.FC<CardProps> = ({ children, className = '', hoverEffect = false }) => {
+export function Card({ children, className = '', hoverEffect = false }: CardProps) {
   return (
     <div
       className={`
-        bg-white dark:bg-neutral-800 rounded-xl border border-neutral-100 dark:border-neutral-700 shadow-sm overflow-hidden
-        ${hoverEffect ? 'transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-primary-200 dark:hover:border-primary-700' : ''}
+        bg-white/5 backdrop-blur-xl rounded-xl border border-white/10 shadow-lg shadow-black/10 overflow-hidden
+        ${hoverEffect ? 'transition-all duration-300 hover:shadow-xl hover:shadow-primary-500/10 hover:-translate-y-1 hover:border-primary-500/30 hover:bg-white/10' : ''}
         ${className}
       `}
     >

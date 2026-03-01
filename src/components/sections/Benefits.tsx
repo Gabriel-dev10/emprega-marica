@@ -1,8 +1,7 @@
-import type React from 'react'
 import { BENEFITS } from '../../shared/api/mock/benefits'
 import { Card } from '../../shared/ui/Card'
 
-export const Benefits: React.FC = () => {
+export function Benefits() {
   return (
     <section id="beneficios" className="py-24 bg-white dark:bg-neutral-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

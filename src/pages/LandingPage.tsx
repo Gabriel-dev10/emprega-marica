@@ -1,9 +1,9 @@
-import { Footer } from '../components/layout/Footer'
-import { Header } from '../components/layout/Header'
-import { Contact } from '../components/sections/Contact'
-import { FeaturedJobs } from '../components/sections/FeaturedJobs'
-import { Hero } from '../components/sections/Hero'
-import { Process } from '../components/sections/Process'
+import { Contact } from '../features/landing/components/Contact'
+import { FeaturedJobs } from '../features/landing/components/FeaturedJobs'
+import { Hero } from '../features/landing/components/Hero'
+import { Process } from '../features/landing/components/Process'
+import { Footer } from '../layouts/Footer'
+import { Header } from '../layouts/Header'
 
 function LandingPage() {
   return (

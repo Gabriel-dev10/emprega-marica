@@ -2,9 +2,9 @@ import { lazy, Suspense } from 'react'
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 
 const LandingPage = lazy(() => import('../pages/LandingPage'))
-const LoginPage = lazy(() => import('../pages/auth/LoginPage'))
-const CadastroCandidatoPage = lazy(() => import('../pages/auth/CadastroCandidatoPage'))
-const CadastroEmpresaPage = lazy(() => import('../pages/auth/CadastroEmpresaPage'))
+const LoginPage = lazy(() => import('../features/auth/LoginPage'))
+const CadastroCandidatoPage = lazy(() => import('../features/auth/CadastroCandidatoPage'))
+const CadastroEmpresaPage = lazy(() => import('../features/auth/CadastroEmpresaPage'))
 
 function LoadingScreen() {
   return (
@@ -15,9 +15,7 @@ function LoadingScreen() {
 }
 
 const withSuspense = (element: React.ReactNode) => (
-  <Suspense fallback={<LoadingScreen />}>
-    {element}
-  </Suspense>
+  <Suspense fallback={<LoadingScreen />}>{element}</Suspense>
 )
 
 const router = createBrowserRouter([

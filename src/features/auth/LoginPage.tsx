@@ -32,7 +32,6 @@ export default function LoginPage() {
         </div>
 
         <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-6 sm:p-8 shadow-xl shadow-black/10">
-          {/* Tabs */}
           <div className="flex bg-white/5 backdrop-blur-sm rounded-xl p-1 mb-8 border border-white/5">
             <button
               type="button"

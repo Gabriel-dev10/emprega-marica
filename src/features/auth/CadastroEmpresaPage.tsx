@@ -1,5 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Building2, Lock, MapPin, Phone } from 'lucide-react'
+import { ModalMapaDistrito } from '../../components/ModalMapaDistrito'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import { Button } from '../../components/Button'
@@ -65,14 +66,19 @@ export default function CadastroEmpresaPage() {
               {...register('razaoSocial')}
             />
 
-            <Select
-              label="Distrito"
-              icon={<MapPin size={18} />}
-              placeholder="Selecione o distrito"
-              options={[...DISTRITOS_MARICA]}
-              error={errors.distrito?.message}
-              {...register('distrito')}
-            />
+            <div>
+              <Select
+                label="Distrito"
+                icon={<MapPin size={18} />}
+                placeholder="Selecione o distrito"
+                options={[...DISTRITOS_MARICA]}
+                error={errors.distrito?.message}
+                {...register('distrito')}
+              />
+              <ModalMapaDistrito
+                onSelecionar={(value) => setValue('distrito', value, { shouldValidate: true })}
+              />
+            </div>
 
             <Input
               label="Celular"

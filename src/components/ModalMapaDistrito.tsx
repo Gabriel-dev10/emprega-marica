@@ -1,5 +1,5 @@
+import { Map as MapIcon, X } from 'lucide-react'
 import { useState } from 'react'
-import { Map, X } from 'lucide-react'
 import { MapaMarica } from './MapaMarica'
 
 const MAPA_DISTRITO: Record<number, string> = {
@@ -32,28 +32,31 @@ export function ModalMapaDistrito({ onSelecionar }: ModalMapaDistritoProps) {
         onClick={() => setAberto(true)}
         className="flex items-center gap-1.5 text-xs text-primary-400 hover:text-primary-300 transition-colors mt-1 ml-0.5"
       >
-        <Map size={13} />
+        <MapIcon size={13} />
         Não sei meu distrito — ver no mapa
       </button>
 
       {aberto && (
-        <div
-          className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md rounded-2xl"
-          onClick={(e) => { if (e.target === e.currentTarget) fechar() }}
-        >
+        <div className="fixed inset-0 z-9999 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md rounded-2xl">
+          <button
+            type="button"
+            className="absolute inset-0"
+            onClick={fechar}
+            aria-label="Fechar modal"
+          />
           <div className="bg-neutral-900 border border-white/15 rounded-3xl shadow-[0_25px_60px_rgba(0,0,0,0.8)] w-full max-w-4xl overflow-hidden">
-
             <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
               <div>
                 <h2 className="text-white font-semibold text-xl">Selecione seu Distrito</h2>
                 <p className="text-neutral-400 text-sm mt-1">
-                  Clique na área correspondente ao seu bairro para selecionar automaticamente o distrito.
+                  Clique na área correspondente ao seu bairro para selecionar automaticamente o
+                  distrito.
                 </p>
               </div>
               <button
                 type="button"
                 onClick={fechar}
-                className="text-neutral-400 hover:text-white transition-colors p-2 rounded-xl hover:bg-white/10 ml-4 flex-shrink-0"
+                className="text-neutral-400 hover:text-white transition-colors p-2 rounded-xl hover:bg-white/10 ml-4 shrink-0"
               >
                 <X size={20} />
               </button>

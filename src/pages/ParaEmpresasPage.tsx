@@ -9,41 +9,43 @@ export default function ParaEmpresasPage() {
       <div className="fixed inset-0 bg-subtle-grid pointer-events-none z-0" />
       <div className="relative z-10">
         <Header />
-        
+
         <main className="pt-32 pb-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-              
               <div>
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-sm font-medium mb-6">
                   <Building2 size={16} />
                   <span>Para Empresas</span>
                 </div>
-                
+
                 <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
-                  Encontre os melhores <span className="text-primary-500">talentos locais</span> para a sua empresa
+                  Encontre os melhores <span className="text-primary-500">talentos locais</span>{' '}
+                  para a sua empresa
                 </h1>
-                
+
                 <p className="text-lg text-neutral-400 mb-8 leading-relaxed max-w-xl">
-                  Nossa plataforma conecta sua empresa diretamente aos profissionais de Maricá. Cadastre suas vagas, gerencie processos seletivos e contrate de forma rápida e eficiente.
+                  Nossa plataforma conecta sua empresa diretamente aos profissionais de Maricá.
+                  Cadastre suas vagas, gerencie processos seletivos e contrate de forma rápida e
+                  eficiente.
                 </p>
-                
+
                 <ul className="space-y-4 mb-10">
                   {[
                     'Acesso a um banco de talentos local qualificado',
                     'Divulgação gratuita de vagas de emprego',
                     'Filtros avançados para encontrar o candidato ideal',
-                    'Marca do empregador forte na sua cidade'
-                  ].map((benefit, i) => (
-                    <li key={i} className="flex items-start gap-3 text-neutral-300">
+                    'Marca do empregador forte na sua cidade',
+                  ].map((benefit) => (
+                    <li key={benefit} className="flex items-start gap-3 text-neutral-300">
                       <CheckCircle2 className="text-primary-500 mt-0.5 shrink-0" size={20} />
                       <span>{benefit}</span>
                     </li>
                   ))}
                 </ul>
-                
-                <Link 
-                  to="/cadastrar/empresa" 
+
+                <Link
+                  to="/cadastrar/empresa"
                   className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-500 text-white font-semibold px-8 py-4 rounded-xl transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(34,197,94,0.3)]"
                 >
                   Cadastrar minha empresa
@@ -62,18 +64,25 @@ export default function ParaEmpresasPage() {
                     <div className="flex bg-neutral-950 border border-white/5 rounded-lg p-2 gap-3">
                       <div className="flex flex-col items-center px-4 border-r border-white/5">
                         <span className="text-2xl font-bold text-white">42</span>
-                        <span className="text-xs text-neutral-500 uppercase tracking-wider mt-1">Vagas</span>
+                        <span className="text-xs text-neutral-500 uppercase tracking-wider mt-1">
+                          Vagas
+                        </span>
                       </div>
                       <div className="flex flex-col items-center px-4">
                         <span className="text-2xl font-bold text-primary-500">156</span>
-                        <span className="text-xs text-neutral-500 uppercase tracking-wider mt-1">Currículos</span>
+                        <span className="text-xs text-neutral-500 uppercase tracking-wider mt-1">
+                          Currículos
+                        </span>
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="space-y-4">
                     {[1, 2, 3].map((i) => (
-                      <div key={i} className="bg-neutral-950 border border-white/5 rounded-xl p-4 flex items-center justify-between">
+                      <div
+                        key={i}
+                        className="bg-neutral-950 border border-white/5 rounded-xl p-4 flex items-center justify-between"
+                      >
                         <div className="flex items-center gap-4">
                           <div className="w-10 h-10 rounded-full bg-neutral-800 flex items-center justify-center">
                             <Users size={18} className="text-neutral-400" />
@@ -89,11 +98,10 @@ export default function ParaEmpresasPage() {
                   </div>
                 </div>
               </div>
-              
             </div>
           </div>
         </main>
-        
+
         <Footer />
       </div>
     </div>

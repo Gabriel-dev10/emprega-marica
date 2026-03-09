@@ -1,10 +1,10 @@
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Lock, Mail, MapPin, Phone, ShieldCheck } from 'lucide-react'
-import { ModalMapaDistrito } from '../../components/ModalMapaDistrito'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import { Button } from '../../components/Button'
 import { Input } from '../../components/Input'
+import { ModalMapaDistrito } from '../../components/ModalMapaDistrito'
 import { Select } from '../../components/Select'
 import { DISTRITOS_MARICA } from '../../shared/lib/constants'
 import {

@@ -50,7 +50,7 @@ export function JobCard({
         )}
       </div>
 
-      <div className="space-y-3 mb-6 flex-grow">
+      <div className="space-y-3 mb-6 grow">
         <div className="flex items-center text-sm text-neutral-300">
           <MapPin size={16} className="mr-2 text-primary-500/60" />
           {location}

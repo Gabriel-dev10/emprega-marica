@@ -90,7 +90,7 @@ export function Services() {
                 )}
               </div>
 
-              <div className="p-8 flex-grow">
+              <div className="p-8 grow">
                 <ul className="space-y-4">
                   {plan.features.map((feature) => (
                     <li

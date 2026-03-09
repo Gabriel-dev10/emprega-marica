@@ -31,9 +31,11 @@ export function MapaMarica({ onDistritoClick, distritoSelecionado }: MapaMaricaP
       })
       .catch(() => {})
 
-    return () => { cancelled = true }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    return () => {
+      cancelled = true
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [onDistritoClick])
 
   useEffect(() => {
     if (!containerRef.current) return
@@ -43,11 +45,5 @@ export function MapaMarica({ onDistritoClick, distritoSelecionado }: MapaMaricaP
     }
   }, [distritoSelecionado])
 
-  return (
-    <div
-      ref={containerRef}
-      // biome-ignore lint/security/noDangerouslySetInnerHtml: SVG vem do próprio servidor (arquivo estático público)
-      className="w-full [&>svg]:w-full [&>svg]:h-auto"
-    />
-  )
+  return <div ref={containerRef} className="w-full [&>svg]:w-full [&>svg]:h-auto" />
 }

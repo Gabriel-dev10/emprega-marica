@@ -26,6 +26,8 @@
     "paths": {
       "@/*": ["./src/*"]
     }
+    ,
+    "types": []
   },
   "include": ["src", "bun-env.d.ts"]
 }

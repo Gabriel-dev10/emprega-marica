@@ -1,13 +1,10 @@
 import { Briefcase, MapPin, TrendingUp } from 'lucide-react'
 import { JobSearchForm } from '../../components/JobSearchForm'
-import { BackgroundEffects } from './ui/BackgroundEffects'
 import { StatCard } from './ui/StatCard'
 
 export function Hero() {
   return (
     <section className="relative pt-36 pb-24 lg:pt-48 lg:pb-32 overflow-hidden">
-      <BackgroundEffects />
-
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight mb-6">
           O emprego que você busca, <span className="text-primary-400">perto de casa.</span>

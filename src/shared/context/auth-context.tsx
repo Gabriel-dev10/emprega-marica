@@ -1,21 +1,24 @@
 import { createContext, type ReactNode, useCallback, useContext, useMemo, useState } from 'react'
+import { MOCK_USERS } from '../api/mock/users'
 
-type User = {
+export type UserRole = 'candidato' | 'empresa'
+
+export type AuthUser = {
   id: string
-  name: string
+  nome: string
   email: string
-  permissions: string[]
+  role: UserRole
 }
 
 type LoginCredentials = {
-  email: string
-  password: string
+  identificador: string
+  senha: string
 }
 
 type AuthContextValue = {
-  user: User | null
+  user: AuthUser | null
   isAuthenticated: boolean
-  login: (credentials: LoginCredentials) => Promise<void>
+  login: (credentials: LoginCredentials) => Promise<{ success: boolean; error?: string }>
   logout: () => void
 }
 
@@ -25,28 +28,23 @@ type AuthProviderProps = {
   children: ReactNode
 }
 
-function generateUserId() {
-  if (typeof crypto !== 'undefined' && 'randomUUID' in crypto) {
-    return crypto.randomUUID()
-  }
-  return `mock-user-${Math.random().toString(36).slice(2)}`
-}
-
 export function AuthProvider({ children }: AuthProviderProps) {
-  const [user, setUser] = useState<User | null>(null)
+  const [user, setUser] = useState<AuthUser | null>(null)
 
-  const login = useCallback(async ({ email }: LoginCredentials) => {
-    // TODO: Integrate with apiClient once backend endpoints are available.
-    // Currently in mock mode; password handling is temporarily disabled.
-    const username = email.split('@')[0] || 'Usuário'
-
-    setUser({
-      id: generateUserId(),
-      name: username,
-      email,
-      permissions: [],
-    })
-  }, [])
+  const login = useCallback(
+    async ({
+      identificador,
+      senha,
+    }: LoginCredentials): Promise<{ success: boolean; error?: string }> => {
+      const found = MOCK_USERS.find((u) => u.email === identificador && u.senha === senha)
+      if (!found) {
+        return { success: false, error: 'Email ou senha incorretos.' }
+      }
+      setUser({ id: found.id, nome: found.nome, email: found.email, role: found.role })
+      return { success: true }
+    },
+    [],
+  )
 
   const logout = useCallback(() => {
     setUser(null)

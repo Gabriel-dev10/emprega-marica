@@ -25,9 +25,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
-    }
-    ,
-    "types": []
+    },
+    "types": ["bun-types"]
   },
   "include": ["src", "bun-env.d.ts"]
 }

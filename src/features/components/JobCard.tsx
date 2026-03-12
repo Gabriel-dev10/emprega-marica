@@ -29,7 +29,7 @@ export function JobCard({
     <Card hoverEffect className="h-full flex flex-col p-6 transition-all duration-300">
       <div className="flex justify-between items-start mb-4">
         <div className="flex gap-3">
-          <div className="w-12 h-12 rounded-lg bg-white/10 backdrop-blur-sm flex items-center justify-center overflow-hidden border border-white/10">
+          <div className="w-12 h-12 rounded-lg bg-neutral-800 flex items-center justify-center overflow-hidden border border-neutral-700">
             {logo ? (
               <img src={logo} alt={company} className="w-full h-full object-cover" />
             ) : (
@@ -69,7 +69,7 @@ export function JobCard({
         {tags.map((tag) => (
           <span
             key={tag}
-            className="px-2.5 py-1 bg-white/5 text-neutral-300 text-xs rounded-lg border border-white/10"
+            className="px-2.5 py-1 bg-neutral-800 text-neutral-400 text-xs rounded-md border border-neutral-700"
           >
             {tag}
           </span>

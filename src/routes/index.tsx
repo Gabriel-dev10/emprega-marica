@@ -1,12 +1,15 @@
-import { lazy, Suspense } from 'react'
+import { lazy, type ReactNode, Suspense } from 'react'
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
+import { useAuth } from '../shared/context/auth-context'
 
 const LandingPage = lazy(() => import('../pages/LandingPage'))
-const LoginPage = lazy(() => import('../features/auth/LoginPage'))
-const CadastroCandidatoPage = lazy(() => import('../features/auth/CadastroCandidatoPage'))
-const CadastroEmpresaPage = lazy(() => import('../features/auth/CadastroEmpresaPage'))
+const LoginCandidatoPage = lazy(() => import('../features/auth/candidato/LoginCandidatoPage'))
+const LoginEmpresaPage = lazy(() => import('../features/auth/empresa/LoginEmpresaPage'))
+const CadastroCandidatoPage = lazy(() => import('../features/auth/candidato/CadastroCandidatoPage'))
+const CadastroEmpresaPage = lazy(() => import('../features/auth/empresa/CadastroEmpresaPage'))
 const ParaEmpresasPage = lazy(() => import('../pages/ParaEmpresasPage'))
 const ParaCandidatosPage = lazy(() => import('../pages/ParaCandidatosPage'))
+const PerfilCandidatoPage = lazy(() => import('../features/auth/candidato/PerfilCandidatoPage'))
 
 function LoadingScreen() {
   return (
@@ -16,9 +19,15 @@ function LoadingScreen() {
   )
 }
 
-const withSuspense = (element: React.ReactNode) => (
+const withSuspense = (element: ReactNode) => (
   <Suspense fallback={<LoadingScreen />}>{element}</Suspense>
 )
+
+function ProtectedRoute({ children }: { children: ReactNode }) {
+  const { isAuthenticated } = useAuth()
+  if (!isAuthenticated) return <Navigate to="/login" replace />
+  return <>{children}</>
+}
 
 const router = createBrowserRouter([
   {
@@ -27,7 +36,15 @@ const router = createBrowserRouter([
   },
   {
     path: '/login',
-    element: withSuspense(<LoginPage />),
+    element: withSuspense(<LoginCandidatoPage />),
+  },
+  {
+    path: '/login/candidato',
+    element: withSuspense(<LoginCandidatoPage />),
+  },
+  {
+    path: '/login/empresa',
+    element: withSuspense(<LoginEmpresaPage />),
   },
   {
     path: '/cadastrar/candidato',
@@ -44,6 +61,14 @@ const router = createBrowserRouter([
   {
     path: '/para-candidatos',
     element: withSuspense(<ParaCandidatosPage />),
+  },
+  {
+    path: '/perfil/candidato',
+    element: withSuspense(
+      <ProtectedRoute>
+        <PerfilCandidatoPage />
+      </ProtectedRoute>,
+    ),
   },
   {
     path: '*',

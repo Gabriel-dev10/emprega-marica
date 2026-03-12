@@ -8,10 +8,10 @@ export const buttonVariants = cva(
         primary:
           'bg-primary-500 text-white hover:bg-primary-400 focus:ring-primary-500 shadow-lg shadow-primary-500/20',
         secondary:
-          'bg-white/10 backdrop-blur-sm text-white border border-white/10 hover:bg-white/20 focus:ring-primary-500',
+          'bg-neutral-800 text-white border border-neutral-700 hover:bg-neutral-700 focus:ring-primary-500',
         outline:
           'bg-transparent border border-primary-500/40 text-primary-400 hover:bg-primary-500/10 hover:border-primary-400',
-        ghost: 'bg-transparent text-neutral-400 hover:text-white hover:bg-white/5',
+        ghost: 'bg-transparent text-neutral-400 hover:text-white hover:bg-neutral-800/60',
       },
       size: {
         sm: 'px-3 py-1.5 text-sm',

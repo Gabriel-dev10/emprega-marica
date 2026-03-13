@@ -2,6 +2,7 @@ export type MockUser = {
   id: string
   nome: string
   email: string
+  telefone?: string
   senha: string
   role: 'candidato' | 'empresa'
 }
@@ -11,6 +12,7 @@ export const MOCK_USERS: MockUser[] = [
     id: '1',
     nome: 'João Silva',
     email: 'candidato@teste.com',
+    telefone: '11987654321',
     senha: '123456',
     role: 'candidato',
   },

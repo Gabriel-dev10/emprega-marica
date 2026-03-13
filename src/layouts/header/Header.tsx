@@ -1,8 +1,8 @@
 import { ChevronDown, LogOut, Menu, User, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Button } from '../components/Button'
-import { useAuth } from '../shared/context/auth-context'
+import { Button } from '../../components/Button'
+import { useAuth } from '../../shared/context/auth-context'
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -40,6 +40,27 @@ export function Header() {
     logout()
     setIsUserMenuOpen(false)
     navigate('/')
+  }
+
+  function UnauthActions({ mobile }: { mobile?: boolean }) {
+    const close = () => setIsMobileMenuOpen(false)
+    if (mobile) {
+      return (
+        <div className="pt-4 border-t border-neutral-800">
+          <Link to="/cadastrar/candidato" onClick={close}>
+            <Button fullWidth>Candidate-se</Button>
+          </Link>
+        </div>
+      )
+    }
+
+    return (
+      <Link to="/cadastrar/candidato" className="ml-4">
+        <Button size="sm" className="px-5">
+          Candidate-se
+        </Button>
+      </Link>
+    )
   }
 
   return (
@@ -110,19 +131,7 @@ export function Header() {
                 )}
               </div>
             ) : (
-              <>
-                <Link
-                  to="/login"
-                  className="text-neutral-400 hover:text-white font-medium transition-colors text-sm"
-                >
-                  Entrar
-                </Link>
-                <Link to="/login/empresa">
-                  <Button size="sm" className="px-5">
-                    Área da Empresa
-                  </Button>
-                </Link>
-              </>
+              <UnauthActions />
             )}
           </nav>
 
@@ -174,20 +183,7 @@ export function Header() {
                 </div>
               </>
             ) : (
-              <>
-                <Link
-                  to="/login"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-neutral-400 hover:text-white font-medium py-3 text-base transition-colors"
-                >
-                  Entrar
-                </Link>
-                <div className="pt-4 border-t border-neutral-800">
-                  <Link to="/login/empresa" onClick={() => setIsMobileMenuOpen(false)}>
-                    <Button fullWidth>Área da Empresa</Button>
-                  </Link>
-                </div>
-              </>
+              <UnauthActions mobile />
             )}
           </div>
         </div>

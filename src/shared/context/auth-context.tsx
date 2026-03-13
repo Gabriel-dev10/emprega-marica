@@ -1,4 +1,5 @@
 import { createContext, type ReactNode, useCallback, useContext, useMemo, useState } from 'react'
+import { isCompanyApproved } from '../api/mock/empresaSolicitations'
 import { MOCK_USERS } from '../api/mock/users'
 
 export type UserRole = 'candidato' | 'empresa'
@@ -7,6 +8,7 @@ export type AuthUser = {
   id: string
   nome: string
   email: string
+  telefone?: string
   role: UserRole
 }
 
@@ -39,6 +41,19 @@ export function AuthProvider({ children }: AuthProviderProps) {
       const found = MOCK_USERS.find((u) => u.email === identificador && u.senha === senha)
       if (!found) {
         return { success: false, error: 'Email ou senha incorretos.' }
+      }
+      if (found.role === 'empresa') {
+        const approved =
+          isCompanyApproved(found.email) ||
+          isCompanyApproved(found.nome) ||
+          isCompanyApproved(found.id)
+        if (!approved) {
+          return {
+            success: false,
+            error:
+              'Conta de empresa não autorizada. Solicite proposta e aguarde liberação pelo suporte.',
+          }
+        }
       }
       setUser({ id: found.id, nome: found.nome, email: found.email, role: found.role })
       return { success: true }

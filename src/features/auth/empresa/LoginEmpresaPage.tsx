@@ -2,12 +2,12 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Building2, Lock } from 'lucide-react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Button } from '../../../components/Button'
 import { Input } from '../../../components/Input'
 import { useAuth } from '../../../shared/context/auth-context'
 import { type LoginEmpresaForm, loginEmpresaSchema } from '../../../shared/lib/schemas'
-import { AuthLayout } from '../../components/AuthLayout'
+import { AuthLayout } from '../../layout/AuthLayout'
 
 export default function LoginEmpresaPage() {
   const { login } = useAuth()
@@ -25,7 +25,7 @@ export default function LoginEmpresaPage() {
     setAuthError(null)
     const result = await login({ identificador: data.identificador, senha: data.senha })
     if (result.success) {
-      navigate('/dashboard/empresa')
+      navigate('/empresa/planos')
     } else {
       setAuthError(result.error ?? 'Erro ao entrar.')
     }
@@ -66,24 +66,6 @@ export default function LoginEmpresaPage() {
       </div>
 
       <div className="mt-6 space-y-3 text-center">
-        <p className="text-sm text-neutral-500">
-          Não tem conta?{' '}
-          <Link
-            to="/cadastrar/empresa"
-            className="text-primary-400 hover:text-primary-300 font-medium transition-colors"
-          >
-            Cadastrar empresa
-          </Link>
-        </p>
-        <p className="text-sm text-neutral-500">
-          É candidato?{' '}
-          <Link
-            to="/login"
-            className="text-primary-400 hover:text-primary-300 font-medium transition-colors"
-          >
-            Entrar como candidato
-          </Link>
-        </p>
         <p className="text-xs text-neutral-600">
           Demo: <span className="text-neutral-500">empresa@teste.com</span> /{' '}
           <span className="text-neutral-500">123456</span>

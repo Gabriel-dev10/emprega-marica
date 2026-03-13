@@ -7,7 +7,7 @@ import { Button } from '../../../components/Button'
 import { Input } from '../../../components/Input'
 import { useAuth } from '../../../shared/context/auth-context'
 import { type LoginCandidatoForm, loginCandidatoSchema } from '../../../shared/lib/schemas'
-import { AuthLayout } from '../../components/AuthLayout'
+import { AuthLayout } from '../../layout/AuthLayout'
 
 export default function LoginCandidatoPage() {
   const { login } = useAuth()
@@ -25,7 +25,7 @@ export default function LoginCandidatoPage() {
     setAuthError(null)
     const result = await login({ identificador: data.identificador, senha: data.senha })
     if (result.success) {
-      navigate('/perfil/candidato')
+      navigate('/vagas/candidato')
     } else {
       setAuthError(result.error ?? 'Erro ao entrar.')
     }
@@ -73,15 +73,6 @@ export default function LoginCandidatoPage() {
             className="text-primary-400 hover:text-primary-300 font-medium transition-colors"
           >
             Criar conta gratuita
-          </Link>
-        </p>
-        <p className="text-sm text-neutral-500">
-          É empresa?{' '}
-          <Link
-            to="/login/empresa"
-            className="text-primary-400 hover:text-primary-300 font-medium transition-colors"
-          >
-            Entrar como empresa
           </Link>
         </p>
         <p className="text-xs text-neutral-600">

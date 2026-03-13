@@ -1,7 +1,7 @@
-import { ArrowRight, Building2, CheckCircle2, Users } from 'lucide-react'
+import { ArrowRight, CheckCircle2, Users } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { Footer } from '../layouts/Footer'
-import { Header } from '../layouts/Header'
+import { Header } from '../header/Header'
+import { Footer } from './Footer'
 
 export default function ParaEmpresasPage() {
   return (
@@ -14,11 +14,6 @@ export default function ParaEmpresasPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-sm font-medium mb-6">
-                  <Building2 size={16} />
-                  <span>Para Empresas</span>
-                </div>
-
                 <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
                   Encontre os melhores <span className="text-primary-500">talentos locais</span>{' '}
                   para a sua empresa
@@ -45,10 +40,10 @@ export default function ParaEmpresasPage() {
                 </ul>
 
                 <Link
-                  to="/cadastrar/empresa"
+                  to="/empresa/solicitar-proposta"
                   className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-500 text-white font-semibold px-8 py-4 rounded-xl transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(34,197,94,0.3)]"
                 >
-                  Cadastrar minha empresa
+                  Solicitar proposta
                   <ArrowRight size={20} />
                 </Link>
               </div>

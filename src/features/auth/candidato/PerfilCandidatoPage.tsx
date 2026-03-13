@@ -2,17 +2,17 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { BookOpen, Briefcase, ListChecks, LogOut, Plus, Trash2, User } from 'lucide-react'
 import { useState } from 'react'
 import { useFieldArray, useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Button } from '../../../components/Button'
 import { Input } from '../../../components/Input'
 import { Select } from '../../../components/Select'
-import { Footer } from '../../../layouts/Footer'
+import { Footer } from '../../../layouts/footer/Footer'
 import { useAuth } from '../../../shared/context/auth-context'
 import { DISTRITOS_MARICA } from '../../../shared/lib/constants'
 import { maskCelular, maskCPF } from '../../../shared/lib/schemas'
-import { Section } from '../../components/sectionCandidato'
-import { TextareaField } from '../../components/textareaCandidato'
-import { GRAUS, type PerfilForm, perfilSchema } from '../../schema/perfil.schema'
+import { Section } from '../../layout/sectionCandidato'
+import { TextareaField } from '../../layout/textareaCandidato'
+import { GRAUS, type PerfilForm, perfilSchema } from '../../schema/candidato.schema'
 
 export default function PerfilCandidatoPage() {
   const { user, logout } = useAuth()
@@ -89,6 +89,21 @@ export default function PerfilCandidatoPage() {
             Preencha suas informações para que as empresas possam encontrar você.
           </p>
         </div>
+
+        <Section icon={<User size={18} />} title="perfil do usuário">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <p className="text-white font-semibold">{user?.nome}</p>
+              <p className="text-sm text-neutral-400">{user?.email}</p>
+              <p className="text-xs text-neutral-500 mt-1">Perfil: Candidato</p>
+            </div>
+            <Link to="/vagas/candidato">
+              <Button variant="outline" size="sm">
+                Ver vagas para inscrição
+              </Button>
+            </Link>
+          </div>
+        </Section>
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
           <Section icon={<User size={18} />} title="Dados Pessoais">

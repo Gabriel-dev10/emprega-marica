@@ -1,6 +1,6 @@
 import { ChevronDown, MapPin, Search } from 'lucide-react'
 
-import { Button } from '../../components/Button'
+import { Button } from '../../../../shared/ui/button'
 
 export function JobSearchForm() {
   return (

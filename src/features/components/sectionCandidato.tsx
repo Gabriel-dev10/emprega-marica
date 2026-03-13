@@ -8,10 +8,10 @@ interface SectionProps {
 
 export function Section({ icon, title, children }: SectionProps) {
   return (
-    <div className="bg-neutral-900 border border-neutral-800 rounded-xl p-6">
+    <div className="bg-neutral-950 border border-neutral-700 rounded-xl p-6">
       <div className="flex items-center gap-2 mb-6">
-        <span className="text-primary-400">{icon}</span>
-        <h2 className="text-base font-semibold text-white">{title}</h2>
+        <span className="text-primary-600">{icon}</span>
+        <h2 className="text-base font-semibold text-neutral-50">{title}</h2>
       </div>
       {children}
     </div>

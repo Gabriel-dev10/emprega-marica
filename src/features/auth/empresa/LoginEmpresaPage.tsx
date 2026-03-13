@@ -66,24 +66,6 @@ export default function LoginEmpresaPage() {
       </div>
 
       <div className="mt-6 space-y-3 text-center">
-        <p className="text-sm text-neutral-500">
-          Empresas não podem se cadastrar diretamente no site.{' '}
-          <Link
-            to="/empresa/solicitar-proposta"
-            className="text-primary-400 hover:text-primary-300 font-medium transition-colors"
-          >
-            Solicitar proposta
-          </Link>
-        </p>
-        <p className="text-sm text-neutral-500">
-          É candidato?{' '}
-          <Link
-            to="/login"
-            className="text-primary-400 hover:text-primary-300 font-medium transition-colors"
-          >
-            Entrar como candidato
-          </Link>
-        </p>
         <p className="text-xs text-neutral-600">
           Demo: <span className="text-neutral-500">empresa@teste.com</span> /{' '}
           <span className="text-neutral-500">123456</span>

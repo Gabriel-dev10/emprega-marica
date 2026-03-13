@@ -75,15 +75,6 @@ export default function LoginCandidatoPage() {
             Criar conta gratuita
           </Link>
         </p>
-        <p className="text-sm text-neutral-500">
-          É empresa?{' '}
-          <Link
-            to="/login/empresa"
-            className="text-primary-400 hover:text-primary-300 font-medium transition-colors"
-          >
-            Entrar como empresa
-          </Link>
-        </p>
         <p className="text-xs text-neutral-600">
           Demo: <span className="text-neutral-500">candidato@teste.com</span> /{' '}
           <span className="text-neutral-500">123456</span>

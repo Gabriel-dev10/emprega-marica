@@ -14,10 +14,10 @@ export function Candidates() {
             <div className="inline-flex items-center px-3 py-1 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 text-xs font-semibold uppercase tracking-wide mb-6">
               100% Gratuito para Candidatos
             </div>
-            <h2 className="text-3xl lg:text-4xl font-bold text-neutral-900 dark:text-white mb-6 leading-tight">
+            <h2 className="text-3xl lg:text-4xl font-bold text-text-default mb-6 leading-tight">
               Chega de perder horas no trânsito para o Rio ou Niterói.
             </h2>
-            <p className="text-lg text-neutral-600 dark:text-neutral-300 mb-8 leading-relaxed">
+            <p className="text-lg text-text-muted mb-8 leading-relaxed">
               A qualidade de vida que você sonha começa trabalhando perto de casa. O EmpregaAí
               conecta você às melhores oportunidades de Maricá, valorizando quem vive na nossa
               cidade.
@@ -28,10 +28,8 @@ export function Candidates() {
                   <MapPin className="text-primary-600 dark:text-primary-400" size={24} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-neutral-900 dark:text-white">
-                    Vagas no seu bairro
-                  </h3>
-                  <p className="text-sm text-neutral-500 dark:text-neutral-400">
+                  <h3 className="font-bold text-text-default">Vagas no seu bairro</h3>
+                  <p className="text-sm text-text-muted">
                     Filtre oportunidades em Itaipuaçu, Centro, Inoã, Ponta Negra e mais.
                   </p>
                 </div>
@@ -41,10 +39,8 @@ export function Candidates() {
                   <ShieldCheck className="text-primary-600 dark:text-primary-400" size={24} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-neutral-900 dark:text-white">
-                    Empresas Verificadas
-                  </h3>
-                  <p className="text-sm text-neutral-500 dark:text-neutral-400">
+                  <h3 className="font-bold text-text-default">Empresas Verificadas</h3>
+                  <p className="text-sm text-text-muted">
                     Segurança total. Apenas empresas reais e vagas sérias.
                   </p>
                 </div>
@@ -54,8 +50,8 @@ export function Candidates() {
                   <Bell className="text-primary-600 dark:text-primary-400" size={24} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-neutral-900 dark:text-white">Alerta de Vagas</h3>
-                  <p className="text-sm text-neutral-500 dark:text-neutral-400">
+                  <h3 className="font-bold text-text-default">Alerta de Vagas</h3>
+                  <p className="text-sm text-text-muted">
                     Receba notificações quando uma vaga no seu perfil for postada.
                   </p>
                 </div>
@@ -88,22 +84,16 @@ export function Candidates() {
                 </div>
                 <div className="space-y-3">
                   <div className="flex items-center justify-between border-b border-neutral-100 dark:border-neutral-700 pb-2">
-                    <span className="font-medium text-neutral-800 dark:text-white">
-                      Vendedor(a) Loja
-                    </span>
-                    <span className="text-sm text-neutral-500 dark:text-neutral-400">Centro</span>
+                    <span className="font-medium text-text-default">Vendedor(a) Loja</span>
+                    <span className="text-sm text-text-muted">Centro</span>
                   </div>
                   <div className="flex items-center justify-between border-b border-neutral-100 dark:border-neutral-700 pb-2">
-                    <span className="font-medium text-neutral-800 dark:text-white">
-                      Assistente Adm.
-                    </span>
-                    <span className="text-sm text-neutral-500 dark:text-neutral-400">Inoã</span>
+                    <span className="font-medium text-text-default">Assistente Adm.</span>
+                    <span className="text-sm text-text-muted">Inoã</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="font-medium text-neutral-800 dark:text-white">Técnico TI</span>
-                    <span className="text-sm text-neutral-500 dark:text-neutral-400">
-                      Itaipuaçu
-                    </span>
+                    <span className="font-medium text-text-default">Técnico TI</span>
+                    <span className="text-sm text-text-muted">Itaipuaçu</span>
                   </div>
                 </div>
               </div>

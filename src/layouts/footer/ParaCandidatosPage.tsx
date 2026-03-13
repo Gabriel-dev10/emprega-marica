@@ -5,7 +5,7 @@ import { Footer } from './Footer'
 
 export default function ParaCandidatosPage() {
   return (
-    <div className="min-h-screen bg-neutral-950 relative">
+    <div className="min-h-screen bg-neutral-900 relative">
       <div className="fixed inset-0 bg-subtle-grid pointer-events-none z-0" />
       <div className="relative z-10">
         <Header />
@@ -15,14 +15,16 @@ export default function ParaCandidatosPage() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div className="relative order-2 lg:order-1">
                 <div className="absolute inset-0 bg-blue-500/20 blur-[100px] rounded-full" />
-                <div className="relative bg-neutral-900 border border-white/10 rounded-2xl p-8 shadow-2xl">
-                  <div className="flex items-center gap-5 border-b border-white/10 pb-6 mb-6">
-                    <div className="h-16 w-16 bg-neutral-800 border-2 border-primary-500 rounded-full flex items-center justify-center overflow-hidden">
-                      <UserCircle size={40} className="text-neutral-400" />
+                <div className="relative bg-neutral-950 border border-neutral-800 rounded-2xl p-8 shadow-2xl">
+                  <div className="flex items-center gap-5 border-b border-neutral-800 pb-6 mb-6">
+                    <div className="h-16 w-16 bg-neutral-900 border-2 border-primary-600 rounded-full flex items-center justify-center overflow-hidden">
+                      <UserCircle size={40} className="text-text-muted" />
                     </div>
                     <div>
-                      <h3 className="text-xl font-bold text-white mb-1">Seu Perfil Profissional</h3>
-                      <p className="text-sm text-neutral-400">
+                      <h3 className="text-xl font-bold text-text-default mb-1">
+                        Seu Perfil Profissional
+                      </h3>
+                      <p className="text-sm text-text-muted">
                         Currículo digital moderno e atrativo
                       </p>
                     </div>
@@ -54,7 +56,7 @@ export default function ParaCandidatosPage() {
                     ].map((job) => (
                       <div
                         key={job.title}
-                        className="bg-neutral-950 border border-white/5 rounded-xl p-4 flex items-center justify-between"
+                        className="bg-neutral-900 border border-neutral-800 rounded-xl p-4 flex items-center justify-between"
                       >
                         <div className="flex items-center gap-4">
                           <div
@@ -63,8 +65,10 @@ export default function ParaCandidatosPage() {
                             <job.icon size={18} className={job.color} />
                           </div>
                           <div>
-                            <div className="text-sm font-semibold text-white">{job.title}</div>
-                            <div className="text-xs text-neutral-500">{job.company}</div>
+                            <div className="text-sm font-semibold text-text-default">
+                              {job.title}
+                            </div>
+                            <div className="text-xs text-text-muted">{job.company}</div>
                           </div>
                         </div>
                         <div className="text-xs font-medium px-2 py-1 rounded bg-neutral-800 text-neutral-300">
@@ -77,17 +81,17 @@ export default function ParaCandidatosPage() {
               </div>
 
               <div className="order-1 lg:order-2">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mb-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary-100 border border-primary-200 text-primary-700 text-sm font-medium mb-6">
                   <UserCircle size={16} />
                   <span>Para Candidatos</span>
                 </div>
 
-                <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
+                <h1 className="text-4xl sm:text-5xl font-bold text-text-default mb-6 leading-tight">
                   Acelere sua carreira nas{' '}
-                  <span className="text-blue-500">melhores vagas localmente</span>
+                  <span className="text-primary-600">melhores vagas localmente</span>
                 </h1>
 
-                <p className="text-lg text-neutral-400 mb-8 leading-relaxed max-w-xl">
+                <p className="text-lg text-text-muted mb-8 leading-relaxed max-w-xl">
                   Crie seu currículo digital gratuitamente e conecte-se com as empresas de Maricá. A
                   oportunidade que você estava esperando perto da sua casa.
                 </p>
@@ -99,8 +103,8 @@ export default function ParaCandidatosPage() {
                     'Notificações sobre vagas adequadas ao seu perfil',
                     '100% gratuito para sempre para trabalhadores',
                   ].map((benefit) => (
-                    <li key={benefit} className="flex items-start gap-3 text-neutral-300">
-                      <CheckCircle2 className="text-blue-500 mt-0.5 shrink-0" size={20} />
+                    <li key={benefit} className="flex items-start gap-3 text-text-muted">
+                      <CheckCircle2 className="text-primary-600 mt-0.5 shrink-0" size={20} />
                       <span>{benefit}</span>
                     </li>
                   ))}
@@ -108,7 +112,7 @@ export default function ParaCandidatosPage() {
 
                 <Link
                   to="/cadastrar/candidato"
-                  className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-semibold px-8 py-4 rounded-xl transition-all hover:scale-105 active:scale-95 shadow-[0_0_20px_rgba(59,130,246,0.3)]"
+                  className="inline-flex items-center gap-2 bg-primary-600 hover:bg-primary-500 text-text-default font-semibold px-8 py-4 rounded-xl"
                 >
                   Criar meu currículo grátis
                   <ArrowRight size={20} />

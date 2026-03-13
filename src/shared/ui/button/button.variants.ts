@@ -6,12 +6,12 @@ export const buttonVariants = cva(
     variants: {
       variant: {
         primary:
-          'bg-primary-500 text-white hover:bg-primary-400 focus:ring-primary-500 shadow-lg shadow-primary-500/20',
+          'bg-accent-500 text-text-inverted hover:opacity-90 focus:ring-accent-500 shadow-lg shadow-accent-500/20',
         secondary:
-          'bg-neutral-800 text-white border border-neutral-700 hover:bg-neutral-700 focus:ring-primary-500',
+          'bg-neutral-800 text-text-inverted border border-neutral-700 hover:bg-neutral-700 focus:ring-primary-500',
         outline:
-          'bg-transparent border border-primary-500/40 text-primary-400 hover:bg-primary-500/10 hover:border-primary-400',
-        ghost: 'bg-transparent text-neutral-400 hover:text-white hover:bg-neutral-800/60',
+          'bg-transparent border border-primary-500/40 text-text-primary hover:bg-primary-500/10 hover:border-primary-400',
+        ghost: 'bg-transparent text-text-muted hover:text-text-default hover:bg-neutral-800/60',
       },
       size: {
         sm: 'px-3 py-1.5 text-sm',

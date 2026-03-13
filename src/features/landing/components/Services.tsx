@@ -18,7 +18,7 @@ export function Services() {
         >
           <div className="flex items-center justify-center space-x-4 mb-8">
             <span
-              className={`text-sm font-medium ${billingCycle === 'monthly' ? 'text-neutral-900 dark:text-white' : 'text-neutral-500 dark:text-neutral-400'}`}
+              className={`text-sm font-medium ${billingCycle === 'monthly' ? 'text-text-default' : 'text-text-muted'}`}
             >
               Mensal
             </span>
@@ -33,7 +33,7 @@ export function Services() {
               ></div>
             </button>
             <span
-              className={`text-sm font-medium ${billingCycle === 'yearly' ? 'text-neutral-900 dark:text-white' : 'text-neutral-500 dark:text-neutral-400'}`}
+              className={`text-sm font-medium ${billingCycle === 'yearly' ? 'text-text-default' : 'text-text-muted'}`}
             >
               Anual{' '}
               <span className="text-primary-600 dark:text-primary-400 text-xs font-bold ml-1 bg-primary-50 dark:bg-primary-900/30 px-2 py-0.5 rounded-full">
@@ -57,28 +57,22 @@ export function Services() {
             >
               {plan.popular && (
                 <div className="absolute top-0 inset-x-0 transform -translate-y-1/2 flex justify-center">
-                  <span className="bg-primary-600 text-white px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide flex items-center shadow-md">
+                  <span className="bg-primary-600 text-text-inverted px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wide flex items-center shadow-md">
                     <Star size={12} className="mr-1 fill-current" /> Mais Escolhido
                   </span>
                 </div>
               )}
 
               <div className="p-8 border-b border-neutral-100 dark:border-neutral-700">
-                <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-2">
-                  {plan.name}
-                </h3>
-                <p className="text-neutral-500 dark:text-neutral-400 text-sm h-10 leading-snug">
-                  {plan.description}
-                </p>
+                <h3 className="text-xl font-bold text-text-default mb-2">{plan.name}</h3>
+                <p className="text-text-muted text-sm h-10 leading-snug">{plan.description}</p>
 
                 <div className="mt-6 flex items-baseline">
-                  <span className="text-4xl font-bold text-neutral-900 dark:text-white">
+                  <span className="text-4xl font-bold text-text-default">
                     {billingCycle === 'monthly' ? plan.price.monthly : plan.price.yearly}
                   </span>
                   {plan.price.monthly !== 'Sob Consulta' && plan.price.monthly !== 'Grátis' && (
-                    <span className="text-neutral-500 dark:text-neutral-400 ml-1 font-medium">
-                      {plan.period}
-                    </span>
+                    <span className="text-text-muted ml-1 font-medium">{plan.period}</span>
                   )}
                 </div>
 
@@ -95,7 +89,7 @@ export function Services() {
                   {plan.features.map((feature) => (
                     <li
                       key={feature.text}
-                      className={`flex items-start text-sm ${feature.included ? 'text-neutral-700 dark:text-neutral-300' : 'text-neutral-400 dark:text-neutral-600'}`}
+                      className={`flex items-start text-sm ${feature.included ? 'text-text-default' : 'text-text-subtle'}`}
                     >
                       {feature.included ? (
                         <div
@@ -128,7 +122,7 @@ export function Services() {
                   {plan.cta}
                 </Button>
                 {plan.name === 'Inicial' && (
-                  <p className="text-center text-xs text-neutral-400 mt-3">
+                  <p className="text-center text-xs text-text-subtle mt-3">
                     Não requer cartão de crédito
                   </p>
                 )}
@@ -138,28 +132,16 @@ export function Services() {
         </div>
         <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-neutral-200 dark:divide-neutral-700 border-t border-neutral-200 dark:border-neutral-700 pt-8 max-w-5xl mx-auto">
           <div className="text-center px-4 py-4 sm:py-0">
-            <h4 className="font-semibold text-neutral-900 dark:text-white mb-1">
-              Cancele quando quiser
-            </h4>
-            <p className="text-sm text-neutral-500 dark:text-neutral-400">
-              Sem contratos de fidelidade ou multas.
-            </p>
+            <h4 className="font-semibold text-text-default mb-1">Cancele quando quiser</h4>
+            <p className="text-sm text-text-muted">Sem contratos de fidelidade ou multas.</p>
           </div>
           <div className="text-center px-4 py-4 sm:py-0">
-            <h4 className="font-semibold text-neutral-900 dark:text-white mb-1">
-              Nota Fiscal Carioca
-            </h4>
-            <p className="text-sm text-neutral-500 dark:text-neutral-400">
-              Emitimos NF para todas as transações.
-            </p>
+            <h4 className="font-semibold text-text-default mb-1">Nota Fiscal Carioca</h4>
+            <p className="text-sm text-text-muted">Emitimos NF para todas as transações.</p>
           </div>
           <div className="text-center px-4 py-4 sm:py-0">
-            <h4 className="font-semibold text-neutral-900 dark:text-white mb-1">
-              Precisa de ajuda?
-            </h4>
-            <p className="text-sm text-neutral-500 dark:text-neutral-400">
-              Suporte especializado local.
-            </p>
+            <h4 className="font-semibold text-text-default mb-1">Precisa de ajuda?</h4>
+            <p className="text-sm text-text-muted">Suporte especializado local.</p>
           </div>
         </div>
       </div>

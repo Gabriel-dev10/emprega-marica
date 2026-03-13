@@ -3,29 +3,43 @@
 @theme {
   --font-sans: 'Inter', sans-serif;
 
-  --color-primary-50: #eff6ff;
-  --color-primary-100: #dbeafe;
-  --color-primary-200: #bfdbfe;
-  --color-primary-300: #93c5fd;
-  --color-primary-400: #60a5fa;
-  --color-primary-500: #3b82f6;
-  --color-primary-600: #2563eb;
-  --color-primary-700: #1d4ed8;
-  --color-primary-800: #1e40af;
-  --color-primary-900: #1e3a8a;
-  --color-primary-950: #172554;
+  /* Primary — verde floresta/musgo (JobSphere) */
+  --color-primary-50: #f0f5f2;
+  --color-primary-100: #d9ebe0;
+  --color-primary-200: #b3d6c3;
+  --color-primary-300: #80b89e;
+  --color-primary-400: #559878;
+  --color-primary-500: #3d7a5c;
+  --color-primary-600: #2d5f46;
+  --color-primary-700: #234a36;
+  --color-primary-800: #1a3828;
+  --color-primary-900: #12261b;
+  --color-primary-950: #0a1810;
 
-  --color-neutral-50: #f8fafc;
-  --color-neutral-100: #f1f5f9;
-  --color-neutral-200: #e2e8f0;
-  --color-neutral-300: #cbd5e1;
-  --color-neutral-400: #94a3b8;
-  --color-neutral-500: #64748b;
-  --color-neutral-600: #475569;
-  --color-neutral-700: #334155;
-  --color-neutral-800: #1e293b;
-  --color-neutral-900: #0f172a;
-  --color-neutral-950: #020617;
+  /* Neutral — bege/areia quente (JobSphere) */
+  --color-neutral-50: #1c1a17;
+  --color-neutral-100: #2e2b25;
+  --color-neutral-200: #3e3b33;
+  --color-neutral-300: #5c5849;
+  --color-neutral-400: #7a7564;
+  --color-neutral-500: #9a9483;
+  --color-neutral-600: #b8b2a0;
+  --color-neutral-700: #d4cfc2;
+  --color-neutral-800: #e8e4d8;
+  --color-neutral-900: #f5f0e6;
+  --color-neutral-950: #faf8f3;
+  
+  /* Accent — bronze original para botões */
+  --color-accent-500: #b6976c;
+  
+  /* ── Cores de Texto ── edite aqui para mudar as cores das letras do site */
+  --color-text-default:   #000000;   /* texto principal (preto) */
+  --color-text-muted:     #4a4a4a;   /* texto secundário / descrições */
+  --color-text-subtle:    #6b6b6b;   /* texto desabilitado / placeholder */
+  --color-text-inverted:  #ffffff;   /* texto sobre fundos escuros */
+  --color-text-primary:   #234a36;   /* texto na cor primária (verde) */
+  --color-text-link:      #3d7a5c;   /* links */
+  --color-accent-200: #eedec3;
 
   --animate-fade-in: fadeIn 0.3s ease-in-out;
 
@@ -39,4 +53,8 @@
       transform: translateY(0);
     }
   }
+}
+
+body {
+  color: var(--color-text-default);
 }

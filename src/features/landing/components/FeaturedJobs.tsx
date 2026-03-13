@@ -9,14 +9,16 @@ export function FeaturedJobs() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 gap-4">
           <div>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">Vagas em Destaque</h2>
-            <p className="text-neutral-400 max-w-lg">
+            <h2 className="text-2xl sm:text-3xl font-bold text-text-default mb-2">
+              Vagas em Destaque
+            </h2>
+            <p className="text-text-subtle max-w-lg">
               Oportunidades recentes de empresas locais buscando talentos como você.
             </p>
           </div>
           <Button
             variant="ghost"
-            className="text-primary-400 hover:text-primary-300 group shrink-0"
+            className="text-primary-600 hover:text-primary-700 group shrink-0"
           >
             Ver todas
             <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform" />

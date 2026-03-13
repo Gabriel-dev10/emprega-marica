@@ -28,19 +28,9 @@ export function SectionHeader({
         className,
       )}
     >
-      <h2
-        className={cn('text-3xl font-bold text-neutral-900 dark:text-white mb-4', titleClassName)}
-      >
-        {title}
-      </h2>
+      <h2 className={cn('text-3xl font-bold text-text-default mb-4', titleClassName)}>{title}</h2>
       {subtitle && (
-        <p
-          className={cn(
-            'text-neutral-600 dark:text-neutral-300 text-lg',
-            children ? 'mb-8' : '',
-            subtitleClassName,
-          )}
-        >
+        <p className={cn('text-text-muted text-lg', children ? 'mb-8' : '', subtitleClassName)}>
           {subtitle}
         </p>
       )}

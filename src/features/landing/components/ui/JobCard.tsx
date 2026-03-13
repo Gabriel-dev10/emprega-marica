@@ -1,4 +1,4 @@
-import { Building2, Clock, DollarSign, MapPin } from 'lucide-react'
+import { Building2, Clock, MapPin } from 'lucide-react'
 
 import { Button } from '../../../../components/Button'
 import { Card } from '../../../../components/Card'
@@ -37,10 +37,10 @@ export function JobCard({
             )}
           </div>
           <div>
-            <h3 className="font-bold text-lg text-white line-clamp-1 group-hover:text-primary-400 transition-colors">
+            <h3 className="font-bold text-lg text-text-default line-clamp-1 group-hover:text-primary-600 transition-colors">
               {title}
             </h3>
-            <p className="text-sm text-neutral-400 font-medium">{company}</p>
+            <p className="text-sm text-text-muted font-medium">{company}</p>
           </div>
         </div>
         {isNew && (
@@ -51,16 +51,16 @@ export function JobCard({
       </div>
 
       <div className="space-y-3 mb-6 grow">
-        <div className="flex items-center text-sm text-neutral-300">
+        <div className="flex items-center text-sm text-text-muted">
           <MapPin size={16} className="mr-2 text-primary-500/60" />
           {location}
         </div>
-        <div className="flex items-center text-sm text-neutral-300">
+        <div className="flex items-center text-sm text-text-muted">
           <Clock size={16} className="mr-2 text-primary-500/60" />
           {type}
         </div>
-        <div className="flex items-center text-sm text-neutral-300">
-          <DollarSign size={16} className="mr-2 text-primary-500/60" />
+        <div className="flex items-center text-sm text-text-muted">
+          <Clock size={16} className="mr-2 text-primary-500/60" />
           {salary}
         </div>
       </div>
@@ -69,7 +69,7 @@ export function JobCard({
         {tags.map((tag) => (
           <span
             key={tag}
-            className="px-2.5 py-1 bg-neutral-800 text-neutral-400 text-xs rounded-md border border-neutral-700"
+            className="px-2.5 py-1 bg-neutral-800 text-text-muted text-xs rounded-md border border-neutral-700"
           >
             {tag}
           </span>

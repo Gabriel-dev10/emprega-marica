@@ -5,7 +5,7 @@ import { Footer } from './Footer'
 
 export default function ParaEmpresasPage() {
   return (
-    <div className="min-h-screen bg-neutral-950 relative">
+    <div className="min-h-screen bg-neutral-900 relative">
       <div className="fixed inset-0 bg-subtle-grid pointer-events-none z-0" />
       <div className="relative z-10">
         <Header />
@@ -14,12 +14,12 @@ export default function ParaEmpresasPage() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
               <div>
-                <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
-                  Encontre os melhores <span className="text-primary-500">talentos locais</span>{' '}
+                <h1 className="text-4xl sm:text-5xl font-bold text-text-default mb-6 leading-tight">
+                  Encontre os melhores <span className="text-primary-600">talentos locais</span>{' '}
                   para a sua empresa
                 </h1>
 
-                <p className="text-lg text-neutral-400 mb-8 leading-relaxed max-w-xl">
+                <p className="text-lg text-text-muted mb-8 leading-relaxed max-w-xl">
                   Nossa plataforma conecta sua empresa diretamente aos profissionais de Maricá.
                   Cadastre suas vagas, gerencie processos seletivos e contrate de forma rápida e
                   eficiente.
@@ -32,8 +32,8 @@ export default function ParaEmpresasPage() {
                     'Filtros avançados para encontrar o candidato ideal',
                     'Marca do empregador forte na sua cidade',
                   ].map((benefit) => (
-                    <li key={benefit} className="flex items-start gap-3 text-neutral-300">
-                      <CheckCircle2 className="text-primary-500 mt-0.5 shrink-0" size={20} />
+                    <li key={benefit} className="flex items-start gap-3 text-text-muted">
+                      <CheckCircle2 className="text-primary-600 mt-0.5 shrink-0" size={20} />
                       <span>{benefit}</span>
                     </li>
                   ))}
@@ -50,11 +50,13 @@ export default function ParaEmpresasPage() {
 
               <div className="relative">
                 <div className="absolute inset-0 bg-primary-500/20 blur-[100px] rounded-full" />
-                <div className="relative bg-neutral-900 border border-white/10 rounded-2xl p-8 shadow-2xl">
-                  <div className="flex items-center justify-between border-b border-white/10 pb-6 mb-6">
+                <div className="relative bg-neutral-950 border border-neutral-800 rounded-2xl p-8 shadow-2xl">
+                  <div className="flex items-center justify-between border-b border-neutral-800 pb-6 mb-6">
                     <div>
-                      <h3 className="text-xl font-bold text-white mb-1">Painel da Empresa</h3>
-                      <p className="text-sm text-neutral-400">Visão geral rápida e clara</p>
+                      <h3 className="text-xl font-bold text-text-default mb-1">
+                        Painel da Empresa
+                      </h3>
+                      <p className="text-sm text-text-muted">Visão geral rápida e clara</p>
                     </div>
                     <div className="flex bg-neutral-950 border border-white/5 rounded-lg p-2 gap-3">
                       <div className="flex flex-col items-center px-4 border-r border-white/5">

@@ -6,8 +6,8 @@ export function SocialProof() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-3xl font-bold mb-6">Quem usa, aprova.</h2>
-            <p className="text-primary-100 dark:text-primary-200 text-lg leading-relaxed mb-8">
+            <h2 className="text-3xl font-bold text-text-inverted mb-6">Quem usa, aprova.</h2>
+            <p className="text-text-inverted opacity-90 text-lg leading-relaxed mb-8">
               "O EmpregaAí Maricá transformou a forma como contratamos. A facilidade de encontrar
               profissionais que moram no mesmo bairro da nossa clínica reduziu os atrasos a zero."
             </p>
@@ -16,10 +16,8 @@ export function SocialProof() {
                 R
               </div>
               <div>
-                <p className="font-semibold text-white">Ricardo Mendes</p>
-                <p className="text-sm text-primary-200 dark:text-primary-300">
-                  Gestor de Clínica no Centro
-                </p>
+                <p className="font-semibold text-text-inverted">Ricardo Mendes</p>
+                <p className="text-sm text-text-inverted opacity-80">Gestor de Clínica no Centro</p>
               </div>
             </div>
           </div>

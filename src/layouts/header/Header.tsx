@@ -5,20 +5,11 @@ import { Button } from '../../components/Button'
 import { useAuth } from '../../shared/context/auth-context'
 
 export function Header() {
-  const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
   const userMenuRef = useRef<HTMLDivElement>(null)
   const { user, isAuthenticated, logout } = useAuth()
   const navigate = useNavigate()
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
@@ -46,7 +37,7 @@ export function Header() {
     const close = () => setIsMobileMenuOpen(false)
     if (mobile) {
       return (
-        <div className="pt-4 border-t border-neutral-800">
+        <div className="pt-4 border-t border-primary-600/30">
           <Link to="/cadastrar/candidato" onClick={close}>
             <Button fullWidth>Candidate-se</Button>
           </Link>
@@ -64,18 +55,12 @@ export function Header() {
   }
 
   return (
-    <header
-      className={`fixed top-0 w-full z-50 transition-all duration-200 ${
-        isScrolled || isMobileMenuOpen
-          ? 'bg-neutral-900 border-b border-neutral-800 py-4'
-          : 'bg-transparent py-5'
-      }`}
-    >
+    <header className="fixed top-0 w-full z-50 transition-all duration-200 bg-primary-700 border-b border-primary-800 py-4 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <a href="/" className="flex items-center">
-            <span className="text-xl font-bold text-white tracking-tight">
-              EmpregaAí<span className="text-neutral-500">Maricá</span>
+            <span className="text-xl font-bold text-text-inverted tracking-tight">
+              EmpregaAí<span className="text-accent-200 opacity-70">Maricá</span>
             </span>
           </a>
 
@@ -84,7 +69,7 @@ export function Header() {
               <a
                 key={link.name}
                 href={link.href}
-                className="text-neutral-400 hover:text-white font-medium transition-colors text-sm"
+                className="text-text-inverted opacity-80 hover:opacity-100 font-medium transition-colors text-sm"
               >
                 {link.name}
               </a>
@@ -95,25 +80,25 @@ export function Header() {
                 <button
                   type="button"
                   onClick={() => setIsUserMenuOpen((v) => !v)}
-                  className="flex items-center gap-2 text-sm text-neutral-300 hover:text-white transition-colors"
+                  className="flex items-center gap-2 text-sm text-text-inverted opacity-80 hover:opacity-100 transition-colors"
                 >
-                  <span className="w-8 h-8 rounded-full bg-primary-700 flex items-center justify-center text-white text-xs font-semibold">
+                  <span className="w-8 h-8 rounded-full bg-primary-800 flex items-center justify-center text-white text-xs font-semibold border border-primary-600">
                     {user.nome.charAt(0).toUpperCase()}
                   </span>
                   <span className="hidden lg:block">{user.nome.split(' ')[0]}</span>
                   <ChevronDown size={14} />
                 </button>
                 {isUserMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-52 bg-neutral-900 border border-neutral-800 rounded-lg shadow-lg py-1">
-                    <div className="px-4 py-2 border-b border-neutral-800">
-                      <p className="text-sm font-medium text-white truncate">{user.nome}</p>
-                      <p className="text-xs text-neutral-500 truncate">{user.email}</p>
+                  <div className="absolute right-0 mt-2 w-52 bg-primary-800 border border-primary-700/50 rounded-lg shadow-lg py-1">
+                    <div className="px-4 py-2 border-b border-primary-700/50">
+                      <p className="text-sm font-medium text-text-inverted truncate">{user.nome}</p>
+                      <p className="text-xs text-text-inverted opacity-60 truncate">{user.email}</p>
                     </div>
                     {user.role === 'candidato' && (
                       <Link
                         to="/perfil/candidato"
                         onClick={() => setIsUserMenuOpen(false)}
-                        className="flex items-center gap-2 px-4 py-2.5 text-sm text-neutral-300 hover:text-white hover:bg-neutral-800 transition-colors"
+                        className="flex items-center gap-2 px-4 py-2.5 text-sm text-text-inverted opacity-80 hover:opacity-100 hover:bg-primary-700/50 transition-colors"
                       >
                         <User size={14} />
                         Meu Currículo
@@ -122,7 +107,7 @@ export function Header() {
                     <button
                       type="button"
                       onClick={handleLogout}
-                      className="w-full flex items-center gap-2 px-4 py-2.5 text-sm text-neutral-400 hover:text-red-400 hover:bg-neutral-800 transition-colors"
+                      className="w-full flex items-center gap-2 px-4 py-2.5 text-sm text-text-inverted opacity-70 hover:text-red-300 hover:bg-primary-700/50 transition-colors"
                     >
                       <LogOut size={14} />
                       Sair
@@ -138,21 +123,21 @@ export function Header() {
           <button
             type="button"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-neutral-400 hover:text-white focus:outline-none transition-colors"
+            className="md:hidden text-text-inverted opacity-80 hover:opacity-100 focus:outline-none transition-colors"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
       {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-neutral-900 border-b border-neutral-800">
+        <div className="md:hidden absolute top-full left-0 w-full bg-primary-700 border-b border-primary-800">
           <div className="px-4 py-6 space-y-1 flex flex-col">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="text-neutral-400 hover:text-white font-medium py-3 text-base transition-colors"
+                className="text-text-inverted opacity-80 hover:opacity-100 font-medium py-3 text-base transition-colors"
               >
                 {link.name}
               </a>
@@ -163,19 +148,19 @@ export function Header() {
                   <Link
                     to="/perfil/candidato"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-neutral-400 hover:text-white font-medium py-3 text-base transition-colors"
+                    className="text-text-inverted opacity-80 hover:opacity-100 font-medium py-3 text-base transition-colors"
                   >
                     Meu Currículo
                   </Link>
                 )}
-                <div className="pt-4 border-t border-neutral-800">
+                <div className="pt-4 border-t border-primary-600/30">
                   <button
                     type="button"
                     onClick={() => {
                       setIsMobileMenuOpen(false)
                       handleLogout()
                     }}
-                    className="flex items-center gap-2 text-neutral-400 hover:text-red-400 font-medium py-3 text-base transition-colors"
+                    className="flex items-center gap-2 text-text-inverted opacity-70 hover:text-red-300 font-medium py-3 text-base transition-colors"
                   >
                     <LogOut size={16} />
                     Sair

@@ -3,65 +3,71 @@ import { Link } from 'react-router-dom'
 
 export function Footer() {
   return (
-    <footer className="bg-neutral-950 border-t border-neutral-800/50 pt-12 pb-8">
+    <footer className="bg-primary-900 border-t border-primary-800/50 pt-12 pb-8 text-text-inverted">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
           <div>
-            <h3 className="text-xl font-bold text-white mb-3">
-              EmpregaAí<span className="text-neutral-500">Maricá</span>
+            <h3 className="text-xl font-bold text-text-inverted mb-3">
+              EmpregaAí<span className="opacity-60">Maricá</span>
             </h3>
-            <p className="text-sm text-neutral-500 leading-relaxed max-w-xs">
+            <p className="text-sm text-text-inverted opacity-70 leading-relaxed max-w-xs">
               Conectando empresas e talentos de Maricá para fortalecer a economia local.
             </p>
           </div>
           <div>
-            <h4 className="text-sm font-semibold text-neutral-300 mb-4 uppercase tracking-wider">
+            <h4 className="text-sm font-semibold text-text-inverted opacity-90 mb-4 uppercase tracking-wider">
               Plataforma
             </h4>
-            <ul className="space-y-2.5 text-sm text-neutral-500">
+            <ul className="space-y-2.5 text-sm text-text-inverted opacity-70">
               <li>
-                <Link to="/para-empresas" className="hover:text-white transition-colors">
+                <Link to="/para-empresas" className="hover:opacity-100 transition-colors">
                   Para Empresas
                 </Link>
               </li>
               <li>
-                <Link to="/para-candidatos" className="hover:text-white transition-colors">
+                <Link to="/para-candidatos" className="hover:opacity-100 transition-colors">
                   Para Candidatos
                 </Link>
               </li>
               <li>
-                <a href="/" className="hover:text-white transition-colors">
+                <a href="/" className="hover:opacity-100 transition-colors">
                   Planos e Preços
                 </a>
               </li>
               <li>
-                <a href="/" className="hover:text-white transition-colors">
+                <a href="/" className="hover:opacity-100 transition-colors">
                   Termos de Uso
                 </a>
               </li>
             </ul>
           </div>
           <div>
-            <h4 className="text-sm font-semibold text-neutral-300 mb-4 uppercase tracking-wider">
+            <h4 className="text-sm font-semibold text-text-inverted opacity-90 mb-4 uppercase tracking-wider">
               Contato
             </h4>
-            <ul className="space-y-2.5 text-sm text-neutral-500">
+            <ul className="space-y-2.5 text-sm text-text-inverted opacity-70">
               <li className="flex items-center gap-2">
                 <Mail size={14} />
                 <span>contato@empregaaimarica.com.br</span>
               </li>
             </ul>
             <div className="flex gap-3 mt-5">
-              <a href="/" className="text-neutral-600 hover:text-white transition-colors">
+              <a
+                href="/"
+                className="text-text-inverted opacity-60 hover:opacity-100 transition-colors"
+              >
                 <Linkedin size={18} />
               </a>
-              <a href="/" className="text-neutral-600 hover:text-white transition-colors">
+              <a
+                href="/"
+                className="text-text-inverted opacity-60 hover:opacity-100 transition-colors"
+              >
                 <Instagram size={18} />
               </a>
             </div>
           </div>
         </div>
-        <div className="pt-6 border-t border-neutral-800/50 flex flex-col sm:flex-row justify-between items-center text-xs text-neutral-600 gap-2">
+        <div className="pt-6 border-t border-primary-800/50 flex flex-col sm:flex-row justify-between items-center text-xs text-text-inverted opacity-50 gap-2">
           <p>&copy; {new Date().getFullYear()} EmpregaAí Maricá</p>
           <p>Feito com orgulho em Maricá.</p>
         </div>

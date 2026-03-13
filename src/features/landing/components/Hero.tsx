@@ -6,11 +6,11 @@ export function Hero() {
   return (
     <section className="relative pt-36 pb-24 lg:pt-48 lg:pb-32 overflow-hidden">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-        <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight mb-6">
-          O emprego que você busca, <span className="text-primary-400">perto de casa.</span>
+        <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold text-text-default leading-[1.1] tracking-tight mb-6">
+          O emprego que você busca, <span className="text-primary-600">perto de casa.</span>
         </h1>
 
-        <p className="text-lg sm:text-xl text-neutral-400 max-w-2xl mx-auto mb-12 leading-relaxed">
+        <p className="text-lg sm:text-xl text-text-subtle max-w-2xl mx-auto mb-12 leading-relaxed">
           Conectamos talentos locais às melhores empresas de Maricá.
         </p>
 

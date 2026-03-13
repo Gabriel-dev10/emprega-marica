@@ -52,10 +52,7 @@ export default function LoginCandidatoPage() {
           />
           {authError && <p className="text-sm text-red-400">{authError}</p>}
           <div className="flex justify-end">
-            <a
-              href="/"
-              className="text-xs text-primary-400 hover:text-primary-300 transition-colors"
-            >
+            <a href="/" className="text-xs text-text-link hover:underline transition-colors">
               Esqueceu a senha?
             </a>
           </div>
@@ -66,18 +63,18 @@ export default function LoginCandidatoPage() {
       </div>
 
       <div className="mt-6 space-y-3 text-center">
-        <p className="text-sm text-neutral-500">
+        <p className="text-sm text-text-muted">
           Não tem conta?{' '}
           <Link
             to="/cadastrar/candidato"
-            className="text-primary-400 hover:text-primary-300 font-medium transition-colors"
+            className="text-text-link font-medium hover:underline transition-colors"
           >
             Criar conta gratuita
           </Link>
         </p>
-        <p className="text-xs text-neutral-600">
-          Demo: <span className="text-neutral-500">candidato@teste.com</span> /{' '}
-          <span className="text-neutral-500">123456</span>
+        <p className="text-xs text-text-subtle">
+          Demo: <span className="text-text-muted">candidato@teste.com</span> /{' '}
+          <span className="text-text-muted">123456</span>
         </p>
       </div>
     </AuthLayout>

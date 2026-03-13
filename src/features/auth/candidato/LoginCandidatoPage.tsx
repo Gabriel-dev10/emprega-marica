@@ -25,7 +25,7 @@ export default function LoginCandidatoPage() {
     setAuthError(null)
     const result = await login({ identificador: data.identificador, senha: data.senha })
     if (result.success) {
-      navigate('/perfil/candidato')
+      navigate('/vagas/candidato')
     } else {
       setAuthError(result.error ?? 'Erro ao entrar.')
     }

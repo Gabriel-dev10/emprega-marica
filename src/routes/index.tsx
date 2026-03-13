@@ -9,6 +9,7 @@ const CadastroCandidatoPage = lazy(() => import('../features/auth/candidato/Cada
 const ParaEmpresasPage = lazy(() => import('../layouts/footer/ParaEmpresasPage'))
 const ParaCandidatosPage = lazy(() => import('../layouts/footer/ParaCandidatosPage'))
 const PerfilCandidatoPage = lazy(() => import('../features/auth/candidato/PerfilCandidatoPage'))
+const VagasCandidatoPage = lazy(() => import('../features/auth/candidato/VagasCandidatoPage'))
 const SolicitarPropostaPage = lazy(() => import('../features/auth/empresa/SolicitarPropostaPage'))
 
 function LoadingScreen() {
@@ -61,6 +62,14 @@ const router = createBrowserRouter([
   {
     path: '/para-candidatos',
     element: withSuspense(<ParaCandidatosPage />),
+  },
+  {
+    path: '/vagas/candidato',
+    element: withSuspense(
+      <ProtectedRoute>
+        <VagasCandidatoPage />
+      </ProtectedRoute>,
+    ),
   },
   {
     path: '/perfil/candidato',

@@ -8,6 +8,7 @@ export type AuthUser = {
   id: string
   nome: string
   email: string
+  telefone?: string
   role: UserRole
 }
 
@@ -41,7 +42,6 @@ export function AuthProvider({ children }: AuthProviderProps) {
       if (!found) {
         return { success: false, error: 'Email ou senha incorretos.' }
       }
-      // Se for empresa, verificar se está aprovada para usar o login
       if (found.role === 'empresa') {
         const approved =
           isCompanyApproved(found.email) ||

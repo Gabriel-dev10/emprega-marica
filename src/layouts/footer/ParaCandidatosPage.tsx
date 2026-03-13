@@ -1,7 +1,7 @@
 import { ArrowRight, Briefcase, CheckCircle2, UserCircle } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import { Footer } from '../layouts/Footer'
-import { Header } from '../layouts/Header'
+import { Header } from '../header/Header'
+import { Footer } from './Footer'
 
 export default function ParaCandidatosPage() {
   return (

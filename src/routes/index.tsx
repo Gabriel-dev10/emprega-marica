@@ -6,10 +6,10 @@ const LandingPage = lazy(() => import('../pages/LandingPage'))
 const LoginCandidatoPage = lazy(() => import('../features/auth/candidato/LoginCandidatoPage'))
 const LoginEmpresaPage = lazy(() => import('../features/auth/empresa/LoginEmpresaPage'))
 const CadastroCandidatoPage = lazy(() => import('../features/auth/candidato/CadastroCandidatoPage'))
-const CadastroEmpresaPage = lazy(() => import('../features/auth/empresa/CadastroEmpresaPage'))
-const ParaEmpresasPage = lazy(() => import('../pages/ParaEmpresasPage'))
-const ParaCandidatosPage = lazy(() => import('../pages/ParaCandidatosPage'))
+const ParaEmpresasPage = lazy(() => import('../layouts/footer/ParaEmpresasPage'))
+const ParaCandidatosPage = lazy(() => import('../layouts/footer/ParaCandidatosPage'))
 const PerfilCandidatoPage = lazy(() => import('../features/auth/candidato/PerfilCandidatoPage'))
+const SolicitarPropostaPage = lazy(() => import('../features/auth/empresa/SolicitarPropostaPage'))
 
 function LoadingScreen() {
   return (
@@ -47,12 +47,12 @@ const router = createBrowserRouter([
     element: withSuspense(<LoginEmpresaPage />),
   },
   {
-    path: '/cadastrar/candidato',
-    element: withSuspense(<CadastroCandidatoPage />),
+    path: '/empresa/solicitar-proposta',
+    element: withSuspense(<SolicitarPropostaPage />),
   },
   {
-    path: '/cadastrar/empresa',
-    element: withSuspense(<CadastroEmpresaPage />),
+    path: '/cadastrar/candidato',
+    element: withSuspense(<CadastroCandidatoPage />),
   },
   {
     path: '/para-empresas',

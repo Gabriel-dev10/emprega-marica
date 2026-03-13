@@ -7,7 +7,7 @@ import { Button } from '../../../components/Button'
 import { Input } from '../../../components/Input'
 import { useAuth } from '../../../shared/context/auth-context'
 import { type LoginEmpresaForm, loginEmpresaSchema } from '../../../shared/lib/schemas'
-import { AuthLayout } from '../../components/AuthLayout'
+import { AuthLayout } from '../../layout/AuthLayout'
 
 export default function LoginEmpresaPage() {
   const { login } = useAuth()
@@ -25,7 +25,7 @@ export default function LoginEmpresaPage() {
     setAuthError(null)
     const result = await login({ identificador: data.identificador, senha: data.senha })
     if (result.success) {
-      navigate('/dashboard/empresa')
+      navigate('/empresa/planos')
     } else {
       setAuthError(result.error ?? 'Erro ao entrar.')
     }
@@ -67,12 +67,12 @@ export default function LoginEmpresaPage() {
 
       <div className="mt-6 space-y-3 text-center">
         <p className="text-sm text-neutral-500">
-          Não tem conta?{' '}
+          Empresas não podem se cadastrar diretamente no site.{' '}
           <Link
-            to="/cadastrar/empresa"
+            to="/empresa/solicitar-proposta"
             className="text-primary-400 hover:text-primary-300 font-medium transition-colors"
           >
-            Cadastrar empresa
+            Solicitar proposta
           </Link>
         </p>
         <p className="text-sm text-neutral-500">

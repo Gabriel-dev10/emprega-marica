@@ -4,8 +4,8 @@ import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import { Button } from '../../../components/Button'
 import { Input } from '../../../components/Input'
-import { ModalMapaDistrito } from '../../../components/ModalMapaDistrito'
 import { Select } from '../../../components/Select'
+import { ModalMapaDistrito } from '../../../layouts/mapa/ModalMapaDistrito'
 import { DISTRITOS_MARICA } from '../../../shared/lib/constants'
 import {
   type CadastroCandidatoForm,
@@ -13,7 +13,7 @@ import {
   maskCelular,
   maskCPF,
 } from '../../../shared/lib/schemas'
-import { AuthLayout } from '../../components/AuthLayout'
+import { AuthLayout } from '../../layout/AuthLayout'
 
 export default function CadastroCandidatoPage() {
   const {

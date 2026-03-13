@@ -1,8 +1,8 @@
 import { ChevronDown, LogOut, Menu, User, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Button } from '../components/Button'
-import { useAuth } from '../shared/context/auth-context'
+import { Button } from '../../components/Button'
+import { useAuth } from '../../shared/context/auth-context'
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -117,7 +117,7 @@ export function Header() {
                 >
                   Entrar
                 </Link>
-                <Link to="/login/empresa">
+                <Link to="/para-empresas" className="ml-4">
                   <Button size="sm" className="px-5">
                     Área da Empresa
                   </Button>
@@ -183,7 +183,7 @@ export function Header() {
                   Entrar
                 </Link>
                 <div className="pt-4 border-t border-neutral-800">
-                  <Link to="/login/empresa" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Link to="/empresa/planos" onClick={() => setIsMobileMenuOpen(false)}>
                     <Button fullWidth>Área da Empresa</Button>
                   </Link>
                 </div>

@@ -1,7 +1,7 @@
 import { ArrowRight } from 'lucide-react'
 import { Button } from '../../../components/Button'
 import { FEATURED_JOBS } from '../../../shared/api/mock/jobs'
-import { JobCard } from '../../components/JobCard'
+import { JobCard } from './ui/JobCard'
 
 export function FeaturedJobs() {
   return (

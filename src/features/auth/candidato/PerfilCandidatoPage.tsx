@@ -6,13 +6,13 @@ import { useNavigate } from 'react-router-dom'
 import { Button } from '../../../components/Button'
 import { Input } from '../../../components/Input'
 import { Select } from '../../../components/Select'
-import { Footer } from '../../../layouts/Footer'
+import { Footer } from '../../../layouts/footer/Footer'
 import { useAuth } from '../../../shared/context/auth-context'
 import { DISTRITOS_MARICA } from '../../../shared/lib/constants'
 import { maskCelular, maskCPF } from '../../../shared/lib/schemas'
-import { Section } from '../../components/sectionCandidato'
-import { TextareaField } from '../../components/textareaCandidato'
-import { GRAUS, type PerfilForm, perfilSchema } from '../../schema/perfil.schema'
+import { Section } from '../../layout/sectionCandidato'
+import { TextareaField } from '../../layout/textareaCandidato'
+import { GRAUS, type PerfilForm, perfilSchema } from '../../schema/candidato.schema'
 
 export default function PerfilCandidatoPage() {
   const { user, logout } = useAuth()

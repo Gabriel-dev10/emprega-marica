@@ -7,7 +7,7 @@ import { Button } from '../../../components/Button'
 import { Input } from '../../../components/Input'
 import { useAuth } from '../../../shared/context/auth-context'
 import { type LoginCandidatoForm, loginCandidatoSchema } from '../../../shared/lib/schemas'
-import { AuthLayout } from '../../components/AuthLayout'
+import { AuthLayout } from '../../layout/AuthLayout'
 
 export default function LoginCandidatoPage() {
   const { login } = useAuth()

@@ -1,7 +1,7 @@
 import { Building2, Clock, DollarSign, MapPin } from 'lucide-react'
 
-import { Button } from '../../components/Button'
-import { Card } from '../../components/Card'
+import { Button } from '../../../../components/Button'
+import { Card } from '../../../../components/Card'
 
 interface JobCardProps {
   id: string

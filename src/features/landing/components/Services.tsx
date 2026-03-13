@@ -1,4 +1,5 @@
 import { Check, Star, X, Zap } from 'lucide-react'
+
 import { useState } from 'react'
 import { Button } from '../../../components/Button'
 import { PLANS } from '../../../shared/api/mock/plans'
@@ -8,7 +9,7 @@ export function Services() {
   const [billingCycle, setBillingCycle] = useState<'monthly' | 'yearly'>('monthly')
 
   return (
-    <section id="planos" className="py-24 bg-neutral-900 relative">
+    <section id="planos" className="py-24 bg-white dark:bg-neutral-900 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <SectionHeader
           title="Investimento que retorna para sua empresa"
@@ -17,7 +18,7 @@ export function Services() {
         >
           <div className="flex items-center justify-center space-x-4 mb-8">
             <span
-              className={`text-sm font-medium ${billingCycle === 'monthly' ? 'text-neutral-50' : 'text-neutral-400'}`}
+              className={`text-sm font-medium ${billingCycle === 'monthly' ? 'text-neutral-900 dark:text-white' : 'text-neutral-500 dark:text-neutral-400'}`}
             >
               Mensal
             </span>
@@ -32,10 +33,10 @@ export function Services() {
               ></div>
             </button>
             <span
-              className={`text-sm font-medium ${billingCycle === 'yearly' ? 'text-neutral-50' : 'text-neutral-400'}`}
+              className={`text-sm font-medium ${billingCycle === 'yearly' ? 'text-neutral-900 dark:text-white' : 'text-neutral-500 dark:text-neutral-400'}`}
             >
               Anual{' '}
-              <span className="text-primary-600 text-xs font-bold ml-1 bg-primary-100 px-2 py-0.5 rounded-full">
+              <span className="text-primary-600 dark:text-primary-400 text-xs font-bold ml-1 bg-primary-50 dark:bg-primary-900/30 px-2 py-0.5 rounded-full">
                 -20% OFF
               </span>
             </span>
@@ -46,11 +47,11 @@ export function Services() {
             <div
               key={plan.name}
               className={`
-                relative bg-neutral-950 rounded-2xl border transition-all duration-300 flex flex-col
+                relative bg-white dark:bg-neutral-800 rounded-2xl border transition-all duration-300 flex flex-col
                 ${
                   plan.popular
-                    ? 'border-primary-600 shadow-xl scale-100 md:scale-105 z-10'
-                    : 'border-neutral-700 shadow-sm hover:border-primary-200 hover:shadow-md'
+                    ? 'border-primary-600 dark:border-primary-500 shadow-xl scale-100 md:scale-105 z-10'
+                    : 'border-neutral-200 dark:border-neutral-700 shadow-sm hover:border-primary-200 dark:hover:border-primary-700 hover:shadow-md'
                 }
               `}
             >
@@ -62,21 +63,27 @@ export function Services() {
                 </div>
               )}
 
-              <div className="p-8 border-b border-neutral-700">
-                <h3 className="text-xl font-bold text-neutral-50 mb-2">{plan.name}</h3>
-                <p className="text-neutral-400 text-sm h-10 leading-snug">{plan.description}</p>
+              <div className="p-8 border-b border-neutral-100 dark:border-neutral-700">
+                <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-2">
+                  {plan.name}
+                </h3>
+                <p className="text-neutral-500 dark:text-neutral-400 text-sm h-10 leading-snug">
+                  {plan.description}
+                </p>
 
                 <div className="mt-6 flex items-baseline">
-                  <span className="text-4xl font-bold text-neutral-50">
+                  <span className="text-4xl font-bold text-neutral-900 dark:text-white">
                     {billingCycle === 'monthly' ? plan.price.monthly : plan.price.yearly}
                   </span>
                   {plan.price.monthly !== 'Sob Consulta' && plan.price.monthly !== 'Grátis' && (
-                    <span className="text-neutral-400 ml-1 font-medium">{plan.period}</span>
+                    <span className="text-neutral-500 dark:text-neutral-400 ml-1 font-medium">
+                      {plan.period}
+                    </span>
                   )}
                 </div>
 
                 {plan.popular && (
-                  <div className="mt-4 inline-flex items-center px-2.5 py-1 rounded bg-primary-100 text-primary-700 text-xs font-semibold">
+                  <div className="mt-4 inline-flex items-center px-2.5 py-1 rounded bg-blue-50 dark:bg-primary-900/30 text-primary-700 dark:text-primary-400 text-xs font-semibold">
                     <Zap size={12} className="mr-1.5" />
                     Aceitamos Mumbuca
                   </div>
@@ -88,18 +95,22 @@ export function Services() {
                   {plan.features.map((feature) => (
                     <li
                       key={feature.text}
-                      className={`flex items-start text-sm ${feature.included ? 'text-neutral-300' : 'text-neutral-500'}`}
+                      className={`flex items-start text-sm ${feature.included ? 'text-neutral-700 dark:text-neutral-300' : 'text-neutral-400 dark:text-neutral-600'}`}
                     >
                       {feature.included ? (
                         <div
-                          className={`mt-0.5 mr-3 shrink-0 rounded-full p-0.5 bg-primary-100 text-primary-600`}
+                          className={`mt-0.5 mr-3 shrink-0 rounded-full p-0.5 ${feature ? 'bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400' : 'bg-green-100 text-green-600'}`}
                         >
                           <Check size={14} strokeWidth={3} />
                         </div>
                       ) : (
-                        <X size={16} className="mt-0.5 mr-3 shrink-0 text-neutral-500" />
+                        <X size={16} className="mt-0.5 mr-3 shrink-0 text-neutral-300" />
                       )}
-                      <span className={feature.included ? 'font-semibold text-neutral-50' : ''}>
+                      <span
+                        className={
+                          feature ? 'font-semibold text-primary-700 dark:text-primary-400' : ''
+                        }
+                      >
                         {feature.text}
                       </span>
                     </li>
@@ -125,18 +136,30 @@ export function Services() {
             </div>
           ))}
         </div>
-        <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-neutral-700 border-t border-neutral-700 pt-8 max-w-5xl mx-auto">
+        <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-neutral-200 dark:divide-neutral-700 border-t border-neutral-200 dark:border-neutral-700 pt-8 max-w-5xl mx-auto">
           <div className="text-center px-4 py-4 sm:py-0">
-            <h4 className="font-semibold text-neutral-50 mb-1">Cancele quando quiser</h4>
-            <p className="text-sm text-neutral-400">Sem contratos de fidelidade ou multas.</p>
+            <h4 className="font-semibold text-neutral-900 dark:text-white mb-1">
+              Cancele quando quiser
+            </h4>
+            <p className="text-sm text-neutral-500 dark:text-neutral-400">
+              Sem contratos de fidelidade ou multas.
+            </p>
           </div>
           <div className="text-center px-4 py-4 sm:py-0">
-            <h4 className="font-semibold text-neutral-50 mb-1">Nota Fiscal</h4>
-            <p className="text-sm text-neutral-400">Emitimos NF para todas as transações.</p>
+            <h4 className="font-semibold text-neutral-900 dark:text-white mb-1">
+              Nota Fiscal Carioca
+            </h4>
+            <p className="text-sm text-neutral-500 dark:text-neutral-400">
+              Emitimos NF para todas as transações.
+            </p>
           </div>
           <div className="text-center px-4 py-4 sm:py-0">
-            <h4 className="font-semibold text-neutral-50 mb-1">Precisa de ajuda?</h4>
-            <p className="text-sm text-neutral-400">Suporte especializado local.</p>
+            <h4 className="font-semibold text-neutral-900 dark:text-white mb-1">
+              Precisa de ajuda?
+            </h4>
+            <p className="text-sm text-neutral-500 dark:text-neutral-400">
+              Suporte especializado local.
+            </p>
           </div>
         </div>
       </div>

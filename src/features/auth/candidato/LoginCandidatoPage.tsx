@@ -33,7 +33,7 @@ export default function LoginCandidatoPage() {
 
   return (
     <AuthLayout subtitle="Área do Candidato">
-      <div className="bg-neutral-900 border border-neutral-800 rounded-xl p-6 sm:p-8">
+      <div className="bg-neutral-900/50 backdrop-blur-md border border-white/5 rounded-2xl p-6 sm:p-8 shadow-2xl shadow-black/40">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
           <Input
             label="Email"

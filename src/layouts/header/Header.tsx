@@ -1,178 +1,105 @@
-import { ChevronDown, LogOut, Menu, User, X } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { ChevronDown, LogOut, User } from 'lucide-react'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Button } from '../../components/Button'
 import { useAuth } from '../../shared/context/auth-context'
 
 export function Header() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false)
-  const userMenuRef = useRef<HTMLDivElement>(null)
-  const { user, isAuthenticated, logout } = useAuth()
+  const { user, logout } = useAuth()
+  const location = useLocation()
   const navigate = useNavigate()
-
-  useEffect(() => {
-    const handleClickOutside = (e: MouseEvent) => {
-      if (userMenuRef.current && !userMenuRef.current.contains(e.target as Node)) {
-        setIsUserMenuOpen(false)
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [])
-
-  const navLinks = [
-    { name: 'Vagas', href: '#vagas' },
-    { name: 'Como Funciona', href: '#processo' },
-    { name: 'Contato', href: '#contato' },
-  ]
 
   const handleLogout = () => {
     logout()
-    setIsUserMenuOpen(false)
     navigate('/')
   }
 
-  function UnauthActions({ mobile }: { mobile?: boolean }) {
-    const close = () => setIsMobileMenuOpen(false)
-    if (mobile) {
-      return (
-        <div className="pt-4 border-t border-primary-600/30">
-          <Link to="/cadastrar/candidato" onClick={close}>
-            <Button fullWidth>Candidate-se</Button>
-          </Link>
-        </div>
-      )
-    }
+  const isAuthRoute = ['/login', '/cadastro', '/cadastrar', '/solicitar-proposta'].some((path) =>
+    location.pathname.includes(path),
+  )
 
-    return (
-      <Link to="/cadastrar/candidato" className="ml-4">
-        <Button size="sm" className="px-5">
-          Candidate-se
-        </Button>
-      </Link>
-    )
-  }
+  if (isAuthRoute) return null
+
+  const logoLink = user ? (user.role === 'empresa' ? '/painel/empresa' : '/vagas/candidato') : '/'
+  const sectionHref = (hash: string) => (location.pathname === '/' ? `#${hash}` : `/#${hash}`)
 
   return (
-    <header className="fixed top-0 w-full z-50 transition-all duration-200 bg-primary-700 border-b border-primary-800 py-4 shadow-md">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center">
-          <a href="/" className="flex items-center">
-            <span className="text-xl font-bold text-text-inverted tracking-tight">
-              EmpregaAí<span className="text-accent-200 opacity-70">Maricá</span>
-            </span>
-          </a>
+    <header className="bg-neutral-800 sticky top-0 z-50 px-6 py-4">
+      <div className="max-w-6xl mx-auto flex items-center justify-between">
+        <Link to={logoLink} className="text-xl font-bold text-text-default tracking-tight">
+          EmpregaAí<span className="text-text-primary">Maricá</span>
+        </Link>
 
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-text-inverted opacity-80 hover:opacity-100 font-medium transition-colors text-sm"
-              >
-                {link.name}
-              </a>
-            ))}
+        {user ? (
+          <div className="flex items-center gap-4">
+            <div className="hidden sm:flex items-center gap-2 text-sm text-text-muted">
+              <span className="w-8 h-8 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center">
+                <User size={14} className="text-text-subtle" />
+              </span>
+              <span className="font-medium text-text-default">{user.nome.split(' ')[0]}</span>
+            </div>
 
-            {isAuthenticated && user ? (
-              <div className="relative" ref={userMenuRef}>
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="flex items-center gap-2 text-sm font-medium text-text-subtle hover:text-text-default transition-colors"
+            >
+              <span className="hidden sm:block">Sair da conta</span>
+              <LogOut size={18} />
+            </button>
+          </div>
+        ) : (
+          <div className="flex items-center gap-4">
+            <nav className="hidden md:flex items-center gap-6 mr-4">
+              <div className="relative group py-2">
                 <button
                   type="button"
-                  onClick={() => setIsUserMenuOpen((v) => !v)}
-                  className="flex items-center gap-2 text-sm text-text-inverted opacity-80 hover:opacity-100 transition-colors"
+                  className="flex items-center gap-1.5 text-sm text-text-subtle hover:text-text-default transition-colors focus:outline-none"
                 >
-                  <span className="w-8 h-8 rounded-full bg-primary-800 flex items-center justify-center text-white text-xs font-semibold border border-primary-600">
-                    {user.nome.charAt(0).toUpperCase()}
-                  </span>
-                  <span className="hidden lg:block">{user.nome.split(' ')[0]}</span>
-                  <ChevronDown size={14} />
+                  Como Funciona
+                  <ChevronDown
+                    size={14}
+                    className="group-hover:rotate-180 transition-transform duration-200"
+                  />
                 </button>
-                {isUserMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-52 bg-primary-800 border border-primary-700/50 rounded-lg shadow-lg py-1">
-                    <div className="px-4 py-2 border-b border-primary-700/50">
-                      <p className="text-sm font-medium text-text-inverted truncate">{user.nome}</p>
-                      <p className="text-xs text-text-inverted opacity-60 truncate">{user.email}</p>
-                    </div>
-                    {user.role === 'candidato' && (
-                      <Link
-                        to="/perfil/candidato"
-                        onClick={() => setIsUserMenuOpen(false)}
-                        className="flex items-center gap-2 px-4 py-2.5 text-sm text-text-inverted opacity-80 hover:opacity-100 hover:bg-primary-700/50 transition-colors"
-                      >
-                        <User size={14} />
-                        Meu Currículo
-                      </Link>
-                    )}
-                    <button
-                      type="button"
-                      onClick={handleLogout}
-                      className="w-full flex items-center gap-2 px-4 py-2.5 text-sm text-text-inverted opacity-70 hover:text-red-300 hover:bg-primary-700/50 transition-colors"
-                    >
-                      <LogOut size={14} />
-                      Sair
-                    </button>
-                  </div>
-                )}
-              </div>
-            ) : (
-              <UnauthActions />
-            )}
-          </nav>
 
-          <button
-            type="button"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-text-inverted opacity-80 hover:opacity-100 focus:outline-none transition-colors"
-          >
-            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </div>
-      {isMobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-primary-700 border-b border-primary-800">
-          <div className="px-4 py-6 space-y-1 flex flex-col">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-text-inverted opacity-80 hover:opacity-100 font-medium py-3 text-base transition-colors"
-              >
-                {link.name}
-              </a>
-            ))}
-            {isAuthenticated && user ? (
-              <>
-                {user.role === 'candidato' && (
+                <div className="absolute top-full left-0 mt-1 w-48 bg-neutral-900/90 backdrop-blur-md border border-neutral-800 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 py-2">
                   <Link
-                    to="/perfil/candidato"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-text-inverted opacity-80 hover:opacity-100 font-medium py-3 text-base transition-colors"
+                    to="/para-candidatos"
+                    className="block px-4 py-2 text-sm text-text-subtle hover:text-text-primary hover:bg-neutral-800/50 transition-colors"
                   >
-                    Meu Currículo
+                    Para Candidatos
                   </Link>
-                )}
-                <div className="pt-4 border-t border-primary-600/30">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setIsMobileMenuOpen(false)
-                      handleLogout()
-                    }}
-                    className="flex items-center gap-2 text-text-inverted opacity-70 hover:text-red-300 font-medium py-3 text-base transition-colors"
+                  <Link
+                    to="/para-empresas"
+                    className="block px-4 py-2 text-sm text-text-subtle hover:text-text-primary hover:bg-neutral-800/50 transition-colors"
                   >
-                    <LogOut size={16} />
-                    Sair
-                  </button>
+                    Para Empresas
+                  </Link>
                 </div>
-              </>
-            ) : (
-              <UnauthActions mobile />
-            )}
+              </div>
+
+              <a
+                href={sectionHref('vagas')}
+                className="text-sm text-text-subtle hover:text-text-default transition-colors"
+              >
+                Vagas
+              </a>
+            </nav>
+
+            <div className="flex items-center gap-3">
+              <Link
+                to="/login/candidato"
+                className="text-sm font-medium text-text-subtle hover:text-text-default transition-colors hidden sm:block"
+              >
+                Entrar
+              </Link>
+              <Link to="/cadastrar/candidato">
+                <Button size="sm">Criar Conta</Button>
+              </Link>
+            </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </header>
   )
 }

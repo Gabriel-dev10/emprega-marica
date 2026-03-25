@@ -1,8 +1,8 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import { BookOpen, Briefcase, ListChecks, LogOut, Plus, Trash2, User } from 'lucide-react'
+import { BookOpen, Briefcase, ListChecks, Plus, Trash2, User } from 'lucide-react'
 import { useState } from 'react'
 import { useFieldArray, useForm } from 'react-hook-form'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Button } from '../../../components/Button'
 import { Input } from '../../../components/Input'
 import { Select } from '../../../components/Select'
@@ -15,8 +15,7 @@ import { TextareaField } from '../../layout/textareaCandidato'
 import { GRAUS, type PerfilForm, perfilSchema } from '../../schema/candidato.schema'
 
 export default function PerfilCandidatoPage() {
-  const { user, logout } = useAuth()
-  const navigate = useNavigate()
+  const { user } = useAuth()
   const [saved, setSaved] = useState(false)
 
   const {
@@ -56,32 +55,8 @@ export default function PerfilCandidatoPage() {
     setTimeout(() => setSaved(false), 3000)
   }
 
-  const handleLogout = () => {
-    logout()
-    navigate('/')
-  }
-
   return (
     <div className="min-h-screen bg-neutral-950">
-      <header className="bg-neutral-900 border-b border-neutral-800 px-4 py-3">
-        <div className="max-w-5xl mx-auto flex items-center justify-between">
-          <a href="/" className="text-lg font-bold text-white">
-            EmpregaAí<span className="text-neutral-500">Maricá</span>
-          </a>
-          <div className="flex items-center gap-3">
-            <span className="text-sm text-neutral-400 hidden sm:block">{user?.nome}</span>
-            <button
-              type="button"
-              onClick={handleLogout}
-              className="flex items-center gap-1.5 text-sm text-neutral-400 hover:text-white transition-colors"
-            >
-              <LogOut size={16} />
-              Sair
-            </button>
-          </div>
-        </div>
-      </header>
-
       <main className="max-w-5xl mx-auto px-4 py-10">
         <div className="mb-8">
           <h1 className="text-2xl font-bold text-white">Meu Currículo</h1>

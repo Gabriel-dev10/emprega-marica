@@ -1,73 +1,65 @@
 import { Instagram, Linkedin, Mail } from 'lucide-react'
-import { Link } from 'react-router-dom'
 
 export function Footer() {
   return (
-    <footer className="bg-primary-900 border-t border-primary-800/50 pt-12 pb-8 text-text-inverted">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
+    <footer className="bg-neutral-950 border-t border-neutral-900 pt-16 pb-8">
+      <div className="max-w-7xl mx-auto px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           <div>
-            <h3 className="text-xl font-bold text-text-inverted mb-3">
-              EmpregaAí<span className="opacity-60">Maricá</span>
+            <h3 className="text-2xl font-bold text-text-default mb-4 tracking-tight">
+              EmpregaAí<span className="text-text-primary">Maricá</span>
             </h3>
-            <p className="text-sm text-text-inverted opacity-70 leading-relaxed max-w-xs">
+            <p className="text-sm text-text-subtle leading-relaxed max-w-xs">
               Conectando empresas e talentos de Maricá para fortalecer a economia local.
             </p>
           </div>
+
           <div>
-            <h4 className="text-sm font-semibold text-text-inverted opacity-90 mb-4 uppercase tracking-wider">
+            <h4 className="text-sm font-semibold text-text-default mb-5 uppercase tracking-wider">
               Plataforma
             </h4>
-            <ul className="space-y-2.5 text-sm text-text-inverted opacity-70">
+            <ul className="space-y-3 text-sm text-text-subtle">
               <li>
-                <Link to="/para-empresas" className="hover:opacity-100 transition-colors">
-                  Para Empresas
-                </Link>
-              </li>
-              <li>
-                <Link to="/para-candidatos" className="hover:opacity-100 transition-colors">
-                  Para Candidatos
-                </Link>
-              </li>
-              <li>
-                <a href="/" className="hover:opacity-100 transition-colors">
+                <a href="/" className="hover:text-text-primary transition-colors">
                   Planos e Preços
                 </a>
               </li>
               <li>
-                <a href="/" className="hover:opacity-100 transition-colors">
+                <a href="/" className="hover:text-text-primary transition-colors">
                   Termos de Uso
                 </a>
               </li>
             </ul>
           </div>
+
           <div>
-            <h4 className="text-sm font-semibold text-text-inverted opacity-90 mb-4 uppercase tracking-wider">
+            <h4 className="text-sm font-semibold text-text-default mb-5 uppercase tracking-wider">
               Contato
             </h4>
-            <ul className="space-y-2.5 text-sm text-text-inverted opacity-70">
-              <li className="flex items-center gap-2">
-                <Mail size={14} />
+            <ul className="space-y-3 text-sm text-text-subtle">
+              <li className="flex items-center gap-3">
+                <Mail size={16} />
                 <span>contato@empregaaimarica.com.br</span>
               </li>
             </ul>
-            <div className="flex gap-3 mt-5">
+            <div className="flex gap-3 mt-6 -ml-2">
               <a
                 href="/"
-                className="text-text-inverted opacity-60 hover:opacity-100 transition-colors"
+                className="text-text-subtle hover:text-text-primary hover:bg-neutral-900 p-2 rounded-lg transition-all"
               >
-                <Linkedin size={18} />
+                <Linkedin size={20} />
               </a>
               <a
                 href="/"
-                className="text-text-inverted opacity-60 hover:opacity-100 transition-colors"
+                className="text-text-subtle hover:text-text-primary hover:bg-neutral-900 p-2 rounded-lg transition-all"
               >
-                <Instagram size={18} />
+                <Instagram size={20} />
               </a>
             </div>
           </div>
         </div>
-        <div className="pt-6 border-t border-primary-800/50 flex flex-col sm:flex-row justify-between items-center text-xs text-text-inverted opacity-50 gap-2">
+
+        <div className="pt-8 border-t border-neutral-900 flex flex-col sm:flex-row justify-between items-center text-xs text-text-subtle gap-4">
           <p>&copy; {new Date().getFullYear()} EmpregaAí Maricá</p>
           <p>Feito com orgulho em Maricá.</p>
         </div>

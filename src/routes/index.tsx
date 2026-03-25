@@ -1,5 +1,6 @@
 import { lazy, type ReactNode, Suspense } from 'react'
-import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, Navigate, Outlet, RouterProvider } from 'react-router-dom'
+import { Header } from '../layouts/header/Header'
 import { useAuth } from '../shared/context/auth-context'
 
 const LandingPage = lazy(() => import('../pages/LandingPage'))
@@ -30,58 +31,72 @@ function ProtectedRoute({ children }: { children: ReactNode }) {
   return <>{children}</>
 }
 
+function RootLayout() {
+  return (
+    <>
+      <Header />
+      <Outlet />
+    </>
+  )
+}
+
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: withSuspense(<LandingPage />),
-  },
-  {
-    path: '/login',
-    element: withSuspense(<LoginCandidatoPage />),
-  },
-  {
-    path: '/login/candidato',
-    element: withSuspense(<LoginCandidatoPage />),
-  },
-  {
-    path: '/login/empresa',
-    element: withSuspense(<LoginEmpresaPage />),
-  },
-  {
-    path: '/empresa/solicitar-proposta',
-    element: withSuspense(<SolicitarPropostaPage />),
-  },
-  {
-    path: '/cadastrar/candidato',
-    element: withSuspense(<CadastroCandidatoPage />),
-  },
-  {
-    path: '/para-empresas',
-    element: withSuspense(<ParaEmpresasPage />),
-  },
-  {
-    path: '/para-candidatos',
-    element: withSuspense(<ParaCandidatosPage />),
-  },
-  {
-    path: '/vagas/candidato',
-    element: withSuspense(
-      <ProtectedRoute>
-        <VagasCandidatoPage />
-      </ProtectedRoute>,
-    ),
-  },
-  {
-    path: '/perfil/candidato',
-    element: withSuspense(
-      <ProtectedRoute>
-        <PerfilCandidatoPage />
-      </ProtectedRoute>,
-    ),
-  },
-  {
-    path: '*',
-    element: <Navigate to="/" replace />,
+    element: <RootLayout />,
+    children: [
+      {
+        path: '/',
+        element: withSuspense(<LandingPage />),
+      },
+      {
+        path: '/login',
+        element: withSuspense(<LoginCandidatoPage />),
+      },
+      {
+        path: '/login/candidato',
+        element: withSuspense(<LoginCandidatoPage />),
+      },
+      {
+        path: '/login/empresa',
+        element: withSuspense(<LoginEmpresaPage />),
+      },
+      {
+        path: '/empresa/solicitar-proposta',
+        element: withSuspense(<SolicitarPropostaPage />),
+      },
+      {
+        path: '/cadastrar/candidato',
+        element: withSuspense(<CadastroCandidatoPage />),
+      },
+      {
+        path: '/para-empresas',
+        element: withSuspense(<ParaEmpresasPage />),
+      },
+      {
+        path: '/para-candidatos',
+        element: withSuspense(<ParaCandidatosPage />),
+      },
+      {
+        path: '/vagas/candidato',
+        element: withSuspense(
+          <ProtectedRoute>
+            <VagasCandidatoPage />
+          </ProtectedRoute>,
+        ),
+      },
+      {
+        path: '/perfil/candidato',
+        element: withSuspense(
+          <ProtectedRoute>
+            <PerfilCandidatoPage />
+          </ProtectedRoute>,
+        ),
+      },
+      {
+        path: '*',
+        element: <Navigate to="/" replace />,
+      },
+    ],
   },
 ])
 

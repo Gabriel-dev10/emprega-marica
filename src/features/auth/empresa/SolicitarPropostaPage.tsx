@@ -26,10 +26,9 @@ export default function SolicitarPropostaPage() {
     setIsSubmitting(true)
 
     try {
-      const res = await sendSolicitacaoEmpresa(data)
-      console.log('Solicitação mock enviada', res)
+      await sendSolicitacaoEmpresa(data)
     } catch (err) {
-      console.error('Erro ao enviar mock', err)
+      console.error(err)
     }
 
     setTimeout(() => {
@@ -40,17 +39,17 @@ export default function SolicitarPropostaPage() {
 
   return (
     <AuthLayout subtitle="Solicitar proposta">
-      <div className="bg-neutral-900 border border-neutral-800 rounded-xl p-6 sm:p-8">
-        <h2 className="text-white text-lg font-semibold mb-4">Solicitar proposta</h2>
-        <p className="text-neutral-400 mb-6">
+      <div className="bg-neutral-900/40 backdrop-blur-md border border-neutral-800 rounded-2xl p-6 sm:p-8 shadow-2xl">
+        <h2 className="text-text-default text-xl font-bold mb-2">Solicitar proposta</h2>
+        <p className="text-text-subtle text-sm mb-8 leading-relaxed">
           Preencha os dados ou envie uma solicitação para que possamos avaliar e liberar o acesso.
         </p>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
           <Input
             label="Nome"
             placeholder="Nome da pessoa de contato"
-            icon={<User size={16} />}
+            icon={<User size={18} className="text-text-subtle" />}
             error={errors.nome?.message}
             {...register('nome')}
           />
@@ -58,32 +57,40 @@ export default function SolicitarPropostaPage() {
           <Input
             label="CNPJ"
             placeholder="00.000.000/0000-00"
-            icon={<Building2 size={16} />}
+            icon={<Building2 size={18} className="text-text-subtle" />}
             error={errors.cnpj?.message}
-            {...register('cnpj')}
-            onChange={(e) => setValue('cnpj', maskCNPJ((e.target as HTMLInputElement).value))}
+            {...register('cnpj', {
+              onChange: (e) => {
+                e.target.value = maskCNPJ(e.target.value)
+                setValue('cnpj', e.target.value)
+              },
+            })}
           />
 
           <Input
             label="Celular"
             placeholder="(00) 90000-0000"
-            icon={<Phone size={16} />}
+            icon={<Phone size={18} className="text-text-subtle" />}
             error={errors.celular?.message}
-            {...register('celular')}
-            onChange={(e) => setValue('celular', maskCelular((e.target as HTMLInputElement).value))}
+            {...register('celular', {
+              onChange: (e) => {
+                e.target.value = maskCelular(e.target.value)
+                setValue('celular', e.target.value)
+              },
+            })}
           />
 
           <TextareaField
             label="Mensagem (até 800 caracteres)"
             placeholder="Descreva sua solicitação e informações adicionais"
             error={errors.mensagem?.message}
-            rows={6}
-            {...register('mensagem')}
+            rows={5}
             maxLength={800}
+            {...register('mensagem')}
           />
 
-          <div className="mt-2">
-            <Button type="submit" fullWidth disabled={isSubmitting}>
+          <div className="pt-2">
+            <Button type="submit" fullWidth disabled={isSubmitting} size="lg">
               {isSubmitting ? 'Enviando...' : 'Enviar solicitação'}
             </Button>
           </div>

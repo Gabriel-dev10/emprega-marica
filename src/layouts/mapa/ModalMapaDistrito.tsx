@@ -11,9 +11,10 @@ const MAPA_DISTRITO: Record<number, string> = {
 
 interface ModalMapaDistritoProps {
   onSelecionar: (value: string) => void
+  customTrigger?: React.ReactNode
 }
 
-export function ModalMapaDistrito({ onSelecionar }: ModalMapaDistritoProps) {
+export function ModalMapaDistrito({ onSelecionar, customTrigger }: ModalMapaDistritoProps) {
   const [aberto, setAberto] = useState(false)
 
   function fechar() {
@@ -27,14 +28,24 @@ export function ModalMapaDistrito({ onSelecionar }: ModalMapaDistritoProps) {
 
   return (
     <>
-      <button
-        type="button"
-        onClick={() => setAberto(true)}
-        className="flex items-center gap-1.5 text-xs text-primary-400 hover:text-primary-300 transition-colors mt-1 ml-0.5"
-      >
-        <MapIcon size={13} />
-        Não sei meu distrito — ver no mapa
-      </button>
+      {customTrigger ? (
+        <button
+          type="button"
+          onClick={() => setAberto(true)}
+          className="cursor-pointer inline-block bg-transparent border-none p-0 text-left appearance-none"
+        >
+          {customTrigger}
+        </button>
+      ) : (
+        <button
+          type="button"
+          onClick={() => setAberto(true)}
+          className="flex items-center gap-1.5 text-xs text-primary-400 hover:text-primary-300 transition-colors mt-1 ml-0.5"
+        >
+          <MapIcon size={13} />
+          Não sei meu distrito — ver no mapa
+        </button>
+      )}
 
       {aberto && (
         <div className="fixed inset-0 z-9999 flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md rounded-2xl">

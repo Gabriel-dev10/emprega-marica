@@ -1,4 +1,4 @@
-import { Briefcase, FileText, MapPin, User } from 'lucide-react'
+import { Briefcase, FileText, Phone, User, MapPin } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from '../../../components/Button'
@@ -33,8 +33,8 @@ export default function VagasCandidatoPage() {
               </span>
               <span className="hidden sm:block text-neutral-700">•</span>
               <span className="flex items-center gap-1.5">
-                <MapPin size={16} className="text-text-muted" />
-                {user?.telefone || '(00) 00000-0000'}
+                <Phone size={16} className="text-text-muted" />
+                {user?.telefone || '(21) 99999-9999'}
               </span>
             </div>
           </div>

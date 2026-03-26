@@ -1,5 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod'
-import { BookOpen, Briefcase, ListChecks, Plus, Trash2, User } from 'lucide-react'
+import { BookOpen, Briefcase, ListChecks, Plus, Trash2, User, ArrowLeft, CheckCircle2 } from 'lucide-react'
 import { useState } from 'react'
 import { useFieldArray, useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
@@ -53,36 +53,39 @@ export default function PerfilCandidatoPage() {
     console.log('Perfil salvo:', data)
     setSaved(true)
     setTimeout(() => setSaved(false), 3000)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   return (
-    <div className="min-h-screen bg-neutral-950">
-      <main className="max-w-5xl mx-auto px-4 py-10">
-        <div className="mb-8">
-          <h1 className="text-2xl font-bold text-white">Meu Currículo</h1>
-          <p className="text-neutral-400 mt-1 text-sm">
-            Preencha suas informações para que as empresas possam encontrar você.
-          </p>
-        </div>
-
-        <Section icon={<User size={18} />} title="perfil do usuário">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <div>
-              <p className="text-white font-semibold">{user?.nome}</p>
-              <p className="text-sm text-neutral-400">{user?.email}</p>
-              <p className="text-xs text-neutral-500 mt-1">Perfil: Candidato</p>
-            </div>
-            <Link to="/vagas/candidato">
-              <Button variant="outline" size="sm">
-                Ver vagas para inscrição
-              </Button>
-            </Link>
+    <div className="min-h-screen bg-neutral-950 flex flex-col">
+      <main className="flex-1 max-w-5xl mx-auto w-full px-6 py-8 sm:py-12">
+        
+        <section className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10 bg-neutral-900 border border-neutral-800 rounded-2xl p-6 sm:p-8">
+          <div>
+            <h1 className="text-2xl sm:text-3xl font-bold text-text-default mb-2">Meu Currículo</h1>
+            <p className="text-text-subtle text-sm sm:text-base">
+              Mantenha suas informações atualizadas para se destacar nas vagas.
+            </p>
           </div>
-        </Section>
+          <Link to="/vagas/candidato" className="w-full md:w-auto">
+            <Button variant="outline" className="w-full md:w-auto flex items-center justify-center gap-2 border-neutral-700 hover:border-neutral-600 text-text-default">
+              <ArrowLeft size={18} />
+              Voltar para Vagas
+            </Button>
+          </Link>
+        </section>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+        {saved && (
+          <div className="mb-8 p-4 bg-green-500/10 border border-green-500/20 rounded-lg flex items-center gap-3 text-green-400 animate-fade-in">
+            <CheckCircle2 size={20} />
+            <p className="font-medium">Seu currículo foi salvo com sucesso!</p>
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-10">
+          
           <Section icon={<User size={18} />} title="Dados Pessoais">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <Input
                 label="Nome Completo"
                 placeholder="Seu nome completo"
@@ -135,7 +138,7 @@ export default function PerfilCandidatoPage() {
           </Section>
 
           <Section icon={<User size={18} />} title="Sobre Mim">
-            <div className="space-y-5">
+            <div className="space-y-6">
               <TextareaField
                 label="Resumo Profissional"
                 placeholder="Escreva um breve resumo sobre você, suas experiências e qualidades..."
@@ -160,21 +163,22 @@ export default function PerfilCandidatoPage() {
                 return (
                   <div
                     key={field.id}
-                    className="bg-neutral-800/50 border border-neutral-700 rounded-lg p-5 space-y-4"
+                    className="bg-neutral-900 border border-neutral-800 rounded-xl p-6 space-y-5 transition-colors hover:border-neutral-700"
                   >
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-sm font-medium text-neutral-300">
+                    <div className="flex items-center justify-between pb-2 border-b border-neutral-800">
+                      <span className="text-sm font-semibold uppercase tracking-wider text-text-subtle">
                         Experiência {idx + 1}
                       </span>
                       <button
                         type="button"
                         onClick={() => experiencias.remove(idx)}
-                        className="text-neutral-500 hover:text-red-400 transition-colors"
+                        className="text-text-subtle hover:text-red-400 transition-colors flex items-center gap-1.5 text-sm font-medium"
                       >
                         <Trash2 size={16} />
+                        Remover
                       </button>
                     </div>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <Input
                         label="Empresa"
                         placeholder="Nome da empresa"
@@ -201,10 +205,10 @@ export default function PerfilCandidatoPage() {
                         />
                       )}
                     </div>
-                    <label className="flex items-center gap-2 text-sm text-neutral-400 cursor-pointer">
+                    <label className="flex items-center gap-2.5 text-sm text-text-muted cursor-pointer w-fit">
                       <input
                         type="checkbox"
-                        className="accent-primary-500"
+                        className="w-4 h-4 rounded border-neutral-700 bg-neutral-800 text-primary-500 focus:ring-primary-500/40 focus:ring-offset-neutral-900"
                         {...register(`experiencias.${idx}.atual`)}
                       />
                       Trabalho aqui atualmente
@@ -230,9 +234,9 @@ export default function PerfilCandidatoPage() {
                     descricao: '',
                   })
                 }
-                className="flex items-center gap-2 text-sm text-primary-400 hover:text-primary-300 transition-colors border border-dashed border-neutral-700 hover:border-primary-500/50 rounded-lg px-4 py-3 w-full justify-center"
+                className="flex items-center justify-center gap-2 text-sm font-medium text-text-primary hover:text-text-link hover:bg-primary-500/5 transition-all border border-dashed border-neutral-700 hover:border-primary-500/50 rounded-xl px-4 py-4 w-full"
               >
-                <Plus size={16} />
+                <Plus size={18} />
                 Adicionar Experiência
               </button>
             </div>
@@ -243,19 +247,22 @@ export default function PerfilCandidatoPage() {
               {formacoes.fields.map((field, idx) => (
                 <div
                   key={field.id}
-                  className="bg-neutral-800/50 border border-neutral-700 rounded-lg p-5 space-y-4"
+                  className="bg-neutral-900 border border-neutral-800 rounded-xl p-6 space-y-5 transition-colors hover:border-neutral-700"
                 >
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-sm font-medium text-neutral-300">Formação {idx + 1}</span>
+                  <div className="flex items-center justify-between pb-2 border-b border-neutral-800">
+                    <span className="text-sm font-semibold uppercase tracking-wider text-text-subtle">
+                      Formação {idx + 1}
+                    </span>
                     <button
                       type="button"
                       onClick={() => formacoes.remove(idx)}
-                      className="text-neutral-500 hover:text-red-400 transition-colors"
+                      className="text-text-subtle hover:text-red-400 transition-colors flex items-center gap-1.5 text-sm font-medium"
                     >
                       <Trash2 size={16} />
+                      Remover
                     </button>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <Input
                       label="Instituição"
                       placeholder="Nome da escola ou universidade"
@@ -300,9 +307,9 @@ export default function PerfilCandidatoPage() {
                     dataConclusao: '',
                   })
                 }
-                className="flex items-center gap-2 text-sm text-primary-400 hover:text-primary-300 transition-colors border border-dashed border-neutral-700 hover:border-primary-500/50 rounded-lg px-4 py-3 w-full justify-center"
+                className="flex items-center justify-center gap-2 text-sm font-medium text-text-primary hover:text-text-link hover:bg-primary-500/5 transition-all border border-dashed border-neutral-700 hover:border-primary-500/50 rounded-xl px-4 py-4 w-full"
               >
-                <Plus size={16} />
+                <Plus size={18} />
                 Adicionar Formação
               </button>
             </div>
@@ -310,7 +317,7 @@ export default function PerfilCandidatoPage() {
 
           <Section icon={<ListChecks size={18} />} title="Habilidades">
             <div className="space-y-4">
-              <div className="flex gap-2">
+              <div className="flex gap-3">
                 <input
                   type="text"
                   value={novaHabilidade}
@@ -325,8 +332,8 @@ export default function PerfilCandidatoPage() {
                       }
                     }
                   }}
-                  placeholder="Digite uma habilidade e pressione Enter"
-                  className="flex-1 h-11 rounded-lg bg-neutral-800 border border-neutral-700 text-white placeholder:text-neutral-500 px-4 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/40 focus:border-primary-500/50"
+                  placeholder="Digite uma habilidade e pressione Enter (ex: Pacote Office)"
+                  className="flex-1 h-12 rounded-xl bg-neutral-900 border border-neutral-700 text-text-default placeholder:text-text-subtle px-4 text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/40 focus:border-primary-500/50 transition-all"
                 />
                 <button
                   type="button"
@@ -337,25 +344,26 @@ export default function PerfilCandidatoPage() {
                       setNovaHabilidade('')
                     }
                   }}
-                  className="px-4 bg-neutral-800 border border-neutral-700 text-neutral-300 hover:text-white rounded-lg text-sm transition-colors"
+                  className="px-5 bg-neutral-800 border border-neutral-700 text-text-subtle hover:text-text-default hover:bg-neutral-700 rounded-xl text-sm transition-all flex items-center gap-2 font-medium"
                 >
-                  <Plus size={16} />
+                  <Plus size={18} />
+                  <span className="hidden sm:block">Adicionar</span>
                 </button>
               </div>
               {habilidades.fields.length > 0 && (
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2 pt-2">
                   {habilidades.fields.map((field, idx) => (
                     <span
                       key={field.id}
-                      className="flex items-center gap-1.5 bg-neutral-800 border border-neutral-700 text-neutral-300 px-3 py-1.5 rounded-md text-sm"
+                      className="flex items-center gap-2 bg-neutral-800 border border-neutral-700 text-text-muted px-3.5 py-2 rounded-lg text-sm font-medium"
                     >
                       {field.nome}
                       <button
                         type="button"
                         onClick={() => habilidades.remove(idx)}
-                        className="text-neutral-500 hover:text-red-400 transition-colors"
+                        className="text-text-subtle hover:text-red-400 transition-colors bg-neutral-900/50 rounded-full p-0.5"
                       >
-                        ×
+                        <Trash2 size={14} />
                       </button>
                     </span>
                   ))}
@@ -369,19 +377,22 @@ export default function PerfilCandidatoPage() {
               {certificados.fields.map((field, idx) => (
                 <div
                   key={field.id}
-                  className="bg-neutral-800/50 border border-neutral-700 rounded-lg p-5"
+                  className="bg-neutral-900 border border-neutral-800 rounded-xl p-6 space-y-5 transition-colors hover:border-neutral-700"
                 >
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-sm font-medium text-neutral-300">Curso {idx + 1}</span>
+                  <div className="flex items-center justify-between pb-2 border-b border-neutral-800">
+                    <span className="text-sm font-semibold uppercase tracking-wider text-text-subtle">
+                      Curso {idx + 1}
+                    </span>
                     <button
                       type="button"
                       onClick={() => certificados.remove(idx)}
-                      className="text-neutral-500 hover:text-red-400 transition-colors"
+                      className="text-text-subtle hover:text-red-400 transition-colors flex items-center gap-1.5 text-sm font-medium"
                     >
                       <Trash2 size={16} />
+                      Remover
                     </button>
                   </div>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <Input
                       label="Nome do Curso"
                       placeholder="Ex: Excel Avançado"
@@ -417,18 +428,23 @@ export default function PerfilCandidatoPage() {
                     cargaHoraria: '',
                   })
                 }
-                className="flex items-center gap-2 text-sm text-primary-400 hover:text-primary-300 transition-colors border border-dashed border-neutral-700 hover:border-primary-500/50 rounded-lg px-4 py-3 w-full justify-center"
+                className="flex items-center justify-center gap-2 text-sm font-medium text-text-primary hover:text-text-link hover:bg-primary-500/5 transition-all border border-dashed border-neutral-700 hover:border-primary-500/50 rounded-xl px-4 py-4 w-full"
               >
-                <Plus size={16} />
+                <Plus size={18} />
                 Adicionar Curso
               </button>
             </div>
           </Section>
 
-          <div className="flex items-center justify-end gap-4 pt-4 border-t border-neutral-800">
-            {saved && <span className="text-sm text-green-400">Currículo salvo com sucesso!</span>}
-            <Button type="submit" size="lg">
-              Salvar Currículo
+          <div className="flex flex-col-reverse sm:flex-row items-center justify-end gap-4 mt-12 pt-8 border-t border-neutral-800 pb-4">
+            {saved && (
+              <span className="text-sm font-medium text-green-400 flex items-center gap-2">
+                <CheckCircle2 size={18} />
+                Salvo com sucesso!
+              </span>
+            )}
+            <Button type="submit" size="lg" className="w-full sm:w-auto px-10">
+              Salvar Alterações
             </Button>
           </div>
         </form>

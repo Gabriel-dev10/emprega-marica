@@ -1,6 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Button } from "../../../components/Button";
+import { Button } from "../../../shared/ui/button";
 import { FEATURED_JOBS } from "../../../shared/api/mock/jobs";
 import { JobCard } from "./ui/JobCard";
 

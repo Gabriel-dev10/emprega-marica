@@ -1,7 +1,7 @@
 import { Check, Star, X, Zap } from "lucide-react";
 
 import { useState } from "react";
-import { Button } from "../../../components/Button";
+import { Button } from "../../../shared/ui/button";
 import { PLANS } from "../../../shared/api/mock/plans";
 import { SectionHeader } from "./ui/SectionHeader";
 

@@ -1,8 +1,8 @@
 import { Briefcase, FileText, Phone, User, MapPin } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "../../../components/Button";
-import { Card } from "../../../components/Card";
+import { Button } from "../../../shared/ui/button";
+import { Card } from "../../../shared/ui/card";
 import { Footer } from "../../../layouts/footer/Footer";
 import { FEATURED_JOBS } from "../../../shared/api/mock/jobs";
 import { useAuth } from "../../../shared/context/auth-context";

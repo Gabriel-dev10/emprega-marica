@@ -1,6 +1,6 @@
 import { ChevronDown, LogOut, User } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Button } from "../../components/Button";
+import { Button } from "../../shared/ui/button";
 import { useAuth } from "../../shared/context/auth-context";
 
 export function Header() {

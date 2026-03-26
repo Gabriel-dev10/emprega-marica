@@ -3,14 +3,14 @@ import { Lock, User } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { Button } from "../../../components/Button";
-import { Input } from "../../../components/Input";
+import { Button } from "../../../shared/ui/button";
+import { Input } from "../../../shared/ui/input";
 import { useAuth } from "../../../shared/context/auth-context";
 import {
   type LoginCandidatoForm,
   loginCandidatoSchema,
 } from "../../../shared/lib/schemas";
-import { AuthLayout } from "../../layout/AuthLayout";
+import { AuthLayout } from "../../../layouts/auth/AuthLayout";
 
 export default function LoginCandidatoPage() {
   const { login } = useAuth();
@@ -39,7 +39,7 @@ export default function LoginCandidatoPage() {
 
   return (
     <AuthLayout subtitle="Área do Candidato">
-      <div className="bg-neutral-900/50 backdrop-blur-md border border-white/5 rounded-2xl p-6 sm:p-8 shadow-2xl shadow-black/40">
+      <div className="bg-neutral-900/40 backdrop-blur-md border border-neutral-800 rounded-2xl p-6 sm:p-8 shadow-2xl shadow-black/40">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
           <Input
             label="Email"

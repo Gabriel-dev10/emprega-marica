@@ -3,14 +3,14 @@ import { Building2, Lock } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { Button } from "../../../components/Button";
-import { Input } from "../../../components/Input";
+import { Button } from "../../../shared/ui/button";
+import { Input } from "../../../shared/ui/input";
 import { useAuth } from "../../../shared/context/auth-context";
 import {
   type LoginEmpresaForm,
   loginEmpresaSchema,
 } from "../../../shared/lib/schemas";
-import { AuthLayout } from "../../layout/AuthLayout";
+import { AuthLayout } from "../../../layouts/auth/AuthLayout";
 
 export default function LoginEmpresaPage() {
   const { login } = useAuth();
@@ -39,7 +39,7 @@ export default function LoginEmpresaPage() {
 
   return (
     <AuthLayout subtitle="Área da Empresa">
-      <div className="bg-neutral-900/50 backdrop-blur-md border border-white/5 rounded-2xl p-6 sm:p-8 shadow-2xl shadow-black/40">
+      <div className="bg-neutral-900/40 backdrop-blur-md border border-neutral-800 rounded-2xl p-6 sm:p-8 shadow-2xl shadow-black/40">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
           <Input
             label="CNPJ ou Email"
@@ -60,7 +60,7 @@ export default function LoginEmpresaPage() {
           <div className="flex justify-end">
             <a
               href="/"
-              className="text-xs text-primary-400 hover:text-primary-300 transition-colors"
+              className="text-xs text-text-link hover:underline transition-colors"
             >
               Esqueceu a senha?
             </a>

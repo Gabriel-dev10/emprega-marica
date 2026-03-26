@@ -23,7 +23,7 @@ export function AuthLayout({
       <div className="absolute top-8 left-8 z-30">
         <Link
           to="/"
-          className="flex items-center text-sm font-medium text-neutral-400 hover:text-white transition-all group"
+          className="flex items-center text-sm font-medium text-text-muted hover:text-text-default transition-all group"
         >
           <Home
             size={18}
@@ -35,11 +35,11 @@ export function AuthLayout({
       <div className="w-full max-w-lg flex flex-col relative z-20 px-6 py-12">
         <div className="w-full text-center mb-8">
           <Link to="/" className="inline-block">
-            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-white mb-2">
-              EmpregaAí<span className="text-blue-500">Maricá</span>
+            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-text-default mb-2">
+              EmpregaAí<span className="text-text-primary">Maricá</span>
             </h1>
           </Link>
-          <p className="text-neutral-400 text-lg">{subtitle}</p>
+          <p className="text-text-subtle text-lg">{subtitle}</p>
         </div>
 
         <div className="w-full">{children}</div>

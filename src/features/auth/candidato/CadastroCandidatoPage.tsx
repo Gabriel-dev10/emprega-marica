@@ -6,6 +6,14 @@ import { Button } from "@/shared/ui/button";
 import { Input } from "@/shared/ui/input";
 import { Select } from "@/shared/ui/select";
 import { AuthLayout } from "@/layouts/auth/AuthLayout";
+import { ModalMapaDistrito } from "@/layouts/mapa/ModalMapaDistrito";
+import { DISTRITOS_MARICA } from "@/shared/lib/constants";
+import {
+  type CadastroCandidatoForm,
+  cadastroCandidatoSchema,
+  maskCelular,
+  maskCPF,
+} from "@/shared/lib/schemas";
 
 export default function CadastroCandidatoPage() {
   const {
@@ -58,7 +66,7 @@ export default function CadastroCandidatoPage() {
               {...register("distrito")}
             />
             <ModalMapaDistrito
-              onSelecionar={(value) =>
+              onSelecionar={(value: string) =>
                 setValue("distrito", value, { shouldValidate: true })
               }
             />

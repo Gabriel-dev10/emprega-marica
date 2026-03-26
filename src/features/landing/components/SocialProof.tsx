@@ -1,4 +1,4 @@
-import { SocialStatCard } from "./ui/SocialStatCard";
+import { SocialStatCard } from "@/features/landing/components/ui/SocialStatCard";
 
 export function SocialProof() {
   return (

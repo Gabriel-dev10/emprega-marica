@@ -1,7 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { type ReactNode, useState } from "react";
-import { AuthProvider } from "../context/auth-context";
+import { AuthProvider } from "@/shared/context/auth-context";
 
 type AppProvidersProps = {
   children: ReactNode;

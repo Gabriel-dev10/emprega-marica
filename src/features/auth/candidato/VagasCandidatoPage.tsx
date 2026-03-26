@@ -1,12 +1,12 @@
 import { Briefcase, FileText, Phone, User, MapPin } from "lucide-react";
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "../../../shared/ui/button";
-import { Card } from "../../../shared/ui/card";
-import { Footer } from "../../../layouts/footer/Footer";
-import { FEATURED_JOBS } from "../../../shared/api/mock/jobs";
-import { useAuth } from "../../../shared/context/auth-context";
-import { JobSearchForm } from "../../landing/components/ui/JobSearchForm";
+import { Button } from "@/shared/ui/button";
+import { Card } from "@/shared/ui/card";
+import { Footer } from "@/layouts/footer/Footer";
+import { FEATURED_JOBS } from "@/shared/api/mock/jobs";
+import { useAuth } from "@/shared/context/auth-context";
+import { JobSearchForm } from "@/features/landing/components/ui/JobSearchForm";
 
 export default function VagasCandidatoPage() {
   const { user } = useAuth();

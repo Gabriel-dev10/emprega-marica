@@ -1,6 +1,6 @@
 import { Bell, MapPin, ShieldCheck, TrendingUp } from "lucide-react";
 
-import { Button } from "../../../shared/ui/button";
+import { Button } from "@/shared/ui/button";
 
 export function Candidates() {
   return (

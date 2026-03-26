@@ -1,6 +1,6 @@
 import { Map as MapIcon, X } from "lucide-react";
 import { useState } from "react";
-import { MapaMarica } from "./MapaMarica";
+import { MapaMarica } from "@/layouts/mapa/MapaMarica";
 
 const MAPA_DISTRITO: Record<number, string> = {
   1: "centro",

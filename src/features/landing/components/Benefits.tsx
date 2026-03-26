@@ -1,6 +1,6 @@
-import { Card } from "../../../shared/ui/card";
-import { BENEFITS } from "../../../shared/api/mock/benefits";
-import { SectionHeader } from "./ui/SectionHeader";
+import { Card } from "@/shared/ui/card";
+import { BENEFITS } from "@/shared/api/mock/benefits";
+import { SectionHeader } from "@/features/landing/components/ui/SectionHeader";
 
 export function Benefits() {
   return (

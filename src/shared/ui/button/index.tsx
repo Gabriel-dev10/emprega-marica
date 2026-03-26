@@ -1,6 +1,9 @@
 import * as React from "react";
-import { cn } from "../../lib/utils";
-import { type ButtonVariants, buttonVariants } from "./button.variants";
+import { cn } from "@/shared/lib/utils";
+import {
+  type ButtonVariants,
+  buttonVariants,
+} from "@/shared/ui/button/button.variants";
 
 type BaseButtonProps = React.ComponentPropsWithoutRef<"button"> &
   ButtonVariants;

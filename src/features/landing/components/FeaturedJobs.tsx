@@ -1,8 +1,8 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Button } from "../../../shared/ui/button";
-import { FEATURED_JOBS } from "../../../shared/api/mock/jobs";
-import { JobCard } from "./ui/JobCard";
+import { Button } from "@/shared/ui/button";
+import { FEATURED_JOBS } from "@/shared/api/mock/jobs";
+import { JobCard } from "@/features/landing/components/ui/JobCard";
 
 export function FeaturedJobs() {
   return (

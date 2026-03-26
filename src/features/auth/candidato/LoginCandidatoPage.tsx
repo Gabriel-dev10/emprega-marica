@@ -3,14 +3,14 @@ import { Lock, User } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { Button } from "../../../shared/ui/button";
-import { Input } from "../../../shared/ui/input";
-import { useAuth } from "../../../shared/context/auth-context";
+import { Button } from "@/shared/ui/button";
+import { Input } from "@/shared/ui/input";
+import { useAuth } from "@/shared/context/auth-context";
 import {
   type LoginCandidatoForm,
   loginCandidatoSchema,
-} from "../../../shared/lib/schemas";
-import { AuthLayout } from "../../../layouts/auth/AuthLayout";
+} from "@/shared/lib/schemas";
+import { AuthLayout } from "@/layouts/auth/AuthLayout";
 
 export default function LoginCandidatoPage() {
   const { login } = useAuth();

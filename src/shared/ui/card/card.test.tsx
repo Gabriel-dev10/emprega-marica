@@ -1,6 +1,6 @@
 import { describe, expect, it } from "bun:test";
 import { render, screen } from "@testing-library/react";
-import { Card } from "./index";
+import { Card } from "@/shared/ui/card/index";
 
 describe("Card", () => {
   it("renders children correctly", () => {

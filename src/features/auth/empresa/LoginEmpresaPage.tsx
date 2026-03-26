@@ -3,14 +3,14 @@ import { Building2, Lock } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { Button } from "../../../shared/ui/button";
-import { Input } from "../../../shared/ui/input";
-import { useAuth } from "../../../shared/context/auth-context";
+import { Button } from "@/shared/ui/button";
+import { Input } from "@/shared/ui/input";
+import { useAuth } from "@/shared/context/auth-context";
 import {
   type LoginEmpresaForm,
   loginEmpresaSchema,
-} from "../../../shared/lib/schemas";
-import { AuthLayout } from "../../../layouts/auth/AuthLayout";
+} from "@/shared/lib/schemas";
+import { AuthLayout } from "@/layouts/auth/AuthLayout";
 
 export default function LoginEmpresaPage() {
   const { login } = useAuth();

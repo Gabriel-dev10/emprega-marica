@@ -1,7 +1,7 @@
 import { ChevronDown, MapPin, Search } from "lucide-react";
 import { useState } from "react";
-import { Button } from "../../../../shared/ui/button";
-import { DistrictSelect } from "../../../../shared/ui/district-select";
+import { Button } from "@/shared/ui/button";
+import { DistrictSelect } from "@/shared/ui/district-select";
 
 export function JobSearchForm() {
   const [distrito, setDistrito] = useState("");

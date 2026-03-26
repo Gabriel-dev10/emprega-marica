@@ -1,6 +1,6 @@
 import { describe, expect, it } from "bun:test";
 import { render, screen } from "@testing-library/react";
-import { Button } from "./index";
+import { Button } from "@/shared/ui/button/index";
 
 describe("Button", () => {
   it("renders children correctly", () => {

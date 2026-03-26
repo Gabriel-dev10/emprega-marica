@@ -3,16 +3,16 @@ import { Building2, Phone, User } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { Button } from "../../../shared/ui/button";
-import { Input } from "../../../shared/ui/input";
-import { sendSolicitacaoEmpresa } from "../../../shared/api/mock/empresaSolicitations";
-import { maskCelular, maskCNPJ } from "../../../shared/lib/schemas";
-import { AuthLayout } from "../../../layouts/auth/AuthLayout";
-import { Textarea } from "../../../shared/ui/textarea";
+import { Button } from "@/shared/ui/button";
+import { Input } from "@/shared/ui/input";
+import { sendSolicitacaoEmpresa } from "@/shared/api/mock/empresaSolicitations";
+import { maskCelular, maskCNPJ } from "@/shared/lib/schemas";
+import { AuthLayout } from "@/layouts/auth/AuthLayout";
+import { Textarea } from "@/shared/ui/textarea";
 import {
   type SolicitarForm,
   solicitarSchema,
-} from "../../schema/empresa.schema";
+} from "@/features/schema/empresa.schema";
 
 export default function SolicitarPropostaPage() {
   const navigate = useNavigate();

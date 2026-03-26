@@ -1,6 +1,6 @@
 import { Briefcase, MapPin, TrendingUp } from "lucide-react";
-import { JobSearchForm } from "../components/ui/JobSearchForm";
-import { StatCard } from "./ui/StatCard";
+import { JobSearchForm } from "@/features/landing/components/ui/JobSearchForm";
+import { StatCard } from "@/features/landing/components/ui/StatCard";
 
 export function Hero() {
   return (

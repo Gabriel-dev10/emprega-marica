@@ -12,20 +12,20 @@ import {
 import { useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { Button } from "../../../shared/ui/button";
-import { Input } from "../../../shared/ui/input";
-import { Select } from "../../../shared/ui/select";
-import { Footer } from "../../../layouts/footer/Footer";
-import { useAuth } from "../../../shared/context/auth-context";
-import { DISTRITOS_MARICA } from "../../../shared/lib/constants";
-import { maskCelular, maskCPF } from "../../../shared/lib/schemas";
-import { Section } from "../../../shared/ui/section";
-import { Textarea } from "../../../shared/ui/textarea";
+import { Button } from "@/shared/ui/button";
+import { Input } from "@/shared/ui/input";
+import { Select } from "@/shared/ui/select";
+import { Footer } from "@/layouts/footer/Footer";
+import { useAuth } from "@/shared/context/auth-context";
+import { DISTRITOS_MARICA } from "@/shared/lib/constants";
+import { maskCelular, maskCPF } from "@/shared/lib/schemas";
+import { Section } from "@/shared/ui/section";
+import { Textarea } from "@/shared/ui/textarea";
 import {
   GRAUS,
   type PerfilForm,
   perfilSchema,
-} from "../../schema/candidato.schema";
+} from "@/features/schema/candidato.schema";
 
 export default function PerfilCandidatoPage() {
   const { user } = useAuth();

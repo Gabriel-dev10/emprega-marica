@@ -2,10 +2,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Lock, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { Button } from "../../../shared/ui/button";
-import { Input } from "../../../shared/ui/input";
-import { Select } from "../../../shared/ui/select";
-import { AuthLayout } from "../../../layouts/auth/AuthLayout";
+import { Button } from "@/shared/ui/button";
+import { Input } from "@/shared/ui/input";
+import { Select } from "@/shared/ui/select";
+import { AuthLayout } from "@/layouts/auth/AuthLayout";
 
 export default function CadastroCandidatoPage() {
   const {

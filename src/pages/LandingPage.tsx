@@ -1,6 +1,6 @@
-import { FeaturedJobs } from "../features/landing/components/FeaturedJobs";
-import { Hero } from "../features/landing/components/Hero";
-import { Footer } from "../layouts/footer/Footer";
+import { FeaturedJobs } from "@/features/landing/components/FeaturedJobs";
+import { Hero } from "@/features/landing/components/Hero";
+import { Footer } from "@/layouts/footer/Footer";
 
 function LandingPage() {
   return (

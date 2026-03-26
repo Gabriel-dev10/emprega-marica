@@ -1,6 +1,9 @@
 import * as React from "react";
-import { cn } from "../../lib/utils";
-import { type CardVariants, cardVariants } from "./card.variants";
+import { cn } from "@/shared/lib/utils";
+import {
+  type CardVariants,
+  cardVariants,
+} from "@/shared/ui/card/card.variants";
 
 export interface CardProps
   extends React.ComponentPropsWithoutRef<"div">,

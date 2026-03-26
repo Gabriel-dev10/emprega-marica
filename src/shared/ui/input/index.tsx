@@ -1,6 +1,9 @@
 import * as React from "react";
-import { cn } from "../../lib/utils";
-import { type InputVariants, inputVariants } from "./input.variants";
+import { cn } from "@/shared/lib/utils";
+import {
+  type InputVariants,
+  inputVariants,
+} from "@/shared/ui/input/input.variants";
 
 export interface InputProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size">,

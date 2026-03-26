@@ -12,20 +12,20 @@ import {
 import { useState } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { Button } from "../../../components/Button";
-import { Input } from "../../../components/Input";
-import { Select } from "../../../components/Select";
-import { Footer } from "../../../layouts/footer/Footer";
-import { useAuth } from "../../../shared/context/auth-context";
-import { DISTRITOS_MARICA } from "../../../shared/lib/constants";
-import { maskCelular, maskCPF } from "../../../shared/lib/schemas";
-import { Section } from "../../layout/sectionCandidato";
-import { TextareaField } from "../../layout/textareaCandidato";
+import { Button } from "@/shared/ui/button";
+import { Input } from "@/shared/ui/input";
+import { Select } from "@/shared/ui/select";
+import { Footer } from "@/layouts/footer/Footer";
+import { useAuth } from "@/shared/context/auth-context";
+import { DISTRITOS_MARICA } from "@/shared/lib/constants";
+import { maskCelular, maskCPF } from "@/shared/lib/schemas";
+import { Section } from "@/shared/ui/section";
+import { Textarea } from "@/shared/ui/textarea";
 import {
   GRAUS,
   type PerfilForm,
   perfilSchema,
-} from "../../schema/candidato.schema";
+} from "@/features/schema/candidato.schema";
 
 export default function PerfilCandidatoPage() {
   const { user } = useAuth();
@@ -158,14 +158,14 @@ export default function PerfilCandidatoPage() {
 
           <Section icon={<User size={18} />} title="Sobre Mim">
             <div className="space-y-6">
-              <TextareaField
+              <Textarea
                 label="Resumo Profissional"
                 placeholder="Escreva um breve resumo sobre você, suas experiências e qualidades..."
                 rows={4}
                 error={errors.resumoProfissional?.message}
                 {...register("resumoProfissional")}
               />
-              <TextareaField
+              <Textarea
                 label="Objetivo Profissional"
                 placeholder="Qual tipo de vaga ou área você está buscando?"
                 rows={3}
@@ -235,7 +235,7 @@ export default function PerfilCandidatoPage() {
                       />
                       Trabalho aqui atualmente
                     </label>
-                    <TextareaField
+                    <Textarea
                       label="Descrição das atividades"
                       placeholder="Descreva suas principais responsabilidades..."
                       rows={3}

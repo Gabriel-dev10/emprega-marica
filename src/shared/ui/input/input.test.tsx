@@ -1,6 +1,6 @@
 import { describe, expect, it } from "bun:test";
 import { render, screen } from "@testing-library/react";
-import { Input } from "./index";
+import { Input } from "@/shared/ui/input/index";
 
 describe("Input", () => {
   it("renders with label correctly", () => {

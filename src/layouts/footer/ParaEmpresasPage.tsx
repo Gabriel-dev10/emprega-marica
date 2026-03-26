@@ -1,6 +1,6 @@
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Footer } from "./Footer";
+import { Footer } from "@/layouts/footer/Footer";
 
 export default function ParaEmpresasPage() {
   return (

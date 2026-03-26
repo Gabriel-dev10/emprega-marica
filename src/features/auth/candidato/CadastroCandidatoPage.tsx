@@ -2,18 +2,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Lock, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
-import { Button } from "../../../components/Button";
-import { Input } from "../../../components/Input";
-import { Select } from "../../../components/Select";
-import { ModalMapaDistrito } from "../../../layouts/mapa/ModalMapaDistrito";
-import { DISTRITOS_MARICA } from "../../../shared/lib/constants";
-import {
-  type CadastroCandidatoForm,
-  cadastroCandidatoSchema,
-  maskCelular,
-  maskCPF,
-} from "../../../shared/lib/schemas";
-import { AuthLayout } from "../../layout/AuthLayout";
+import { Button } from "@/shared/ui/button";
+import { Input } from "@/shared/ui/input";
+import { Select } from "@/shared/ui/select";
+import { AuthLayout } from "@/layouts/auth/AuthLayout";
 
 export default function CadastroCandidatoPage() {
   const {
@@ -32,7 +24,7 @@ export default function CadastroCandidatoPage() {
 
   return (
     <AuthLayout subtitle="Crie sua conta de candidato">
-      <div className="bg-neutral-900/50 backdrop-blur-md border border-white/5 rounded-2xl p-6 sm:p-8 shadow-2xl shadow-black/40">
+      <div className="bg-neutral-900/40 backdrop-blur-md border border-neutral-800 rounded-2xl p-6 sm:p-8 shadow-2xl shadow-black/40">
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
           <Input
             label="CPF"
@@ -109,11 +101,11 @@ export default function CadastroCandidatoPage() {
         </form>
       </div>
 
-      <p className="text-center text-sm text-neutral-500 mt-6">
+      <p className="text-center text-sm text-text-muted mt-6">
         Já tem conta?{" "}
         <Link
           to="/login"
-          className="text-primary-400 hover:text-primary-300 font-medium transition-colors"
+          className="text-text-primary hover:text-primary-300 font-medium transition-colors"
         >
           Entrar
         </Link>

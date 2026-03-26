@@ -1,8 +1,7 @@
-import type { SolicitarForm } from "../../../features/schema/empresa.schema";
+import type { SolicitarForm } from "@/features/schema/empresa.schema";
 
 const solicitacoes: SolicitarForm[] = [];
 
-// lista simples em memória de empresas aprovadas (usar email ou cnpj como chave)
 const approvedCompanies: string[] = [];
 
 export function getSolicitacoes() {

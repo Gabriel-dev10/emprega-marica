@@ -6,8 +6,8 @@ import {
   useMemo,
   useState,
 } from "react";
-import { isCompanyApproved } from "../api/mock/empresaSolicitations";
-import { MOCK_USERS } from "../api/mock/users";
+import { isCompanyApproved } from "@/shared/api/mock/empresaSolicitations";
+import { MOCK_USERS } from "@/shared/api/mock/users";
 
 export type UserRole = "candidato" | "empresa";
 

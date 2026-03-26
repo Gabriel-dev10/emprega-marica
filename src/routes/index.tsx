@@ -5,8 +5,8 @@ import {
   Outlet,
   RouterProvider,
 } from "react-router-dom";
-import { Header } from "../layouts/header/Header";
-import { useAuth } from "../shared/context/auth-context";
+import { Header } from "@/layouts/header/Header";
+import { useAuth } from "@/shared/context/auth-context";
 
 const LandingPage = lazy(() => import("../pages/LandingPage"));
 const LoginCandidatoPage = lazy(

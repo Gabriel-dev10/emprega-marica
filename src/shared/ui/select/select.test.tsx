@@ -1,6 +1,6 @@
 import { describe, expect, it } from "bun:test";
 import { render, screen } from "@testing-library/react";
-import { Select } from "./index";
+import { Select } from "@/shared/ui/select/index";
 
 const mockOptions = [
   { value: "1", label: "Option 1" },

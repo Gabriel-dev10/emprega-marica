@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { DISTRITOS_MARICA } from "../../lib/constants";
-import { cn } from "../../lib/utils";
+import { DISTRITOS_MARICA } from "@/shared/lib/constants";
+import { cn } from "@/shared/lib/utils";
 
 type DistrictSelectProps = {
   value: string;

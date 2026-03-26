@@ -1,9 +1,9 @@
 import { Check, Star, X, Zap } from "lucide-react";
 
 import { useState } from "react";
-import { Button } from "../../../components/Button";
-import { PLANS } from "../../../shared/api/mock/plans";
-import { SectionHeader } from "./ui/SectionHeader";
+import { Button } from "@/shared/ui/button";
+import { PLANS } from "@/shared/api/mock/plans";
+import { SectionHeader } from "@/features/landing/components/ui/SectionHeader";
 
 export function Services() {
   const [billingCycle, setBillingCycle] = useState<"monthly" | "yearly">(

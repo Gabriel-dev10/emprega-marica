@@ -23,7 +23,7 @@ export function AuthLayout({ children, subtitle = 'Acesse sua conta' }: AuthLayo
           className="flex items-center text-sm font-medium text-neutral-400 hover:text-white transition-all group"
         >
           <Home size={18} className="mr-2 group-hover:scale-110 transition-transform" />
-          Voltar para Home
+          Home
         </Link>
       </div>
       <div className="w-full max-w-lg flex flex-col relative z-20 px-6 py-12">

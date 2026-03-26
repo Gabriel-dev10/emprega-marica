@@ -1,1 +1,1 @@
-export { Input } from '../shared/ui/input'
+export { Input } from "../shared/ui/input";

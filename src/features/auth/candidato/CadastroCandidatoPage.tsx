@@ -1,19 +1,19 @@
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Lock, Mail, MapPin, Phone, ShieldCheck } from 'lucide-react'
-import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
-import { Button } from '../../../components/Button'
-import { Input } from '../../../components/Input'
-import { Select } from '../../../components/Select'
-import { ModalMapaDistrito } from '../../../layouts/mapa/ModalMapaDistrito'
-import { DISTRITOS_MARICA } from '../../../shared/lib/constants'
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Lock, Mail, MapPin, Phone, ShieldCheck } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import { Button } from "../../../components/Button";
+import { Input } from "../../../components/Input";
+import { Select } from "../../../components/Select";
+import { ModalMapaDistrito } from "../../../layouts/mapa/ModalMapaDistrito";
+import { DISTRITOS_MARICA } from "../../../shared/lib/constants";
 import {
   type CadastroCandidatoForm,
   cadastroCandidatoSchema,
   maskCelular,
   maskCPF,
-} from '../../../shared/lib/schemas'
-import { AuthLayout } from '../../layout/AuthLayout'
+} from "../../../shared/lib/schemas";
+import { AuthLayout } from "../../layout/AuthLayout";
 
 export default function CadastroCandidatoPage() {
   const {
@@ -23,12 +23,12 @@ export default function CadastroCandidatoPage() {
     formState: { errors },
   } = useForm<CadastroCandidatoForm>({
     resolver: zodResolver(cadastroCandidatoSchema),
-    defaultValues: { distrito: '' },
-  })
+    defaultValues: { distrito: "" },
+  });
 
   const onSubmit = (data: CadastroCandidatoForm) => {
-    console.log('Cadastro candidato:', data)
-  }
+    console.log("Cadastro candidato:", data);
+  };
 
   return (
     <AuthLayout subtitle="Crie sua conta de candidato">
@@ -39,10 +39,10 @@ export default function CadastroCandidatoPage() {
             placeholder="000.000.000-00"
             icon={<ShieldCheck size={18} />}
             error={errors.cpf?.message}
-            {...register('cpf', {
+            {...register("cpf", {
               onChange: (e) => {
-                e.target.value = maskCPF(e.target.value)
-                setValue('cpf', e.target.value)
+                e.target.value = maskCPF(e.target.value);
+                setValue("cpf", e.target.value);
               },
             })}
           />
@@ -53,7 +53,7 @@ export default function CadastroCandidatoPage() {
             placeholder="seu@email.com"
             icon={<Mail size={18} />}
             error={errors.email?.message}
-            {...register('email')}
+            {...register("email")}
           />
 
           <div>
@@ -63,10 +63,12 @@ export default function CadastroCandidatoPage() {
               placeholder="Selecione seu distrito"
               options={[...DISTRITOS_MARICA]}
               error={errors.distrito?.message}
-              {...register('distrito')}
+              {...register("distrito")}
             />
             <ModalMapaDistrito
-              onSelecionar={(value) => setValue('distrito', value, { shouldValidate: true })}
+              onSelecionar={(value) =>
+                setValue("distrito", value, { shouldValidate: true })
+              }
             />
           </div>
 
@@ -75,10 +77,10 @@ export default function CadastroCandidatoPage() {
             placeholder="(00) 00000-0000"
             icon={<Phone size={18} />}
             error={errors.celular?.message}
-            {...register('celular', {
+            {...register("celular", {
               onChange: (e) => {
-                e.target.value = maskCelular(e.target.value)
-                setValue('celular', e.target.value)
+                e.target.value = maskCelular(e.target.value);
+                setValue("celular", e.target.value);
               },
             })}
           />
@@ -89,7 +91,7 @@ export default function CadastroCandidatoPage() {
             placeholder="Mínimo 8 caracteres"
             icon={<Lock size={18} />}
             error={errors.senha?.message}
-            {...register('senha')}
+            {...register("senha")}
           />
 
           <Input
@@ -98,7 +100,7 @@ export default function CadastroCandidatoPage() {
             placeholder="Repita sua senha"
             icon={<Lock size={18} />}
             error={errors.confirmarSenha?.message}
-            {...register('confirmarSenha')}
+            {...register("confirmarSenha")}
           />
 
           <Button type="submit" fullWidth size="lg">
@@ -108,7 +110,7 @@ export default function CadastroCandidatoPage() {
       </div>
 
       <p className="text-center text-sm text-neutral-500 mt-6">
-        Já tem conta?{' '}
+        Já tem conta?{" "}
         <Link
           to="/login"
           className="text-primary-400 hover:text-primary-300 font-medium transition-colors"
@@ -117,5 +119,5 @@ export default function CadastroCandidatoPage() {
         </Link>
       </p>
     </AuthLayout>
-  )
+  );
 }

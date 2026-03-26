@@ -1,6 +1,6 @@
 interface SocialStatCardProps {
-  value: string
-  label: string
+  value: string;
+  label: string;
 }
 
 export function SocialStatCard({ value, label }: SocialStatCardProps) {
@@ -9,5 +9,5 @@ export function SocialStatCard({ value, label }: SocialStatCardProps) {
       <div className="text-4xl font-bold text-text-inverted mb-2">{value}</div>
       <div className="text-sm text-text-inverted opacity-70">{label}</div>
     </div>
-  )
+  );
 }

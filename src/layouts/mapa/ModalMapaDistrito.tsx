@@ -1,29 +1,32 @@
-import { Map as MapIcon, X } from 'lucide-react'
-import { useState } from 'react'
-import { MapaMarica } from './MapaMarica'
+import { Map as MapIcon, X } from "lucide-react";
+import { useState } from "react";
+import { MapaMarica } from "./MapaMarica";
 
 const MAPA_DISTRITO: Record<number, string> = {
-  1: 'centro',
-  2: 'ponta-negra',
-  3: 'inoa',
-  4: 'itaipuacu',
-}
+  1: "centro",
+  2: "ponta-negra",
+  3: "inoa",
+  4: "itaipuacu",
+};
 
 interface ModalMapaDistritoProps {
-  onSelecionar: (value: string) => void
-  customTrigger?: React.ReactNode
+  onSelecionar: (value: string) => void;
+  customTrigger?: React.ReactNode;
 }
 
-export function ModalMapaDistrito({ onSelecionar, customTrigger }: ModalMapaDistritoProps) {
-  const [aberto, setAberto] = useState(false)
+export function ModalMapaDistrito({
+  onSelecionar,
+  customTrigger,
+}: ModalMapaDistritoProps) {
+  const [aberto, setAberto] = useState(false);
 
   function fechar() {
-    setAberto(false)
+    setAberto(false);
   }
 
   function handleDistritoClick(numero: number) {
-    onSelecionar(MAPA_DISTRITO[numero])
-    fechar()
+    onSelecionar(MAPA_DISTRITO[numero]);
+    fechar();
   }
 
   return (
@@ -58,10 +61,12 @@ export function ModalMapaDistrito({ onSelecionar, customTrigger }: ModalMapaDist
           <div className="bg-neutral-900 border border-white/15 rounded-3xl shadow-[0_25px_60px_rgba(0,0,0,0.8)] w-full max-w-4xl overflow-hidden">
             <div className="flex items-center justify-between px-6 py-5 border-b border-white/10">
               <div>
-                <h2 className="text-white font-semibold text-xl">Selecione seu Distrito</h2>
+                <h2 className="text-white font-semibold text-xl">
+                  Selecione seu Distrito
+                </h2>
                 <p className="text-neutral-400 text-sm mt-1">
-                  Clique na área correspondente ao seu bairro para selecionar automaticamente o
-                  distrito.
+                  Clique na área correspondente ao seu bairro para selecionar
+                  automaticamente o distrito.
                 </p>
               </div>
               <button
@@ -82,5 +87,5 @@ export function ModalMapaDistrito({ onSelecionar, customTrigger }: ModalMapaDist
         </div>
       )}
     </>
-  )
+  );
 }

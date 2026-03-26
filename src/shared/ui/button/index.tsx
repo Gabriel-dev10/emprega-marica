@@ -1,17 +1,18 @@
-import * as React from 'react'
-import { cn } from '../../lib/utils'
-import { type ButtonVariants, buttonVariants } from './button.variants'
+import * as React from "react";
+import { cn } from "../../lib/utils";
+import { type ButtonVariants, buttonVariants } from "./button.variants";
 
-type BaseButtonProps = React.ComponentPropsWithoutRef<'button'> & ButtonVariants
+type BaseButtonProps = React.ComponentPropsWithoutRef<"button"> &
+  ButtonVariants;
 
-interface ButtonProps extends Omit<BaseButtonProps, 'size'> {
-  size?: 'sm' | 'md' | 'lg' | 'default' | null
-  fullWidth?: boolean
+interface ButtonProps extends Omit<BaseButtonProps, "size"> {
+  size?: "sm" | "md" | "lg" | "default" | null;
+  fullWidth?: boolean;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, fullWidth, ...props }, ref) => {
-    const cvaSize = size === 'md' ? 'default' : size
+    const cvaSize = size === "md" ? "default" : size;
 
     return (
       <button
@@ -19,16 +20,16 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         data-slot="button"
         className={cn(
           buttonVariants({ variant, size: cvaSize }),
-          fullWidth ? 'w-full' : '',
+          fullWidth ? "w-full" : "",
           className,
         )}
         {...props}
       />
-    )
+    );
   },
-)
+);
 
-Button.displayName = 'Button'
+Button.displayName = "Button";
 
-export { Button }
-export type { ButtonProps }
+export { Button };
+export type { ButtonProps };

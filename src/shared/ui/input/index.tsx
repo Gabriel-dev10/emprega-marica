@@ -1,24 +1,27 @@
-import * as React from 'react'
-import { cn } from '../../lib/utils'
-import { type InputVariants, inputVariants } from './input.variants'
+import * as React from "react";
+import { cn } from "../../lib/utils";
+import { type InputVariants, inputVariants } from "./input.variants";
 
 export interface InputProps
-  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'>,
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "size">,
     InputVariants {
-  label: string
-  error?: string
-  icon?: React.ReactNode
+  label: string;
+  error?: string;
+  icon?: React.ReactNode;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, label, error, icon, id, hasError, hasIcon, ...props }, ref) => {
-    const inputId = id || label.toLowerCase().replace(/\s+/g, '-')
-    const isErrorState = hasError ?? !!error
-    const isIconState = hasIcon ?? !!icon
+    const inputId = id || label.toLowerCase().replace(/\s+/g, "-");
+    const isErrorState = hasError ?? !!error;
+    const isIconState = hasIcon ?? !!icon;
 
     return (
       <div className="w-full">
-        <label htmlFor={inputId} className="block text-sm font-medium text-neutral-300 mb-1.5">
+        <label
+          htmlFor={inputId}
+          className="block text-sm font-medium text-neutral-300 mb-1.5"
+        >
           {label}
         </label>
         <div className="relative">
@@ -40,9 +43,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         </div>
         {error && <p className="mt-1.5 text-sm text-red-400">{error}</p>}
       </div>
-    )
+    );
   },
-)
-Input.displayName = 'Input'
+);
+Input.displayName = "Input";
 
-export { Input }
+export { Input };

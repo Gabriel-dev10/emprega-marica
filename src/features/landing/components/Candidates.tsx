@@ -1,6 +1,6 @@
-import { Bell, MapPin, ShieldCheck, TrendingUp } from 'lucide-react'
+import { Bell, MapPin, ShieldCheck, TrendingUp } from "lucide-react";
 
-import { Button } from '../../../components/Button'
+import { Button } from "../../../components/Button";
 
 export function Candidates() {
   return (
@@ -18,28 +18,39 @@ export function Candidates() {
               Chega de perder horas no trânsito para o Rio ou Niterói.
             </h2>
             <p className="text-lg text-text-muted mb-8 leading-relaxed">
-              A qualidade de vida que você sonha começa trabalhando perto de casa. O EmpregaAí
-              conecta você às melhores oportunidades de Maricá, valorizando quem vive na nossa
-              cidade.
+              A qualidade de vida que você sonha começa trabalhando perto de
+              casa. O EmpregaAí conecta você às melhores oportunidades de
+              Maricá, valorizando quem vive na nossa cidade.
             </p>
             <div className="space-y-6 mb-10">
               <div className="flex items-start">
                 <div className="bg-white dark:bg-neutral-700 p-2 rounded-lg shadow-sm border border-neutral-100 dark:border-neutral-600 mr-4 shrink-0">
-                  <MapPin className="text-primary-600 dark:text-primary-400" size={24} />
+                  <MapPin
+                    className="text-primary-600 dark:text-primary-400"
+                    size={24}
+                  />
                 </div>
                 <div>
-                  <h3 className="font-bold text-text-default">Vagas no seu bairro</h3>
+                  <h3 className="font-bold text-text-default">
+                    Vagas no seu bairro
+                  </h3>
                   <p className="text-sm text-text-muted">
-                    Filtre oportunidades em Itaipuaçu, Centro, Inoã, Ponta Negra e mais.
+                    Filtre oportunidades em Itaipuaçu, Centro, Inoã, Ponta Negra
+                    e mais.
                   </p>
                 </div>
               </div>
               <div className="flex items-start">
                 <div className="bg-white dark:bg-neutral-700 p-2 rounded-lg shadow-sm border border-neutral-100 dark:border-neutral-600 mr-4 shrink-0">
-                  <ShieldCheck className="text-primary-600 dark:text-primary-400" size={24} />
+                  <ShieldCheck
+                    className="text-primary-600 dark:text-primary-400"
+                    size={24}
+                  />
                 </div>
                 <div>
-                  <h3 className="font-bold text-text-default">Empresas Verificadas</h3>
+                  <h3 className="font-bold text-text-default">
+                    Empresas Verificadas
+                  </h3>
                   <p className="text-sm text-text-muted">
                     Segurança total. Apenas empresas reais e vagas sérias.
                   </p>
@@ -47,18 +58,27 @@ export function Candidates() {
               </div>
               <div className="flex items-start">
                 <div className="bg-white dark:bg-neutral-700 p-2 rounded-lg shadow-sm border border-neutral-100 dark:border-neutral-600 mr-4 shrink-0">
-                  <Bell className="text-primary-600 dark:text-primary-400" size={24} />
+                  <Bell
+                    className="text-primary-600 dark:text-primary-400"
+                    size={24}
+                  />
                 </div>
                 <div>
-                  <h3 className="font-bold text-text-default">Alerta de Vagas</h3>
+                  <h3 className="font-bold text-text-default">
+                    Alerta de Vagas
+                  </h3>
                   <p className="text-sm text-text-muted">
-                    Receba notificações quando uma vaga no seu perfil for postada.
+                    Receba notificações quando uma vaga no seu perfil for
+                    postada.
                   </p>
                 </div>
               </div>
             </div>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" className="bg-green-600 hover:bg-green-700 focus:ring-green-600">
+              <Button
+                size="lg"
+                className="bg-green-600 hover:bg-green-700 focus:ring-green-600"
+              >
                 Crie uma conta agora!
               </Button>
             </div>
@@ -84,15 +104,21 @@ export function Candidates() {
                 </div>
                 <div className="space-y-3">
                   <div className="flex items-center justify-between border-b border-neutral-100 dark:border-neutral-700 pb-2">
-                    <span className="font-medium text-text-default">Vendedor(a) Loja</span>
+                    <span className="font-medium text-text-default">
+                      Vendedor(a) Loja
+                    </span>
                     <span className="text-sm text-text-muted">Centro</span>
                   </div>
                   <div className="flex items-center justify-between border-b border-neutral-100 dark:border-neutral-700 pb-2">
-                    <span className="font-medium text-text-default">Assistente Adm.</span>
+                    <span className="font-medium text-text-default">
+                      Assistente Adm.
+                    </span>
                     <span className="text-sm text-text-muted">Inoã</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span className="font-medium text-text-default">Técnico TI</span>
+                    <span className="font-medium text-text-default">
+                      Técnico TI
+                    </span>
                     <span className="text-sm text-text-muted">Itaipuaçu</span>
                   </div>
                 </div>
@@ -102,5 +128,5 @@ export function Candidates() {
         </div>
       </div>
     </section>
-  )
+  );
 }

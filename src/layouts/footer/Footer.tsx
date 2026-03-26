@@ -1,4 +1,4 @@
-import { Instagram, Linkedin, Mail } from 'lucide-react'
+import { Instagram, Linkedin, Mail } from "lucide-react";
 
 export function Footer() {
   return (
@@ -10,7 +10,8 @@ export function Footer() {
               EmpregaAí<span className="text-text-primary">Maricá</span>
             </h3>
             <p className="text-sm text-text-subtle leading-relaxed max-w-xs">
-              Conectando empresas e talentos de Maricá para fortalecer a economia local.
+              Conectando empresas e talentos de Maricá para fortalecer a
+              economia local.
             </p>
           </div>
 
@@ -20,12 +21,18 @@ export function Footer() {
             </h4>
             <ul className="space-y-3 text-sm text-text-subtle">
               <li>
-                <a href="/" className="hover:text-text-primary transition-colors">
+                <a
+                  href="/"
+                  className="hover:text-text-primary transition-colors"
+                >
                   Planos e Preços
                 </a>
               </li>
               <li>
-                <a href="/" className="hover:text-text-primary transition-colors">
+                <a
+                  href="/"
+                  className="hover:text-text-primary transition-colors"
+                >
                   Termos de Uso
                 </a>
               </li>
@@ -65,5 +72,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

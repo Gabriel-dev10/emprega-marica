@@ -1,22 +1,35 @@
-import { zodResolver } from '@hookform/resolvers/zod'
-import { BookOpen, Briefcase, ListChecks, Plus, Trash2, User, ArrowLeft, CheckCircle2 } from 'lucide-react'
-import { useState } from 'react'
-import { useFieldArray, useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
-import { Button } from '../../../components/Button'
-import { Input } from '../../../components/Input'
-import { Select } from '../../../components/Select'
-import { Footer } from '../../../layouts/footer/Footer'
-import { useAuth } from '../../../shared/context/auth-context'
-import { DISTRITOS_MARICA } from '../../../shared/lib/constants'
-import { maskCelular, maskCPF } from '../../../shared/lib/schemas'
-import { Section } from '../../layout/sectionCandidato'
-import { TextareaField } from '../../layout/textareaCandidato'
-import { GRAUS, type PerfilForm, perfilSchema } from '../../schema/candidato.schema'
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  BookOpen,
+  Briefcase,
+  ListChecks,
+  Plus,
+  Trash2,
+  User,
+  ArrowLeft,
+  CheckCircle2,
+} from "lucide-react";
+import { useState } from "react";
+import { useFieldArray, useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import { Button } from "../../../components/Button";
+import { Input } from "../../../components/Input";
+import { Select } from "../../../components/Select";
+import { Footer } from "../../../layouts/footer/Footer";
+import { useAuth } from "../../../shared/context/auth-context";
+import { DISTRITOS_MARICA } from "../../../shared/lib/constants";
+import { maskCelular, maskCPF } from "../../../shared/lib/schemas";
+import { Section } from "../../layout/sectionCandidato";
+import { TextareaField } from "../../layout/textareaCandidato";
+import {
+  GRAUS,
+  type PerfilForm,
+  perfilSchema,
+} from "../../schema/candidato.schema";
 
 export default function PerfilCandidatoPage() {
-  const { user } = useAuth()
-  const [saved, setSaved] = useState(false)
+  const { user } = useAuth();
+  const [saved, setSaved] = useState(false);
 
   const {
     register,
@@ -28,47 +41,51 @@ export default function PerfilCandidatoPage() {
   } = useForm<PerfilForm>({
     resolver: zodResolver(perfilSchema),
     defaultValues: {
-      nomeCompleto: user?.nome ?? '',
-      email: user?.email ?? '',
-      cpf: '',
-      dataNascimento: '',
-      celular: '',
-      distrito: '',
-      resumoProfissional: '',
-      objetivo: '',
+      nomeCompleto: user?.nome ?? "",
+      email: user?.email ?? "",
+      cpf: "",
+      dataNascimento: "",
+      celular: "",
+      distrito: "",
+      resumoProfissional: "",
+      objetivo: "",
       experiencias: [],
       formacoes: [],
       habilidades: [],
       certificados: [],
     },
-  })
+  });
 
-  const experiencias = useFieldArray({ control, name: 'experiencias' })
-  const formacoes = useFieldArray({ control, name: 'formacoes' })
-  const habilidades = useFieldArray({ control, name: 'habilidades' })
-  const certificados = useFieldArray({ control, name: 'certificados' })
-  const [novaHabilidade, setNovaHabilidade] = useState('')
+  const experiencias = useFieldArray({ control, name: "experiencias" });
+  const formacoes = useFieldArray({ control, name: "formacoes" });
+  const habilidades = useFieldArray({ control, name: "habilidades" });
+  const certificados = useFieldArray({ control, name: "certificados" });
+  const [novaHabilidade, setNovaHabilidade] = useState("");
 
   const onSubmit = (data: PerfilForm) => {
-    console.log('Perfil salvo:', data)
-    setSaved(true)
-    setTimeout(() => setSaved(false), 3000)
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
+    console.log("Perfil salvo:", data);
+    setSaved(true);
+    setTimeout(() => setSaved(false), 3000);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   return (
     <div className="min-h-screen bg-neutral-950 flex flex-col">
       <main className="flex-1 max-w-5xl mx-auto w-full px-6 py-8 sm:py-12">
-        
         <section className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10 bg-neutral-900 border border-neutral-800 rounded-2xl p-6 sm:p-8">
           <div>
-            <h1 className="text-2xl sm:text-3xl font-bold text-text-default mb-2">Meu Currículo</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-text-default mb-2">
+              Meu Currículo
+            </h1>
             <p className="text-text-subtle text-sm sm:text-base">
               Mantenha suas informações atualizadas para se destacar nas vagas.
             </p>
           </div>
           <Link to="/vagas/candidato" className="w-full md:w-auto">
-            <Button variant="outline" className="w-full md:w-auto flex items-center justify-center gap-2 border-neutral-700 hover:border-neutral-600 text-text-default">
+            <Button
+              variant="outline"
+              className="w-full md:w-auto flex items-center justify-center gap-2 border-neutral-700 hover:border-neutral-600 text-text-default"
+            >
               <ArrowLeft size={18} />
               Voltar para Vagas
             </Button>
@@ -83,23 +100,22 @@ export default function PerfilCandidatoPage() {
         )}
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-10">
-          
           <Section icon={<User size={18} />} title="Dados Pessoais">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <Input
                 label="Nome Completo"
                 placeholder="Seu nome completo"
                 error={errors.nomeCompleto?.message}
-                {...register('nomeCompleto')}
+                {...register("nomeCompleto")}
               />
               <Input
                 label="CPF"
                 placeholder="000.000.000-00"
                 error={errors.cpf?.message}
-                {...register('cpf', {
+                {...register("cpf", {
                   onChange: (e) => {
-                    e.target.value = maskCPF(e.target.value)
-                    setValue('cpf', e.target.value)
+                    e.target.value = maskCPF(e.target.value);
+                    setValue("cpf", e.target.value);
                   },
                 })}
               />
@@ -108,16 +124,16 @@ export default function PerfilCandidatoPage() {
                 type="email"
                 placeholder="seu@email.com"
                 error={errors.email?.message}
-                {...register('email')}
+                {...register("email")}
               />
               <Input
                 label="Celular"
                 placeholder="(21) 99999-9999"
                 error={errors.celular?.message}
-                {...register('celular', {
+                {...register("celular", {
                   onChange: (e) => {
-                    e.target.value = maskCelular(e.target.value)
-                    setValue('celular', e.target.value)
+                    e.target.value = maskCelular(e.target.value);
+                    setValue("celular", e.target.value);
                   },
                 })}
               />
@@ -125,14 +141,17 @@ export default function PerfilCandidatoPage() {
                 label="Data de Nascimento"
                 type="date"
                 error={errors.dataNascimento?.message}
-                {...register('dataNascimento')}
+                {...register("dataNascimento")}
               />
               <Select
                 label="Distrito em Maricá"
-                options={DISTRITOS_MARICA.map((d) => ({ value: d.value, label: d.label }))}
+                options={DISTRITOS_MARICA.map((d) => ({
+                  value: d.value,
+                  label: d.label,
+                }))}
                 placeholder="Selecione seu distrito"
                 error={errors.distrito?.message}
-                {...register('distrito')}
+                {...register("distrito")}
               />
             </div>
           </Section>
@@ -144,22 +163,25 @@ export default function PerfilCandidatoPage() {
                 placeholder="Escreva um breve resumo sobre você, suas experiências e qualidades..."
                 rows={4}
                 error={errors.resumoProfissional?.message}
-                {...register('resumoProfissional')}
+                {...register("resumoProfissional")}
               />
               <TextareaField
                 label="Objetivo Profissional"
                 placeholder="Qual tipo de vaga ou área você está buscando?"
                 rows={3}
                 error={errors.objetivo?.message}
-                {...register('objetivo')}
+                {...register("objetivo")}
               />
             </div>
           </Section>
 
-          <Section icon={<Briefcase size={18} />} title="Experiências Profissionais">
+          <Section
+            icon={<Briefcase size={18} />}
+            title="Experiências Profissionais"
+          >
             <div className="space-y-6">
               {experiencias.fields.map((field, idx) => {
-                const atual = watch(`experiencias.${idx}.atual`)
+                const atual = watch(`experiencias.${idx}.atual`);
                 return (
                   <div
                     key={field.id}
@@ -220,18 +242,18 @@ export default function PerfilCandidatoPage() {
                       {...register(`experiencias.${idx}.descricao`)}
                     />
                   </div>
-                )
+                );
               })}
               <button
                 type="button"
                 onClick={() =>
                   experiencias.append({
-                    empresa: '',
-                    cargo: '',
-                    dataInicio: '',
-                    dataFim: '',
+                    empresa: "",
+                    cargo: "",
+                    dataInicio: "",
+                    dataFim: "",
                     atual: false,
-                    descricao: '',
+                    descricao: "",
                   })
                 }
                 className="flex items-center justify-center gap-2 text-sm font-medium text-text-primary hover:text-text-link hover:bg-primary-500/5 transition-all border border-dashed border-neutral-700 hover:border-primary-500/50 rounded-xl px-4 py-4 w-full"
@@ -300,11 +322,11 @@ export default function PerfilCandidatoPage() {
                 type="button"
                 onClick={() =>
                   formacoes.append({
-                    instituicao: '',
-                    curso: '',
-                    grau: '',
-                    dataInicio: '',
-                    dataConclusao: '',
+                    instituicao: "",
+                    curso: "",
+                    grau: "",
+                    dataInicio: "",
+                    dataConclusao: "",
                   })
                 }
                 className="flex items-center justify-center gap-2 text-sm font-medium text-text-primary hover:text-text-link hover:bg-primary-500/5 transition-all border border-dashed border-neutral-700 hover:border-primary-500/50 rounded-xl px-4 py-4 w-full"
@@ -323,12 +345,12 @@ export default function PerfilCandidatoPage() {
                   value={novaHabilidade}
                   onChange={(e) => setNovaHabilidade(e.target.value)}
                   onKeyDown={(e) => {
-                    if (e.key === 'Enter') {
-                      e.preventDefault()
-                      const val = novaHabilidade.trim()
+                    if (e.key === "Enter") {
+                      e.preventDefault();
+                      const val = novaHabilidade.trim();
                       if (val) {
-                        habilidades.append({ nome: val })
-                        setNovaHabilidade('')
+                        habilidades.append({ nome: val });
+                        setNovaHabilidade("");
                       }
                     }
                   }}
@@ -338,10 +360,10 @@ export default function PerfilCandidatoPage() {
                 <button
                   type="button"
                   onClick={() => {
-                    const val = novaHabilidade.trim()
+                    const val = novaHabilidade.trim();
                     if (val) {
-                      habilidades.append({ nome: val })
-                      setNovaHabilidade('')
+                      habilidades.append({ nome: val });
+                      setNovaHabilidade("");
                     }
                   }}
                   className="px-5 bg-neutral-800 border border-neutral-700 text-text-subtle hover:text-text-default hover:bg-neutral-700 rounded-xl text-sm transition-all flex items-center gap-2 font-medium"
@@ -422,10 +444,10 @@ export default function PerfilCandidatoPage() {
                 type="button"
                 onClick={() =>
                   certificados.append({
-                    nome: '',
-                    instituicao: '',
-                    ano: '',
-                    cargaHoraria: '',
+                    nome: "",
+                    instituicao: "",
+                    ano: "",
+                    cargaHoraria: "",
                   })
                 }
                 className="flex items-center justify-center gap-2 text-sm font-medium text-text-primary hover:text-text-link hover:bg-primary-500/5 transition-all border border-dashed border-neutral-700 hover:border-primary-500/50 rounded-xl px-4 py-4 w-full"
@@ -452,5 +474,5 @@ export default function PerfilCandidatoPage() {
 
       <Footer />
     </div>
-  )
+  );
 }

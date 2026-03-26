@@ -1,8 +1,8 @@
-import { ArrowRight } from 'lucide-react'
-import { Link } from 'react-router-dom'
-import { Button } from '../../../components/Button'
-import { FEATURED_JOBS } from '../../../shared/api/mock/jobs'
-import { JobCard } from './ui/JobCard'
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Button } from "../../../components/Button";
+import { FEATURED_JOBS } from "../../../shared/api/mock/jobs";
+import { JobCard } from "./ui/JobCard";
 
 export function FeaturedJobs() {
   return (
@@ -16,7 +16,8 @@ export function FeaturedJobs() {
               Vagas em Destaque
             </h2>
             <p className="text-lg text-text-subtle">
-              Oportunidades recentes de empresas de Maricá buscando talentos como você.
+              Oportunidades recentes de empresas de Maricá buscando talentos
+              como você.
             </p>
           </div>
 
@@ -41,5 +42,5 @@ export function FeaturedJobs() {
         </div>
       </div>
     </section>
-  )
+  );
 }

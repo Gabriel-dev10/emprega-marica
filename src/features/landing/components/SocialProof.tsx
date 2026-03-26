@@ -1,4 +1,4 @@
-import { SocialStatCard } from './ui/SocialStatCard'
+import { SocialStatCard } from "./ui/SocialStatCard";
 
 export function SocialProof() {
   return (
@@ -6,18 +6,25 @@ export function SocialProof() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div>
-            <h2 className="text-3xl font-bold text-text-inverted mb-6">Quem usa, aprova.</h2>
+            <h2 className="text-3xl font-bold text-text-inverted mb-6">
+              Quem usa, aprova.
+            </h2>
             <p className="text-text-inverted opacity-90 text-lg leading-relaxed mb-8">
-              "O EmpregaAí Maricá transformou a forma como contratamos. A facilidade de encontrar
-              profissionais que moram no mesmo bairro da nossa clínica reduziu os atrasos a zero."
+              "O EmpregaAí Maricá transformou a forma como contratamos. A
+              facilidade de encontrar profissionais que moram no mesmo bairro da
+              nossa clínica reduziu os atrasos a zero."
             </p>
             <div className="flex items-center space-x-4">
               <div className="w-12 h-12 rounded-full bg-primary-700 dark:bg-primary-800 flex items-center justify-center font-bold text-xl">
                 R
               </div>
               <div>
-                <p className="font-semibold text-text-inverted">Ricardo Mendes</p>
-                <p className="text-sm text-text-inverted opacity-80">Gestor de Clínica no Centro</p>
+                <p className="font-semibold text-text-inverted">
+                  Ricardo Mendes
+                </p>
+                <p className="text-sm text-text-inverted opacity-80">
+                  Gestor de Clínica no Centro
+                </p>
               </div>
             </div>
           </div>
@@ -30,5 +37,5 @@ export function SocialProof() {
         </div>
       </div>
     </section>
-  )
+  );
 }

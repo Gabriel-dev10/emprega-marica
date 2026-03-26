@@ -1,10 +1,10 @@
-import { ChevronDown, MapPin, Search } from 'lucide-react'
-import { useState } from 'react'
-import { Button } from '../../../../components/Button'
-import { DistrictSelect } from '../../../../shared/ui/district-select'
+import { ChevronDown, MapPin, Search } from "lucide-react";
+import { useState } from "react";
+import { Button } from "../../../../components/Button";
+import { DistrictSelect } from "../../../../shared/ui/district-select";
 
 export function JobSearchForm() {
-  const [distrito, setDistrito] = useState('')
+  const [distrito, setDistrito] = useState("");
 
   return (
     <form className="w-full relative" onSubmit={(e) => e.preventDefault()}>
@@ -49,5 +49,5 @@ export function JobSearchForm() {
         </Button>
       </div>
     </form>
-  )
+  );
 }

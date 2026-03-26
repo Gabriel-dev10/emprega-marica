@@ -1,35 +1,41 @@
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Building2, Lock } from 'lucide-react'
-import { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
-import { Button } from '../../../components/Button'
-import { Input } from '../../../components/Input'
-import { useAuth } from '../../../shared/context/auth-context'
-import { type LoginEmpresaForm, loginEmpresaSchema } from '../../../shared/lib/schemas'
-import { AuthLayout } from '../../layout/AuthLayout'
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Building2, Lock } from "lucide-react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import { Button } from "../../../components/Button";
+import { Input } from "../../../components/Input";
+import { useAuth } from "../../../shared/context/auth-context";
+import {
+  type LoginEmpresaForm,
+  loginEmpresaSchema,
+} from "../../../shared/lib/schemas";
+import { AuthLayout } from "../../layout/AuthLayout";
 
 export default function LoginEmpresaPage() {
-  const { login } = useAuth()
-  const navigate = useNavigate()
-  const [authError, setAuthError] = useState<string | null>(null)
+  const { login } = useAuth();
+  const navigate = useNavigate();
+  const [authError, setAuthError] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<LoginEmpresaForm>({
     resolver: zodResolver(loginEmpresaSchema),
-  })
+  });
 
   const onSubmit = async (data: LoginEmpresaForm) => {
-    setAuthError(null)
-    const result = await login({ identificador: data.identificador, senha: data.senha })
+    setAuthError(null);
+    const result = await login({
+      identificador: data.identificador,
+      senha: data.senha,
+    });
     if (result.success) {
-      navigate('/empresa/planos')
+      navigate("/empresa/planos");
     } else {
-      setAuthError(result.error ?? 'Erro ao entrar.')
+      setAuthError(result.error ?? "Erro ao entrar.");
     }
-  }
+  };
 
   return (
     <AuthLayout subtitle="Área da Empresa">
@@ -40,7 +46,7 @@ export default function LoginEmpresaPage() {
             placeholder="Informe seu CNPJ ou email"
             icon={<Building2 size={18} />}
             error={errors.identificador?.message}
-            {...register('identificador')}
+            {...register("identificador")}
           />
           <Input
             label="Senha"
@@ -48,7 +54,7 @@ export default function LoginEmpresaPage() {
             placeholder="Sua senha"
             icon={<Lock size={18} />}
             error={errors.senha?.message}
-            {...register('senha')}
+            {...register("senha")}
           />
           {authError && <p className="text-sm text-red-400">{authError}</p>}
           <div className="flex justify-end">
@@ -60,17 +66,17 @@ export default function LoginEmpresaPage() {
             </a>
           </div>
           <Button type="submit" fullWidth size="lg" disabled={isSubmitting}>
-            {isSubmitting ? 'Entrando...' : 'Entrar'}
+            {isSubmitting ? "Entrando..." : "Entrar"}
           </Button>
         </form>
       </div>
 
       <div className="mt-6 space-y-3 text-center">
         <p className="text-xs text-neutral-600">
-          Demo: <span className="text-neutral-500">empresa@teste.com</span> /{' '}
+          Demo: <span className="text-neutral-500">empresa@teste.com</span> /{" "}
           <span className="text-neutral-500">123456</span>
         </p>
       </div>
     </AuthLayout>
-  )
+  );
 }

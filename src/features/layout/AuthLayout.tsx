@@ -1,13 +1,16 @@
-import { Home } from 'lucide-react'
-import type { ReactNode } from 'react'
-import { Link } from 'react-router-dom'
+import { Home } from "lucide-react";
+import type { ReactNode } from "react";
+import { Link } from "react-router-dom";
 
 interface AuthLayoutProps {
-  children: ReactNode
-  subtitle?: string
+  children: ReactNode;
+  subtitle?: string;
 }
 
-export function AuthLayout({ children, subtitle = 'Acesse sua conta' }: AuthLayoutProps) {
+export function AuthLayout({
+  children,
+  subtitle = "Acesse sua conta",
+}: AuthLayoutProps) {
   return (
     <div className="min-h-screen flex items-center justify-center bg-neutral-950 overflow-hidden relative">
       <div className="absolute inset-0 bg-neutral-900">
@@ -22,7 +25,10 @@ export function AuthLayout({ children, subtitle = 'Acesse sua conta' }: AuthLayo
           to="/"
           className="flex items-center text-sm font-medium text-neutral-400 hover:text-white transition-all group"
         >
-          <Home size={18} className="mr-2 group-hover:scale-110 transition-transform" />
+          <Home
+            size={18}
+            className="mr-2 group-hover:scale-110 transition-transform"
+          />
           Home
         </Link>
       </div>
@@ -39,5 +45,5 @@ export function AuthLayout({ children, subtitle = 'Acesse sua conta' }: AuthLayo
         <div className="w-full">{children}</div>
       </div>
     </div>
-  )
+  );
 }

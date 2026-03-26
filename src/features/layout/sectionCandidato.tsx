@@ -1,9 +1,9 @@
-import type { ReactNode } from 'react'
+import type { ReactNode } from "react";
 
 interface SectionProps {
-  icon: ReactNode
-  title: string
-  children: ReactNode
+  icon: ReactNode;
+  title: string;
+  children: ReactNode;
 }
 
 export function Section({ icon, title, children }: SectionProps) {
@@ -15,5 +15,5 @@ export function Section({ icon, title, children }: SectionProps) {
       </div>
       {children}
     </div>
-  )
+  );
 }

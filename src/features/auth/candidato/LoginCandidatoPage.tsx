@@ -1,35 +1,41 @@
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Lock, User } from 'lucide-react'
-import { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { Link, useNavigate } from 'react-router-dom'
-import { Button } from '../../../components/Button'
-import { Input } from '../../../components/Input'
-import { useAuth } from '../../../shared/context/auth-context'
-import { type LoginCandidatoForm, loginCandidatoSchema } from '../../../shared/lib/schemas'
-import { AuthLayout } from '../../layout/AuthLayout'
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Lock, User } from "lucide-react";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
+import { Button } from "../../../components/Button";
+import { Input } from "../../../components/Input";
+import { useAuth } from "../../../shared/context/auth-context";
+import {
+  type LoginCandidatoForm,
+  loginCandidatoSchema,
+} from "../../../shared/lib/schemas";
+import { AuthLayout } from "../../layout/AuthLayout";
 
 export default function LoginCandidatoPage() {
-  const { login } = useAuth()
-  const navigate = useNavigate()
-  const [authError, setAuthError] = useState<string | null>(null)
+  const { login } = useAuth();
+  const navigate = useNavigate();
+  const [authError, setAuthError] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
   } = useForm<LoginCandidatoForm>({
     resolver: zodResolver(loginCandidatoSchema),
-  })
+  });
 
   const onSubmit = async (data: LoginCandidatoForm) => {
-    setAuthError(null)
-    const result = await login({ identificador: data.identificador, senha: data.senha })
+    setAuthError(null);
+    const result = await login({
+      identificador: data.identificador,
+      senha: data.senha,
+    });
     if (result.success) {
-      navigate('/vagas/candidato')
+      navigate("/vagas/candidato");
     } else {
-      setAuthError(result.error ?? 'Erro ao entrar.')
+      setAuthError(result.error ?? "Erro ao entrar.");
     }
-  }
+  };
 
   return (
     <AuthLayout subtitle="Área do Candidato">
@@ -40,7 +46,7 @@ export default function LoginCandidatoPage() {
             placeholder="seu@email.com"
             icon={<User size={18} />}
             error={errors.identificador?.message}
-            {...register('identificador')}
+            {...register("identificador")}
           />
           <Input
             label="Senha"
@@ -48,23 +54,26 @@ export default function LoginCandidatoPage() {
             placeholder="Sua senha"
             icon={<Lock size={18} />}
             error={errors.senha?.message}
-            {...register('senha')}
+            {...register("senha")}
           />
           {authError && <p className="text-sm text-red-400">{authError}</p>}
           <div className="flex justify-end">
-            <a href="/" className="text-xs text-text-link hover:underline transition-colors">
+            <a
+              href="/"
+              className="text-xs text-text-link hover:underline transition-colors"
+            >
               Esqueceu a senha?
             </a>
           </div>
           <Button type="submit" fullWidth size="lg" disabled={isSubmitting}>
-            {isSubmitting ? 'Entrando...' : 'Entrar'}
+            {isSubmitting ? "Entrando..." : "Entrar"}
           </Button>
         </form>
       </div>
 
       <div className="mt-6 space-y-3 text-center">
         <p className="text-sm text-text-muted">
-          Não tem conta?{' '}
+          Não tem conta?{" "}
           <Link
             to="/cadastrar/candidato"
             className="text-text-link font-medium hover:underline transition-colors"
@@ -73,10 +82,10 @@ export default function LoginCandidatoPage() {
           </Link>
         </p>
         <p className="text-xs text-text-subtle">
-          Demo: <span className="text-text-muted">candidato@teste.com</span> /{' '}
+          Demo: <span className="text-text-muted">candidato@teste.com</span> /{" "}
           <span className="text-text-muted">123456</span>
         </p>
       </div>
     </AuthLayout>
-  )
+  );
 }

@@ -1,31 +1,42 @@
-import { ChevronDown, LogOut, User } from 'lucide-react'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { Button } from '../../components/Button'
-import { useAuth } from '../../shared/context/auth-context'
+import { ChevronDown, LogOut, User } from "lucide-react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Button } from "../../components/Button";
+import { useAuth } from "../../shared/context/auth-context";
 
 export function Header() {
-  const { user, logout } = useAuth()
-  const location = useLocation()
-  const navigate = useNavigate()
+  const { user, logout } = useAuth();
+  const location = useLocation();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
-    logout()
-    navigate('/')
-  }
+    logout();
+    navigate("/");
+  };
 
-  const isAuthRoute = ['/login', '/cadastro', '/cadastrar', '/solicitar-proposta'].some((path) =>
-    location.pathname.includes(path),
-  )
+  const isAuthRoute = [
+    "/login",
+    "/cadastro",
+    "/cadastrar",
+    "/solicitar-proposta",
+  ].some((path) => location.pathname.includes(path));
 
-  if (isAuthRoute) return null
+  if (isAuthRoute) return null;
 
-  const logoLink = user ? (user.role === 'empresa' ? '/painel/empresa' : '/vagas/candidato') : '/'
-  const sectionHref = (hash: string) => (location.pathname === '/' ? `#${hash}` : `/#${hash}`)
+  const logoLink = user
+    ? user.role === "empresa"
+      ? "/painel/empresa"
+      : "/vagas/candidato"
+    : "/";
+  const sectionHref = (hash: string) =>
+    location.pathname === "/" ? `#${hash}` : `/#${hash}`;
 
   return (
     <header className="bg-neutral-800 sticky top-0 z-50 px-6 py-4">
       <div className="max-w-6xl mx-auto flex items-center justify-between">
-        <Link to={logoLink} className="text-xl font-bold text-text-default tracking-tight">
+        <Link
+          to={logoLink}
+          className="text-xl font-bold text-text-default tracking-tight"
+        >
           EmpregaAí<span className="text-text-primary">Maricá</span>
         </Link>
 
@@ -35,7 +46,9 @@ export function Header() {
               <span className="w-8 h-8 rounded-full bg-neutral-800 border border-neutral-700 flex items-center justify-center">
                 <User size={14} className="text-text-subtle" />
               </span>
-              <span className="font-medium text-text-default">{user.nome.split(' ')[0]}</span>
+              <span className="font-medium text-text-default">
+                {user.nome.split(" ")[0]}
+              </span>
             </div>
 
             <button
@@ -79,7 +92,7 @@ export function Header() {
               </div>
 
               <a
-                href={sectionHref('vagas')}
+                href={sectionHref("vagas")}
                 className="text-sm text-text-subtle hover:text-text-default transition-colors"
               >
                 Vagas
@@ -101,5 +114,5 @@ export function Header() {
         )}
       </div>
     </header>
-  )
+  );
 }

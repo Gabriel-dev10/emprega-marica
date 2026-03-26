@@ -1,6 +1,6 @@
-import { Briefcase, MapPin, TrendingUp } from 'lucide-react'
-import { JobSearchForm } from '../components/ui/JobSearchForm'
-import { StatCard } from './ui/StatCard'
+import { Briefcase, MapPin, TrendingUp } from "lucide-react";
+import { JobSearchForm } from "../components/ui/JobSearchForm";
+import { StatCard } from "./ui/StatCard";
 
 export function Hero() {
   return (
@@ -23,8 +23,8 @@ export function Hero() {
         </h1>
 
         <p className="text-lg sm:text-xl text-text-subtle max-w-2xl mx-auto mb-12 leading-relaxed">
-          Conectamos talentos locais às melhores empresas da região. Encontre sua próxima
-          oportunidade sem precisar sair da cidade.
+          Conectamos talentos locais às melhores empresas da região. Encontre
+          sua próxima oportunidade sem precisar sair da cidade.
         </p>
 
         <div className="relative z-20 w-full max-w-4xl flex justify-center mb-16">
@@ -38,7 +38,11 @@ export function Hero() {
 
           <div className="hidden sm:block w-px h-12 bg-neutral-800" />
 
-          <StatCard icon={TrendingUp} value="17 Dias" label="Média de Contratação" />
+          <StatCard
+            icon={TrendingUp}
+            value="17 Dias"
+            label="Média de Contratação"
+          />
 
           <div className="hidden sm:block w-px h-12 bg-neutral-800" />
 
@@ -46,5 +50,5 @@ export function Hero() {
         </div>
       </div>
     </section>
-  )
+  );
 }

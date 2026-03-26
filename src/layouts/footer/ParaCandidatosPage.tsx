@@ -1,6 +1,6 @@
-import { ArrowRight, CheckCircle2 } from 'lucide-react'
-import { Link } from 'react-router-dom'
-import { Footer } from './Footer'
+import { ArrowRight, CheckCircle2 } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Footer } from "./Footer";
 
 export default function ParaCandidatosPage() {
   return (
@@ -14,20 +14,27 @@ export default function ParaCandidatosPage() {
             </h1>
 
             <p className="text-lg text-text-subtle mb-10 leading-relaxed max-w-2xl mx-auto">
-              Nossa plataforma ajuda você a encontrar as melhores oportunidades de trabalho perto de
-              casa. Crie seu currículo digital e conecte-se com as empresas da cidade.
+              Nossa plataforma ajuda você a encontrar as melhores oportunidades
+              de trabalho perto de casa. Crie seu currículo digital e conecte-se
+              com as empresas da cidade.
             </p>
 
             <div className="bg-neutral-900/40 backdrop-blur-md border border-neutral-800 rounded-2xl p-6 sm:p-8 w-full max-w-2xl mx-auto mb-10 shadow-xl">
               <ul className="flex flex-col gap-4 text-left">
                 {[
-                  'Criação de currículo online 100% gratuito',
-                  'Alertas de novas vagas no seu perfil',
-                  'Candidatura simplificada com um clique',
-                  'Acompanhamento do status dos processos seletivos',
+                  "Criação de currículo online 100% gratuito",
+                  "Alertas de novas vagas no seu perfil",
+                  "Candidatura simplificada com um clique",
+                  "Acompanhamento do status dos processos seletivos",
                 ].map((benefit) => (
-                  <li key={benefit} className="flex items-center gap-3 text-text-muted">
-                    <CheckCircle2 className="text-text-primary shrink-0" size={20} />
+                  <li
+                    key={benefit}
+                    className="flex items-center gap-3 text-text-muted"
+                  >
+                    <CheckCircle2
+                      className="text-text-primary shrink-0"
+                      size={20}
+                    />
                     <span className="text-sm sm:text-base">{benefit}</span>
                   </li>
                 ))}
@@ -47,5 +54,5 @@ export default function ParaCandidatosPage() {
 
       <Footer />
     </div>
-  )
+  );
 }

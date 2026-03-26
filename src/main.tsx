@@ -1,13 +1,13 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
-import { AppProviders } from './shared/providers/app-providers.tsx'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.tsx";
+import "./index.css";
+import { AppProviders } from "./shared/providers/app-providers.tsx";
 
-const rootElement = document.getElementById('root')
+const rootElement = document.getElementById("root");
 
 if (!rootElement) {
-  throw new Error('Root element not found')
+  throw new Error("Root element not found");
 }
 
 ReactDOM.createRoot(rootElement).render(
@@ -16,4 +16,4 @@ ReactDOM.createRoot(rootElement).render(
       <App />
     </AppProviders>
   </React.StrictMode>,
-)
+);

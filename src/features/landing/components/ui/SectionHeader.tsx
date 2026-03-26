@@ -1,20 +1,20 @@
-import type { ReactNode } from 'react'
-import { cn } from '../../../../shared/lib/utils'
+import type { ReactNode } from "react";
+import { cn } from "../../../../shared/lib/utils";
 
 interface SectionHeaderProps {
-  title: string
-  subtitle?: string
-  align?: 'left' | 'center'
-  className?: string
-  titleClassName?: string
-  subtitleClassName?: string
-  children?: ReactNode
+  title: string;
+  subtitle?: string;
+  align?: "left" | "center";
+  className?: string;
+  titleClassName?: string;
+  subtitleClassName?: string;
+  children?: ReactNode;
 }
 
 export function SectionHeader({
   title,
   subtitle,
-  align = 'center',
+  align = "center",
   className,
   titleClassName,
   subtitleClassName,
@@ -23,18 +23,31 @@ export function SectionHeader({
   return (
     <div
       className={cn(
-        'max-w-3xl mb-16',
-        align === 'center' ? 'text-center mx-auto' : 'text-left',
+        "max-w-3xl mb-16",
+        align === "center" ? "text-center mx-auto" : "text-left",
         className,
       )}
     >
-      <h2 className={cn('text-3xl font-bold text-text-default mb-4', titleClassName)}>{title}</h2>
+      <h2
+        className={cn(
+          "text-3xl font-bold text-text-default mb-4",
+          titleClassName,
+        )}
+      >
+        {title}
+      </h2>
       {subtitle && (
-        <p className={cn('text-text-muted text-lg', children ? 'mb-8' : '', subtitleClassName)}>
+        <p
+          className={cn(
+            "text-text-muted text-lg",
+            children ? "mb-8" : "",
+            subtitleClassName,
+          )}
+        >
           {subtitle}
         </p>
       )}
       {children}
     </div>
-  )
+  );
 }

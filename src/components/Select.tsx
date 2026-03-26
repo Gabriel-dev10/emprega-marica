@@ -1,1 +1,1 @@
-export { Select } from '../shared/ui/select'
+export { Select } from "../shared/ui/select";

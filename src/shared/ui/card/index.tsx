@@ -1,9 +1,11 @@
-import * as React from 'react'
-import { cn } from '../../lib/utils'
-import { type CardVariants, cardVariants } from './card.variants'
+import * as React from "react";
+import { cn } from "../../lib/utils";
+import { type CardVariants, cardVariants } from "./card.variants";
 
-export interface CardProps extends React.ComponentPropsWithoutRef<'div'>, CardVariants {
-  children: React.ReactNode
+export interface CardProps
+  extends React.ComponentPropsWithoutRef<"div">,
+    CardVariants {
+  children: React.ReactNode;
 }
 
 const Card = React.forwardRef<HTMLDivElement, CardProps>(
@@ -17,9 +19,9 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
       >
         {children}
       </div>
-    )
+    );
   },
-)
-Card.displayName = 'Card'
+);
+Card.displayName = "Card";
 
-export { Card }
+export { Card };

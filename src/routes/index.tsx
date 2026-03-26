@@ -1,34 +1,55 @@
-import { lazy, type ReactNode, Suspense } from 'react'
-import { createBrowserRouter, Navigate, Outlet, RouterProvider } from 'react-router-dom'
-import { Header } from '../layouts/header/Header'
-import { useAuth } from '../shared/context/auth-context'
+import { lazy, type ReactNode, Suspense } from "react";
+import {
+  createBrowserRouter,
+  Navigate,
+  Outlet,
+  RouterProvider,
+} from "react-router-dom";
+import { Header } from "../layouts/header/Header";
+import { useAuth } from "../shared/context/auth-context";
 
-const LandingPage = lazy(() => import('../pages/LandingPage'))
-const LoginCandidatoPage = lazy(() => import('../features/auth/candidato/LoginCandidatoPage'))
-const LoginEmpresaPage = lazy(() => import('../features/auth/empresa/LoginEmpresaPage'))
-const CadastroCandidatoPage = lazy(() => import('../features/auth/candidato/CadastroCandidatoPage'))
-const ParaEmpresasPage = lazy(() => import('../layouts/footer/ParaEmpresasPage'))
-const ParaCandidatosPage = lazy(() => import('../layouts/footer/ParaCandidatosPage'))
-const PerfilCandidatoPage = lazy(() => import('../features/auth/candidato/PerfilCandidatoPage'))
-const VagasCandidatoPage = lazy(() => import('../features/auth/candidato/VagasCandidatoPage'))
-const SolicitarPropostaPage = lazy(() => import('../features/auth/empresa/SolicitarPropostaPage'))
+const LandingPage = lazy(() => import("../pages/LandingPage"));
+const LoginCandidatoPage = lazy(
+  () => import("../features/auth/candidato/LoginCandidatoPage"),
+);
+const LoginEmpresaPage = lazy(
+  () => import("../features/auth/empresa/LoginEmpresaPage"),
+);
+const CadastroCandidatoPage = lazy(
+  () => import("../features/auth/candidato/CadastroCandidatoPage"),
+);
+const ParaEmpresasPage = lazy(
+  () => import("../layouts/footer/ParaEmpresasPage"),
+);
+const ParaCandidatosPage = lazy(
+  () => import("../layouts/footer/ParaCandidatosPage"),
+);
+const PerfilCandidatoPage = lazy(
+  () => import("../features/auth/candidato/PerfilCandidatoPage"),
+);
+const VagasCandidatoPage = lazy(
+  () => import("../features/auth/candidato/VagasCandidatoPage"),
+);
+const SolicitarPropostaPage = lazy(
+  () => import("../features/auth/empresa/SolicitarPropostaPage"),
+);
 
 function LoadingScreen() {
   return (
     <div className="min-h-screen bg-neutral-950 flex items-center justify-center">
       <div className="text-neutral-500 text-sm">Carregando...</div>
     </div>
-  )
+  );
 }
 
 const withSuspense = (element: ReactNode) => (
   <Suspense fallback={<LoadingScreen />}>{element}</Suspense>
-)
+);
 
 function ProtectedRoute({ children }: { children: ReactNode }) {
-  const { isAuthenticated } = useAuth()
-  if (!isAuthenticated) return <Navigate to="/login" replace />
-  return <>{children}</>
+  const { isAuthenticated } = useAuth();
+  if (!isAuthenticated) return <Navigate to="/login" replace />;
+  return <>{children}</>;
 }
 
 function RootLayout() {
@@ -37,7 +58,7 @@ function RootLayout() {
       <Header />
       <Outlet />
     </>
-  )
+  );
 }
 
 const router = createBrowserRouter([
@@ -45,39 +66,39 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     children: [
       {
-        path: '/',
+        path: "/",
         element: withSuspense(<LandingPage />),
       },
       {
-        path: '/login',
+        path: "/login",
         element: withSuspense(<LoginCandidatoPage />),
       },
       {
-        path: '/login/candidato',
+        path: "/login/candidato",
         element: withSuspense(<LoginCandidatoPage />),
       },
       {
-        path: '/login/empresa',
+        path: "/login/empresa",
         element: withSuspense(<LoginEmpresaPage />),
       },
       {
-        path: '/empresa/solicitar-proposta',
+        path: "/empresa/solicitar-proposta",
         element: withSuspense(<SolicitarPropostaPage />),
       },
       {
-        path: '/cadastrar/candidato',
+        path: "/cadastrar/candidato",
         element: withSuspense(<CadastroCandidatoPage />),
       },
       {
-        path: '/para-empresas',
+        path: "/para-empresas",
         element: withSuspense(<ParaEmpresasPage />),
       },
       {
-        path: '/para-candidatos',
+        path: "/para-candidatos",
         element: withSuspense(<ParaCandidatosPage />),
       },
       {
-        path: '/vagas/candidato',
+        path: "/vagas/candidato",
         element: withSuspense(
           <ProtectedRoute>
             <VagasCandidatoPage />
@@ -85,7 +106,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: '/perfil/candidato',
+        path: "/perfil/candidato",
         element: withSuspense(
           <ProtectedRoute>
             <PerfilCandidatoPage />
@@ -93,13 +114,13 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: '*',
+        path: "*",
         element: <Navigate to="/" replace />,
       },
     ],
   },
-])
+]);
 
 export function AppRoutes() {
-  return <RouterProvider router={router} />
+  return <RouterProvider router={router} />;
 }

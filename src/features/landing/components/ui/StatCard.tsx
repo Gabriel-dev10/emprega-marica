@@ -1,9 +1,9 @@
-import type { ElementType } from 'react'
+import type { ElementType } from "react";
 
 interface StatCardProps {
-  icon: ElementType
-  value: string | number
-  label: string
+  icon: ElementType;
+  value: string | number;
+  label: string;
 }
 
 export function StatCard({ icon: Icon, value, label }: StatCardProps) {
@@ -14,8 +14,10 @@ export function StatCard({ icon: Icon, value, label }: StatCardProps) {
       </div>
       <div className="text-left">
         <p className="text-2xl font-bold text-text-default">{value}</p>
-        <p className="text-xs text-text-subtle uppercase tracking-wider">{label}</p>
+        <p className="text-xs text-text-subtle uppercase tracking-wider">
+          {label}
+        </p>
       </div>
     </div>
-  )
+  );
 }

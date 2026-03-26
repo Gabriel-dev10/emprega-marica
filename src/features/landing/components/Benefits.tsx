@@ -1,6 +1,6 @@
-import { Card } from '../../../components/Card'
-import { BENEFITS } from '../../../shared/api/mock/benefits'
-import { SectionHeader } from './ui/SectionHeader'
+import { Card } from "../../../components/Card";
+import { BENEFITS } from "../../../shared/api/mock/benefits";
+import { SectionHeader } from "./ui/SectionHeader";
 
 export function Benefits() {
   return (
@@ -17,12 +17,16 @@ export function Benefits() {
               <div className="bg-primary-50 dark:bg-primary-900/20 w-16 h-16 rounded-lg flex items-center justify-center mb-6">
                 {item.icon}
               </div>
-              <h3 className="text-xl font-bold text-text-default mb-3">{item.title}</h3>
-              <p className="text-text-muted leading-relaxed text-sm">{item.description}</p>
+              <h3 className="text-xl font-bold text-text-default mb-3">
+                {item.title}
+              </h3>
+              <p className="text-text-muted leading-relaxed text-sm">
+                {item.description}
+              </p>
             </Card>
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }

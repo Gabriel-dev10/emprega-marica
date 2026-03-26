@@ -1,35 +1,38 @@
-import { useEffect, useRef, useState } from 'react'
-import { DISTRITOS_MARICA } from '../../lib/constants'
-import { cn } from '../../lib/utils'
+import { useEffect, useRef, useState } from "react";
+import { DISTRITOS_MARICA } from "../../lib/constants";
+import { cn } from "../../lib/utils";
 
 type DistrictSelectProps = {
-  value: string
-  onChange: (value: string) => void
-  className?: string
-  placeholder?: string
-}
+  value: string;
+  onChange: (value: string) => void;
+  className?: string;
+  placeholder?: string;
+};
 
 export function DistrictSelect({
   value,
   onChange,
   className,
-  placeholder = 'Qual distrito?',
+  placeholder = "Qual distrito?",
 }: DistrictSelectProps) {
-  const [isOpen, setIsOpen] = useState(false)
-  const dropdownRef = useRef<HTMLDivElement>(null)
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const selectedLabel = DISTRITOS_MARICA.find((d) => d.value === value)?.label
+  const selectedLabel = DISTRITOS_MARICA.find((d) => d.value === value)?.label;
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsOpen(false)
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
       }
-    }
+    };
 
-    document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [])
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   return (
     <div className="relative w-full" ref={dropdownRef}>
@@ -37,8 +40,8 @@ export function DistrictSelect({
         type="button"
         onClick={() => setIsOpen(!isOpen)}
         className={cn(
-          'w-full text-left truncate focus:outline-none transition-colors cursor-pointer',
-          !value ? 'text-text-subtle' : 'text-text-default',
+          "w-full text-left truncate focus:outline-none transition-colors cursor-pointer",
+          !value ? "text-text-subtle" : "text-text-default",
           className,
         )}
       >
@@ -53,14 +56,14 @@ export function DistrictSelect({
                 <button
                   type="button"
                   onClick={() => {
-                    onChange(distrito.value)
-                    setIsOpen(false)
+                    onChange(distrito.value);
+                    setIsOpen(false);
                   }}
                   className={cn(
-                    'w-full text-left px-4 py-3 text-sm sm:text-base transition-colors cursor-pointer',
+                    "w-full text-left px-4 py-3 text-sm sm:text-base transition-colors cursor-pointer",
                     value === distrito.value
-                      ? 'bg-primary-500/10 text-text-primary font-medium'
-                      : 'text-text-default hover:bg-neutral-800/60 hover:text-text-primary',
+                      ? "bg-primary-500/10 text-text-primary font-medium"
+                      : "text-text-default hover:bg-neutral-800/60 hover:text-text-primary",
                   )}
                 >
                   {distrito.label}
@@ -71,5 +74,5 @@ export function DistrictSelect({
         </div>
       )}
     </div>
-  )
+  );
 }

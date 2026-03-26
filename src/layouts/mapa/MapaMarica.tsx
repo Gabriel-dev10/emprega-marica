@@ -1,49 +1,59 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef } from "react";
 
 interface MapaMaricaProps {
-  onDistritoClick?: (numero: number, nome: string) => void
-  distritoSelecionado?: number | null
+  onDistritoClick?: (numero: number, nome: string) => void;
+  distritoSelecionado?: number | null;
 }
 
-export function MapaMarica({ onDistritoClick, distritoSelecionado }: MapaMaricaProps = {}) {
-  const containerRef = useRef<HTMLDivElement>(null)
+export function MapaMarica({
+  onDistritoClick,
+  distritoSelecionado,
+}: MapaMaricaProps = {}) {
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    let cancelled = false
+    let cancelled = false;
 
-    fetch('/mapa_distritos.svg')
+    fetch("/mapa_distritos.svg")
       .then((r) => r.text())
       .then((text) => {
-        if (cancelled || !containerRef.current) return
+        if (cancelled || !containerRef.current) return;
 
-        let cleaned = text.replace(/<\?xml[^?]*\?>/g, '').trim()
-        cleaned = cleaned.replace(/<sodipodi:namedview[\s\S]*?\/>/g, '')
-        cleaned = cleaned.replace(/<defs[^>]*\/>/g, '')
+        let cleaned = text.replace(/<\?xml[^?]*\?>/g, "").trim();
+        cleaned = cleaned.replace(/<sodipodi:namedview[\s\S]*?\/>/g, "");
+        cleaned = cleaned.replace(/<defs[^>]*\/>/g, "");
 
-        containerRef.current.innerHTML = cleaned
+        containerRef.current.innerHTML = cleaned;
 
-        const grupos = containerRef.current.querySelectorAll<SVGElement>('.distrito')
+        const grupos =
+          containerRef.current.querySelectorAll<SVGElement>(".distrito");
         for (const g of grupos) {
-          const num = Number(g.dataset.distrito)
-          const nome = g.dataset.nome ?? ''
-          g.addEventListener('click', () => onDistritoClick?.(num, nome))
+          const num = Number(g.dataset.distrito);
+          const nome = g.dataset.nome ?? "";
+          g.addEventListener("click", () => onDistritoClick?.(num, nome));
         }
       })
-      .catch(() => {})
+      .catch(() => {});
 
     return () => {
-      cancelled = true
-    }
+      cancelled = true;
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [onDistritoClick])
+  }, [onDistritoClick]);
 
   useEffect(() => {
-    if (!containerRef.current) return
-    const grupos = containerRef.current.querySelectorAll<SVGElement>('.distrito')
+    if (!containerRef.current) return;
+    const grupos =
+      containerRef.current.querySelectorAll<SVGElement>(".distrito");
     for (const g of grupos) {
-      g.classList.toggle('selected', Number(g.dataset.distrito) === distritoSelecionado)
+      g.classList.toggle(
+        "selected",
+        Number(g.dataset.distrito) === distritoSelecionado,
+      );
     }
-  }, [distritoSelecionado])
+  }, [distritoSelecionado]);
 
-  return <div ref={containerRef} className="w-full [&>svg]:w-full [&>svg]:h-auto" />
+  return (
+    <div ref={containerRef} className="w-full [&>svg]:w-full [&>svg]:h-auto" />
+  );
 }

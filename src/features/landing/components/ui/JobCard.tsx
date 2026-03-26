@@ -1,17 +1,17 @@
-import { Building2, CircleDollarSign, Clock, MapPin } from 'lucide-react'
-import { Button } from '../../../../components/Button'
-import { Card } from '../../../../components/Card'
+import { Building2, CircleDollarSign, Clock, MapPin } from "lucide-react";
+import { Button } from "../../../../components/Button";
+import { Card } from "../../../../components/Card";
 
 interface JobCardProps {
-  id: string
-  title: string
-  company: string
-  location: string
-  type: string
-  salary: string
-  tags?: string[]
-  logo?: string
-  isNew?: boolean
+  id: string;
+  title: string;
+  company: string;
+  location: string;
+  type: string;
+  salary: string;
+  tags?: string[];
+  logo?: string;
+  isNew?: boolean;
 }
 
 export function JobCard({
@@ -33,7 +33,11 @@ export function JobCard({
         <div className="flex gap-4">
           <div className="w-12 h-12 rounded-xl bg-neutral-800 flex items-center justify-center overflow-hidden border border-neutral-700 shrink-0">
             {logo ? (
-              <img src={logo} alt={company} className="w-full h-full object-cover" />
+              <img
+                src={logo}
+                alt={company}
+                className="w-full h-full object-cover"
+              />
             ) : (
               <Building2 className="text-text-subtle" size={24} />
             )}
@@ -42,7 +46,9 @@ export function JobCard({
             <h3 className="font-bold text-lg text-text-default line-clamp-1 group-hover:text-text-primary transition-colors">
               {title}
             </h3>
-            <p className="text-sm text-text-subtle font-medium mt-0.5">{company}</p>
+            <p className="text-sm text-text-subtle font-medium mt-0.5">
+              {company}
+            </p>
           </div>
         </div>
 
@@ -63,7 +69,10 @@ export function JobCard({
           {type}
         </div>
         <div className="flex items-center text-sm text-text-subtle">
-          <CircleDollarSign size={16} className="mr-3 text-text-muted opacity-60" />
+          <CircleDollarSign
+            size={16}
+            className="mr-3 text-text-muted opacity-60"
+          />
           {salary}
         </div>
       </div>
@@ -89,5 +98,5 @@ export function JobCard({
         Ver Detalhes
       </Button>
     </Card>
-  )
+  );
 }
